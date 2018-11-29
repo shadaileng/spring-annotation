@@ -23,6 +23,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        InterceptorRegistration registration = registry.addInterceptor();
+        InterceptorRegistration registration = registry.addInterceptor(new HelloInterceptor());
+        registration.addPathPatterns("/**");
     }
 }
