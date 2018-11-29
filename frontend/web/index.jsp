@@ -9,8 +9,13 @@
 <html>
   <head>
     <title>Index</title>
+      <% pageContext.setAttribute("APP_PATH", request.getContextPath()); %>
   </head>
   <body>
     <h1>Index</h1>
+    <a href="${ APP_PATH }/hello">hello</a><br><br>
+    <a href="${ APP_PATH }/tomcat">hello tomcat</a><br><br>
+    <a href="${ APP_PATH }/success">success</a><br><br>
+    <img src="${ APP_PATH }/imgs/toolbar.png" alt="toolbar.png"><br><br>
   </body>
 </html>
