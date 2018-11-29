@@ -1,7 +1,6 @@
 package com.qpf.init;
 
 import com.qpf.servlet.HelloServlet;
-import org.springframework.web.WebApplicationInitializer;
 
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
