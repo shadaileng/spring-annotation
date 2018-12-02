@@ -17,6 +17,14 @@
     <a href="${ APP_PATH }/tomcat">hello tomcat</a><br><br>
     <a href="${ APP_PATH }/success">success</a><br><br>
     <a href="${ APP_PATH }/async">async</a><br><br>
+    <a href="${ APP_PATH }/async01">async01 Callable</a><br><br>
+    <a href="${ APP_PATH }/order">Order</a><br><br>
+    <a href="${ APP_PATH }/create">Create</a><br><br>
+    <form action="${APP_PATH}/upload" method="post" enctype="multipart/form-data">
+        <label>Name</label><input type="text" name="name"><br><br>
+        <label>Upload</label><input type="file" name="upload"><br><br>
+        <input type="submit" value="提交">
+    </form>
     <img src="${ APP_PATH }/imgs/toolbar.png" alt="toolbar.png"><br><br>
   </body>
 </html>

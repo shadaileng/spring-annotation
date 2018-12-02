@@ -2,7 +2,6 @@ package com.qpf.servlet;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,16 +25,16 @@ public class AsyncServlet extends HttpServlet {
             public void run() {
                 try {
                     System.out.println("(1)" + Thread.currentThread() + "...." + new Date().getTime());
-//                    work();
-                    ServletResponse response = req.getAsyncContext().getResponse();
+                    work();//
+                    asyncContext.complete();
                     System.out.println("(2)" + Thread.currentThread() + "...." + new Date().getTime());
-                    response.getWriter().write("3s...");
+                    asyncContext.getResponse().getWriter().write("3s...");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-        resp.getWriter().write("hello....");
+//        resp.getWriter().write("hello....");
         System.out.println("[2]" + Thread.currentThread() + "...." + new Date().getTime());
     }
     private void work() throws Exception {

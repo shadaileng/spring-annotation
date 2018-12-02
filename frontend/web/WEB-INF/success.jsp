@@ -12,5 +12,6 @@
 </head>
 <body>
     <h1>Success</h1>
+    <label>成功</label>
 </body>
 </html>

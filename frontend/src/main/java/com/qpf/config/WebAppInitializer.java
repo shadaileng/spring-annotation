@@ -1,6 +1,11 @@
 package com.qpf.config;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -19,4 +24,18 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		return new String[]{"/"};
 	}
 
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+//	    registration.setMultipartConfig(new MultipartConfigElement("~/下载"));
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceRequestEncoding(true);
+        filter.setForceResponseEncoding(true);
+        System.out.println("-------------------------------------");
+	    return new Filter[]{filter};
+    }
 }
