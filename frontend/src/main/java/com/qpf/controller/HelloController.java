@@ -1,7 +1,6 @@
 package com.qpf.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -53,9 +49,9 @@ public class HelloController {
 	}
     @GetMapping("/order")
     @ResponseBody
-    public DeferredResult<Object> order() throws UnsupportedEncodingException {
+    public DeferredResult<Object> order() {
 
-        DeferredResult<Object> deferredResult = new DeferredResult<>((long) 3000, URLEncoder.encode("超时", "utf-8"));
+        DeferredResult<Object> deferredResult = new DeferredResult<>((long) 3000, "超时");
         queue.add(deferredResult);
         return deferredResult;
     }
@@ -71,10 +67,19 @@ public class HelloController {
     @ResponseBody
     @RequestMapping(path = "/error")
     public Map<String, Object> handle(HttpServletRequest request) {
-	    Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("status", request.getAttribute("javax.servlet.error.status_code"));
         map.put("reason", request.getAttribute("javax.servlet.error.message"));
-	    return map;
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/show", produces = "text/json;charset=UTF-8")
+    public String show() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("status", "你好");
+        map.put("reason", "世界");
+        return "中文";
     }
 
     @Autowired
