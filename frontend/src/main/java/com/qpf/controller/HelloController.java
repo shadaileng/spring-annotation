@@ -50,7 +50,6 @@ public class HelloController {
     @GetMapping("/order")
     @ResponseBody
     public DeferredResult<Object> order() {
-
         DeferredResult<Object> deferredResult = new DeferredResult<>((long) 3000, "超时");
         queue.add(deferredResult);
         return deferredResult;
@@ -59,8 +58,19 @@ public class HelloController {
     @ResponseBody
     public String crete() {
         DeferredResult<Object> result = queue.poll();
-        String order = "订单: " + UUID.randomUUID().toString();
-        if (result != null) result.setResult(order);
+        int i = 0;
+        while(i < 10 && result == null) {
+            result = queue.poll();
+            i++;
+            System.out.println("获取结果: " + i);
+        }
+        String order = "";
+        if (result != null) {
+            order = "订单: " + UUID.randomUUID().toString();
+            result.setResult(order);
+        } else {
+            order = "创建订单超时";
+        }
         return order;
     }
 
