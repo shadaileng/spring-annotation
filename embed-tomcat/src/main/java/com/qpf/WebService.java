@@ -8,7 +8,10 @@ import org.apache.catalina.Host;
 import org.apache.catalina.Server;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.core.AprLifecycleListener;
+import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.webresources.DirResourceSet;
+import org.apache.catalina.webresources.StandardRoot;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -28,8 +31,9 @@ public class WebService {
         private String protocol = "org.apache.coyote.http11.Http11NioProtocol";
         private String uriEncoding = "UTF-8";
 //        private String root = "embed-tomcat/src/main/resources";
-        String path_ = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-        private String root = path_.substring(0, path_.lastIndexOf(File.separator) + 1) + File.separator + "public";
+        private String path_ = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+
+        private String root = path_.substring(0, path_.lastIndexOf(File.separator) + 1) + "public";
 
         private int maxPostSize = 0;
         private int maxThreads = 200;
@@ -77,14 +81,10 @@ public class WebService {
 
 
             String path = new File(builder.root).getAbsolutePath();
-            System.out.println(path);
-            tomcat.addWebapp("/", path);
-//            StandardContext context = (StandardContext) tomcat.addWebapp("/", new File(root).getAbsolutePath());
-//            File webInfoClasses = new File("target/classes");
-//            StandardRoot root = new StandardRoot(context);
-//            root.addPreResources(new DirResourceSet(root, "/WEB-INF/classes", webInfoClasses.getAbsolutePath(), "/"));
-//            context.setResources(root);
-//            tomcat.addWebapp("/", System.getProperty("user.dir") + File.separator + root);
+            StandardContext context = (StandardContext) tomcat.addWebapp("/", path);
+            StandardRoot resources = new StandardRoot(context);
+            resources.addPreResources(new DirResourceSet(resources, "/public/classes", path, "/"));
+            context.setResources(resources);
 
             tomcat.start();
             tomcat.getServer().await();

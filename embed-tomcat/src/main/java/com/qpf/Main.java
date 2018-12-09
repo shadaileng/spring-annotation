@@ -16,6 +16,11 @@ public class Main {
 //        tempFile.mkdir();
 //        tempFile.deleteOnExit();
 //        System.out.println(tempFile.getAbsolutePath());
+        String path_ = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        System.out.println(path_);
+        System.out.println(path_.substring(0, path_.lastIndexOf(File.separator) + 1));
+        String root = path_.substring(0, path_.lastIndexOf(File.separator) + 1) + "public";
+        System.out.println(root);
         System.out.println(System.getProperty("java.io.tmpdir"));
         System.out.println(getClass().getResource("").getFile());
         System.out.println(getClass().getResource("/public/index.html"));
