@@ -21,29 +21,94 @@
         </dependency>
         <!--避免启动出错-->
         <dependency>
-            <groupId>tomcat</groupId>
-            <artifactId>jasper-runtime</artifactId>
-            <version>5.5.23</version>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>9.0.12</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>tomcat</groupId>-->
+            <!--<artifactId>jasper-runtime</artifactId>-->
+            <!--<version>5.5.23</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet.jsp</groupId>-->
+            <!--<artifactId>jsp-api</artifactId>-->
+            <!--<version>2.2</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
         </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>1.2.1</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <!-- 生成的jar中，包含pom.xml和pom.properties这两个文件 -->
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                        <!-- 生成MANIFEST.MF的设置 -->
+                        <manifest>
+                            <useUniqueVersions>false</useUniqueVersions>
+                            <!-- 为依赖包添加路径, 这些路径会写在MANIFEST文件的Class-Path下 -->
+                            <addClasspath>true</addClasspath>
+                            <!-- jar启动入口类-->
+                            <mainClass>com.qpf.Main</mainClass>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>copy-dependencies</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>shade</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.qpf.Main</mainClass>
-                                </transformer>
-                            </transformers>
+                            <type>jar</type>
+                            <includeTypes>jar</includeTypes>
+                            <outputDirectory>
+                                ${project.build.directory}/lib
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <id>add-resource</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>**/*.*</include>
+                                    </includes>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>
