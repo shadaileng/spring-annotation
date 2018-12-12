@@ -4,10 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
+    private final String name = getClass().getSimpleName();
     public static void main(String[] args) throws IOException {
-        WebService.webService().start();
-//        Main main = new Main();
-//        main.show();
+//        WebService.webService().start();
+        Main main = new Main();
+        main.show();
     }
     public void show() throws IOException {
 
@@ -16,6 +17,7 @@ public class Main {
 //        tempFile.mkdir();
 //        tempFile.deleteOnExit();
 //        System.out.println(tempFile.getAbsolutePath());
+        System.out.println(name);
         String path_ = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
         System.out.println(path_);
         System.out.println(path_.substring(0, path_.lastIndexOf(File.separator) + 1));

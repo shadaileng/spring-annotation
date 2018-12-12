@@ -46,11 +46,12 @@ public class App
         		resp.getWriter().println("Hello");
         	}
 		});
+        
         context.addServletMappingDecoded("/hello", "helloServlet");
         
         // webapp
         tomcat.getHost().setAppBase(System.getProperty("user.dir") + File.separator + ".");
-        tomcat.addWebapp("", "web");
+        tomcat.addWebapp("", "embed-tomcat/src/main/resources/public");
         
         tomcat.start();
         tomcat.getServer().await();
