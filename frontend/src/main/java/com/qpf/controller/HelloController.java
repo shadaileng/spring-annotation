@@ -97,7 +97,9 @@ public class HelloController {
     @PostMapping("/upload")
     public String upload(HttpServletRequest request) throws IOException {
         String name = request.getParameter("name");
+        String imgs = request.getServletContext().getRealPath("imgs");
         System.out.println("Name: " + name);
+        System.out.println("imgs: " + imgs);
         if (multipartResolver.isMultipart(request)) {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
             Iterator<String> fileNames = multipartHttpServletRequest.getFileNames();
@@ -106,7 +108,9 @@ public class HelloController {
                 System.out.println("FileName: " + fileName);
                 MultipartFile file = multipartHttpServletRequest.getFile(fileName);
                 if (file != null && !"".equals(file.getOriginalFilename()) ) {
-                    file.transferTo(new File("/home/shadaileng/下载/" + file.getOriginalFilename()));
+                    file.transferTo(new File(imgs + File.separator + file.getOriginalFilename()));
+                } else {
+                    System.out.println("上传失败...");
                 }
             }
         }
