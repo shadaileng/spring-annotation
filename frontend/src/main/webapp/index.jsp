@@ -21,6 +21,7 @@
     <a href="${ APP_PATH }/order">Order</a><br><br>
     <a href="${ APP_PATH }/create">Create</a><br><br>
     <a href="${ APP_PATH }/show">Show</a><br><br>
+    <a href="${ APP_PATH }/carousel">Carousel</a><br><br>
     <form action="${APP_PATH}/upload" method="post" enctype="multipart/form-data">
         <label>Name</label><input type="text" name="name"><br><br>
         <label>Upload</label><input type="file" name="upload"><br><br>

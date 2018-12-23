@@ -1,10 +1,8 @@
 package com.qpf.config;
 
+import com.qpf.bean.ConfigProperties;
 import com.qpf.component.HelloInterceptor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -18,6 +16,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
 
+@PropertySource("classpath:/application.properties")
 @Configuration
 @ComponentScan(value = {"com.qpf"}, includeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
@@ -27,6 +26,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/img/**").addResourceLocations("file://" + configProperties().getFileRoot());
     }
 
     @Override
@@ -59,4 +63,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         stringHttpMessageConverter.setDefaultCharset(Charset.forName("UTF-8"));
         converters.add(stringHttpMessageConverter);
     }
+
+
+    @Bean
+    public ConfigProperties configProperties() {
+        return new ConfigProperties();
+    }
+
 }

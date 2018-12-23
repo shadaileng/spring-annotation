@@ -1,5 +1,6 @@
 package com.qpf.controller;
 
+import com.qpf.bean.ConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Controller
 public class HelloController {
     private static Queue<DeferredResult<Object>> queue = new ConcurrentLinkedQueue<DeferredResult<Object>>();
+
+    @Autowired
+    private ConfigProperties configProperties;
     @Autowired
 	private HelloService helloService;
 	@ResponseBody
@@ -84,7 +88,7 @@ public class HelloController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/show", produces = "text/json;charset=UTF-8")
+    @RequestMapping(path = "/show")
     public String show() {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("status", "你好");
@@ -97,6 +101,7 @@ public class HelloController {
     @PostMapping("/upload")
     public String upload(HttpServletRequest request) throws IOException {
         String name = request.getParameter("name");
+        // 获取根路径资源
         String imgs = request.getServletContext().getRealPath("imgs");
         System.out.println("Name: " + name);
         System.out.println("imgs: " + imgs);
@@ -115,6 +120,18 @@ public class HelloController {
             }
         }
 	    return "success";
+    }
+    @GetMapping("/carousel")
+    public String carousel(Map<String, Object> map, HttpServletRequest request) {
+        String root = configProperties.getFileRoot();
+        String[] imgs = new File(root + File.separator).list();
+        String rootPath = "img/";
+        List<String> list = new ArrayList<>();
+        for (String img : imgs) {
+            list.add(rootPath + img);
+        }
+        map.put("list", list);
+        return "carousel";
     }
 
 }
