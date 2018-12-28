@@ -123,13 +123,14 @@ public class HelloController {
     }
     @GetMapping("/carousel")
     public String carousel(Map<String, Object> map, HttpServletRequest request) {
-        String root = configProperties.getFileRoot();
-        String[] imgs = new File(root + File.separator).list();
-        String rootPath = "img/";
+		String root = configProperties.getFileRoot() + File.separator;
+		String host = configProperties.getFileHost() + "/img/";
         List<String> list = new ArrayList<>();
-        for (String img : imgs) {
-            list.add(rootPath + img);
-        }
+        String[] imgs = new File(root).list();
+        if(imgs != null) Arrays.asList(imgs).forEach(img -> list.add(host + img));
+        System.out.println("root: " + root);
+        System.out.println("host: " + host);
+        System.out.println("list: " + list);
         map.put("list", list);
         return "carousel";
     }

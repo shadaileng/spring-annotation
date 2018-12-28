@@ -48,7 +48,7 @@
     <h1>Carousel</h1>
     <div id="carousel_main">
         <c:forEach items="${list}" var="img">
-            <img src="${ APP_PATH }/${img}" alt="img">
+            <img src="${img}" alt="img">
         </c:forEach>
     </div>
 </body>
