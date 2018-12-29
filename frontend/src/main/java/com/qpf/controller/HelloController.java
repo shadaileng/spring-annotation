@@ -1,6 +1,5 @@
 package com.qpf.controller;
 
-import com.qpf.bean.ConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qpf.bean.ConfigProperties;
+import com.qpf.service.FileService;
 import com.qpf.service.HelloService;
 import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,8 @@ public class HelloController {
 
     @Autowired
     private ConfigProperties configProperties;
+    @Autowired
+    private FileService fileService;
     @Autowired
 	private HelloService helloService;
 	@ResponseBody
@@ -123,16 +126,13 @@ public class HelloController {
     }
     @GetMapping("/carousel")
     public String carousel(Map<String, Object> map, HttpServletRequest request) {
-		String root = configProperties.getFileRoot() + File.separator;
-		String host = configProperties.getFileHost() + "/img/";
-        List<String> list = new ArrayList<>();
-        String[] imgs = new File(root).list();
-        if(imgs != null) Arrays.asList(imgs).forEach(img -> list.add(host + img));
-        System.out.println("root: " + root);
-        System.out.println("host: " + host);
-        System.out.println("list: " + list);
-        map.put("list", list);
+        map.put("list", fileService.collectImgs(configProperties.getFileRoot(), configProperties.getFileHost() + "/img"));
         return "carousel";
     }
 
+    @ResponseBody
+    @GetMapping("/album")
+    public Map<String, Object> ablum() {
+    	return fileService.album();
+    }
 }

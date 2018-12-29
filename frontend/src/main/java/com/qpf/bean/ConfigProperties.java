@@ -8,6 +8,8 @@ public class ConfigProperties {
     private String FileRoot;
     @Value("${configProperties.fileHost}")
     private String FileHost;
+    @Value("${configProperties.imgPre}")
+    private String imgPre;
 	public String getFileRoot() {
 		return FileRoot;
 	}
@@ -19,6 +21,12 @@ public class ConfigProperties {
 	}
 	public void setFileHost(String fileHost) {
 		FileHost = fileHost;
+	}
+	public String getImgPre() {
+		return imgPre;
+	}
+	public void setImgPre(String imgPre) {
+		this.imgPre = imgPre;
 	}
     
 }
