@@ -11,7 +11,8 @@ import java.util.Date;
 
 @WebServlet(value = "/async", asyncSupported = true)
 public class AsyncServlet extends HttpServlet {
-    @Override
+	private static final long serialVersionUID = 201901020931L;
+	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
     }
