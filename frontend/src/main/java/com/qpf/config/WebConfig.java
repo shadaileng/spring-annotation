@@ -18,6 +18,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.stereotype.Controller;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -29,6 +30,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.qpf.bean.ConfigProperties;
 import com.qpf.component.HelloInterceptor;
 import com.qpf.service.FileService;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @PropertySource("classpath:/application.properties")
 @Configuration
@@ -39,9 +47,43 @@ import com.qpf.service.FileService;
 public class WebConfig extends WebMvcConfigurerAdapter {
 	@Autowired
 	private FileService fileService;
+	private static final String VIEWS = "/WEB-INF/views/";
+	private static final String CHARACTER_ENCODING = "UTF-8";
+	private boolean THTMELEAF_CACHEABLE = false;
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+//    @Override
+//    public void configureViewResolvers(ViewResolverRegistry registry) {
+//        registry.jsp();
+//    }
+
+    @Bean
+    public ITemplateResolver templateResolver() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setPrefix(VIEWS);
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode(TemplateMode.HTML);
+        resolver.setCharacterEncoding(CHARACTER_ENCODING);
+        resolver.setCacheable(THTMELEAF_CACHEABLE);
+        return resolver;
+    }
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.addDialect(new SpringSecurityDialect());
+        templateEngine.addDialect(new Java8TimeDialect());
+        return templateEngine;
+    }
+    @Bean
+    public ViewResolver viewResolver() {
+        ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
+        thymeleafViewResolver.setTemplateEngine(templateEngine());
+        thymeleafViewResolver.setCharacterEncoding(CHARACTER_ENCODING);
+        return thymeleafViewResolver;
     }
 
     @Override
@@ -55,11 +97,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp();
-    }
-
-    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(new HelloInterceptor());
         registration.addPathPatterns("/**");
@@ -68,14 +105,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public CommonsMultipartResolver multipartResolver() {
         return new CommonsMultipartResolver();
     }
-    @Bean
-    public CharacterEncodingFilter characterEncodingFilter() {
-        CharacterEncodingFilter filter = new CharacterEncodingFilter();
-        filter.setEncoding("UTF-8");
-        filter.setForceRequestEncoding(true);
-        filter.setForceResponseEncoding(true);
-        return filter;
-    }
+//    @Bean
+//    public CharacterEncodingFilter characterEncodingFilter() {
+//        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+//        filter.setEncoding("UTF-8");
+//        filter.setForceRequestEncoding(true);
+//        filter.setForceResponseEncoding(true);
+//        return filter;
+//    }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -87,7 +124,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
         converters.add(mappingJackson2HttpMessageConverter);
     }
-
 
     @Bean
     public ConfigProperties configProperties() {

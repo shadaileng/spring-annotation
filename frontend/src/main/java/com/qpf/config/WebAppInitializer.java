@@ -27,6 +27,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 //	    registration.setMultipartConfig(new MultipartConfigElement("~/下载"));
+        registration.setInitParameter("defaultHtmlEscape", "true");
+        registration.setInitParameter("spring.profiles.active", "default");
     }
 
     @Override
@@ -38,4 +40,5 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         System.out.println("-------------------------------------");
 	    return new Filter[]{filter};
     }
+
 }
