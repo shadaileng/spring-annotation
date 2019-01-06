@@ -235,6 +235,107 @@
     </html>
     ```
 5. 启动应用,浏览器访问`http://localhost:8080/frontend/success`
+
+## 配置logback
+
+- `logback`主要模块
+    - `logback-access`
+    - `logback-core`
+    - `logback-clasic`
+- `logback`加载配置文件的顺序
+    - 启动参数`-Dlogback.ConfigurationFile=/path/to/xxx.xml`
+    - `classpath:logback.cfg`
+    - `classpath:logback-test.xml`
+    - `classpath:logback.xml`
+    - `JDK1.6x`以上版本:`com.qos.logback.classic.spi.Configurator`接口的实现类
+    - `ch.qos.logback.classic.BasicConfigurator`接口的实现类
+- 配置文件主要标签
+    - `appender`: 日志输出目标
+    ```
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!-- scan: 是否扫描最新配置文件 -->
+    <!-- scanPeriod: 扫描配置文件间隔时间,默认6000 millSeconds -->
+    <!-- debug: 是否打印logback的日志 -->
+    <configuration scan="true" scanPeriod="60 seconds" debug="false">
+        <!-- 打印日志的等级: TRACE < DEBUG < INFO < WARN < ERROR -->
+        <property name="log.level" value="debug"/>
+        <!-- 日志保留最大历史数量 -->
+        <property name="log.maxHistory" value="30"/>
+        <!-- 日志保存路径 -->
+        <property name="log.filePath" value="${catalina.base}/logs/webapps"/>
+        <!-- 日志打印格式 -->
+        <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} [%thread] %-5level %logger{50}-%msg%n"/>
+        <appender name="consoleApperder" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${log.pattern}</pattern>
+            </encoder>
+        </appender>
+        <!-- DEBUG -->
+        <appender name="debugApperder" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 文件路径 -->
+            <file>${log.filePath}/debug.log</file>
+            <!-- 文件名称 -->
+            <rollingPolicy clasic="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${log.filePath}/debug/debug.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+                <MaxHistory>${log.maxHistory}</MaxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${log.pattern}</pattern>
+            </encoder>
+            <filter class="ch.qos.logback.clasic.filter.LevelFilter">
+                <level>DEBUG</filter>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </filter>
+        </appender>
+        <!-- INFO -->
+        <appender name="infoApperder" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 文件路径 -->
+            <file>${log.filePath}/info.log</file>
+            <!-- 日志备份文件名称 -->
+            <rollingPolicy clasic="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${log.filePath}/info/info.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+                <MaxHistory>${log.maxHistory}</MaxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${log.pattern}</pattern>
+            </encoder>
+            <filter class="ch.qos.logback.clasic.filter.LevelFilter">
+                <level>INFO</filter>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </filter>
+        </appender>
+        <!-- ERROR -->
+        <appender name="errorApperder" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 文件路径 -->
+            <file>${log.filePath}/error.log</file>
+            <!-- 日志备份文件名称 -->
+            <rollingPolicy clasic="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${log.filePath}/error/error.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+                <MaxHistory>${log.maxHistory}</MaxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${log.pattern}</pattern>
+            </encoder>
+            <filter class="ch.qos.logback.clasic.filter.LevelFilter">
+                <level>ERROR</filter>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </filter>
+        </appender>
+        <!-- 指定log级别,以及包,additivity: 是否继承root标签 -->
+        <logger name="com.qpf" level="${log.level}" additivity="true">
+            <appender-ref ref="debugApperder"/>
+            <appender-ref ref="infoApperder"/>
+            <appender-ref ref="errorApperder"/>
+        </logger>
+        <!-- 基础的日志打印 -->
+        <root level="info">
+            <appender-ref ref="consoleApperder"/>
+        </root>
+    </configuration>
+    ```
 ## 参考
 
 - [Spring MVC Quickstart Maven Archetype](https://github.com/kolorobot/spring-mvc-quickstart-archetype.git)
