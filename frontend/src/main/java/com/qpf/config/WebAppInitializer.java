@@ -29,6 +29,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 //	    registration.setMultipartConfig(new MultipartConfigElement("~/下载"));
         registration.setInitParameter("defaultHtmlEscape", "true");
         registration.setInitParameter("spring.profiles.active", "default");
+        System.setProperty("app.version", "1.0.0.RELEASE");
     }
 
     @Override

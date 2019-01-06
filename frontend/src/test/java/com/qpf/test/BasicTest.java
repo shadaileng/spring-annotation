@@ -19,5 +19,11 @@ public class BasicTest {
 	public void testPersonMapper() {
 		Person person = personMapper.selectPersonById(1);
 		System.out.println(person);
+		System.out.println(personMapper.listPerson());
+	}
+	@Test
+	public void testSavePerson() {
+		int insert = personMapper.insertPerson(new Person(null, "qpf", "1"));
+		System.out.println(insert);
 	}
 }

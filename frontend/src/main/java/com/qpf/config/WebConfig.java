@@ -49,6 +49,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	private FileService fileService;
 	private static final String VIEWS = "/WEB-INF/views/";
 	private static final String CHARACTER_ENCODING = "UTF-8";
+	private static final String RESOURCES_LOCATION = "/resources/";
 	private boolean THTMELEAF_CACHEABLE = false;
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -88,12 +89,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/tmp/" + "**").addResourceLocations("file:/home/shadaileng/develop/tmp/");
+        registry.addResourceHandler(RESOURCES_LOCATION + "**").addResourceLocations(RESOURCES_LOCATION);
 		String img = configProperties().getImgPre();
 		String root = configProperties().getFileRoot();
-		registry.addResourceHandler(img  + "/**").addResourceLocations("file:" + root  + File.separator);
-		fileService.collectDir(root).forEach( file -> {
-			registry.addResourceHandler(img + file.substring(root.length()) + "/**").addResourceLocations("file:" + file + File.separator);
-		});
+		registry.addResourceHandler(img  + "**").addResourceLocations("file:" + root);
+//		fileService.collectDir(root).forEach( file -> {
+//			registry.addResourceHandler(img + file.substring(root.length()) + "/**").addResourceLocations("file:" + file + File.separator);
+//		});
     }
 
     @Override

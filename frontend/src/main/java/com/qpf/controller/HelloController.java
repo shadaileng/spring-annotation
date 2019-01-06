@@ -37,7 +37,12 @@ public class HelloController {
     private FileService fileService;
     @Autowired
 	private HelloService helloService;
-	@ResponseBody
+    @RequestMapping("/")
+    public String index() {
+        System.out.println("index");
+        return "index";
+    }
+    @ResponseBody
 	@RequestMapping("/tomcat")
 	public String hello() {
 		return helloService.hello("tomcat");
@@ -110,7 +115,7 @@ public class HelloController {
     public String upload(HttpServletRequest request) throws IOException {
         String name = request.getParameter("name");
         // 获取根路径资源
-        String imgs = request.getServletContext().getRealPath("imgs");
+        String imgs = request.getServletContext().getRealPath("/resources/imgs");
         System.out.println("Name: " + name);
         System.out.println("imgs: " + imgs);
         if (multipartResolver.isMultipart(request)) {
@@ -131,6 +136,7 @@ public class HelloController {
     }
     @GetMapping("/carousel")
     public String carousel(Map<String, Object> map, HttpServletRequest request) {
+        map.put("hello", "Hello World");
         map.put("list", fileService.collectImgs(configProperties.getFileRoot(), configProperties.getFileHost() + "/img"));
         return "carousel";
     }

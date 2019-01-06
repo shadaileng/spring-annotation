@@ -137,7 +137,7 @@
 				<version>2.2</version>
 				<configuration>
 					<!-- 本地运行端口 -->
-					<port>80</port>
+					<port>8080</port>
 					<!-- 项目名称 -->
 					<path>/frontend</path>
 					<!-- 热部署tomcat用户名称 -->

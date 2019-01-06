@@ -4,6 +4,13 @@ public class Person {
 	private Integer id;
 	private String name;
 	private String gender;
+	public Person(){}
+	public Person(Integer id, String name, String gender) {
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+	}
+
 	public Integer getId() {
 		return id;
 	}
