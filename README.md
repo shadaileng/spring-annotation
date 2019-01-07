@@ -238,23 +238,40 @@
 
 ## 配置logback
 
-- `logback`主要模块
-    - `logback-access`
-    - `logback-core`
-    - `logback-clasic`
+- `logback`主要模块:`logback-access`, `logback-core`, `logback-clasic`
+    - `Logger`类位于`logback-classic`模块中,而`Appender`和`Layout`位于`logback-core`中,`Logger`会依赖于`Appender`和`Layout`的协助, 日志信息才能被正常打印出来
 - `logback`加载配置文件的顺序
-    - 启动参数`-Dlogback.ConfigurationFile=/path/to/xxx.xml`
-    - `classpath:logback.cfg`
+    - `JVM`启动参数`-Dlogback.configurationFile=/path/to/xxx.xml`
+    - `classpath:logback.groovy`
     - `classpath:logback-test.xml`
     - `classpath:logback.xml`
     - `JDK1.6x`以上版本:`com.qos.logback.classic.spi.Configurator`接口的实现类
+        - `META-INF\services\ch.qos.logback.classic.spi.Configurator`文件指定配置类
     - `ch.qos.logback.classic.BasicConfigurator`接口的实现类
 - 配置文件主要标签
-    - `appender`: 日志输出目标
+    - `root`: 根日志对象
+    - `logger`: 日志对象
+    - `appender`: 日志输出目标,每个`logger`可以绑定多个`appender`
+
+- `logger`分层命名规则: 为了控制哪些日志可以输出,哪些日志不能输出,每个`logger`都有一个`name`属性,以包名作为属性值
+    - `logger`之间根据包名存在父子关系,如`com.qpf`是`com.qpf.service`的父级
+    - 存在一个`root logger`是所有`logger`的祖先
+        `Logger root = LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);`
+- 日志打印级别
+    - `TRACE` < `DEBUG` < `INFO` < `WARN` < `ERROR`
+    - 如果当前`logger`未指定打印级别,会继承父级`logger`的打印级别,直到`root logger`,所以`root logger`必须指定打印级别
+- `logback`的内部运行流程如下所示
+    - 获得过滤器链条
+    - 检查日志级别以决定是否继续打印
+    - 创建一个`LoggingEvent`对象
+    - 调用`Appenders`
+    - 进行日志信息格式化
+    - 发送`LoggingEvent`到对应的目的地
+- `logback.xml`
     ```
     <?xml version="1.0" encoding="UTF-8"?>
     <!-- scan: 是否扫描最新配置文件 -->
-    <!-- scanPeriod: 扫描配置文件间隔时间,默认6000 millSeconds -->
+    <!-- scanPeriod: 扫描配置文件间隔时间,默认6000 milliseconds -->
     <!-- debug: 是否打印logback的日志 -->
     <configuration scan="true" scanPeriod="60 seconds" debug="false">
         <!-- 打印日志的等级: TRACE < DEBUG < INFO < WARN < ERROR -->
@@ -277,18 +294,18 @@
             <!-- 文件名称 -->
             <rollingPolicy clasic="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                 <fileNamePattern>${log.filePath}/debug/debug.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <MaxHistory>${log.maxHistory}</MaxHistory>
+                <maxHistory>${log.maxHistory}</maxHistory>
             </rollingPolicy>
             <encoder>
                 <pattern>${log.pattern}</pattern>
             </encoder>
-            <filter class="ch.qos.logback.clasic.filter.LevelFilter">
-                <level>DEBUG</filter>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>DEBUG</level>
                 <onMatch>ACCEPT</onMatch>
                 <onMismatch>DENY</onMismatch>
             </filter>
         </appender>
-        <!-- INFO -->
+            <!-- INFO -->
         <appender name="infoApperder" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <!-- 文件路径 -->
             <file>${log.filePath}/info.log</file>
@@ -300,10 +317,10 @@
             <encoder>
                 <pattern>${log.pattern}</pattern>
             </encoder>
-            <filter class="ch.qos.logback.clasic.filter.LevelFilter">
-                <level>INFO</filter>
-                <onMatch>ACCEPT</onMatch>
-                <onMismatch>DENY</onMismatch>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
             </filter>
         </appender>
         <!-- ERROR -->
@@ -313,30 +330,93 @@
             <!-- 日志备份文件名称 -->
             <rollingPolicy clasic="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                 <fileNamePattern>${log.filePath}/error/error.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <MaxHistory>${log.maxHistory}</MaxHistory>
+                <maxHistory>${log.maxHistory}</maxHistory>
             </rollingPolicy>
             <encoder>
                 <pattern>${log.pattern}</pattern>
             </encoder>
-            <filter class="ch.qos.logback.clasic.filter.LevelFilter">
-                <level>ERROR</filter>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>ERROR</level>
                 <onMatch>ACCEPT</onMatch>
                 <onMismatch>DENY</onMismatch>
             </filter>
         </appender>
         <!-- 指定log级别,以及包,additivity: 是否继承root标签 -->
         <logger name="com.qpf" level="${log.level}" additivity="true">
-            <appender-ref ref="debugApperder"/>
-            <appender-ref ref="infoApperder"/>
-            <appender-ref ref="errorApperder"/>
+        <appender-ref ref="debugApperder"/>
+        <appender-ref ref="infoApperder"/>
+        <appender-ref ref="errorApperder"/>
         </logger>
         <!-- 基础的日志打印 -->
         <root level="info">
-            <appender-ref ref="consoleApperder"/>
+        <appender-ref ref="consoleApperder"/>
         </root>
     </configuration>
     ```
+    - `ch.qos.logback.classic.spi.Configurator`实现类
+        ```java
+        public class LogbackConfigurator extends ContextAwareBase implements Configurator {
+            @Override
+            public void configure(LoggerContext loggerContext) {
+                addInfo("Setting up Logback configuration begin.");
+        
+                ConsoleAppender<ILoggingEvent> ca = new ConsoleAppender<ILoggingEvent>();
+                ca.setContext(loggerContext);
+                ca.setName("console");
+                LayoutWrappingEncoder<ILoggingEvent> encoder = new LayoutWrappingEncoder<ILoggingEvent>();
+                encoder.setContext(loggerContext);
+                
+                // same as
+                // TTLLLayout layout = new TTLLLayout();
+                PatternLayout layout = new PatternLayout();
+                layout.setPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n");
+        
+                layout.setContext(loggerContext);
+                layout.start();
+                encoder.setLayout(layout);
+        
+                ca.setEncoder(encoder);
+                ca.start();
+        
+                Logger rootLogger = loggerContext.getLogger(Logger.ROOT_LOGGER_NAME);
+                rootLogger.addAppender(ca);
+        
+                rootLogger.addAppender(generateAppender(loggerContext, "debug", Level.DEBUG, encoder));
+                rootLogger.addAppender(generateAppender(loggerContext, "info", Level.INFO, encoder));
+                rootLogger.addAppender(generateAppender(loggerContext, "error", Level.ERROR, encoder));
+        
+                addInfo("Setting up Logback configuration end.");
+            }
+        
+            private OutputStreamAppender<ILoggingEvent> generateAppender(LoggerContext loggerContext, String name, Level level, LayoutWrappingEncoder<ILoggingEvent> encoder) {
+                RollingFileAppender<ILoggingEvent> rollingFileAppender = new RollingFileAppender<>();
+                rollingFileAppender.setContext(loggerContext);
+        
+                rollingFileAppender.setName(name);
+        
+                rollingFileAppender.setFile("${catalina.base}/logs/webapps/" + name + ".log");
+        
+                rollingFileAppender.setEncoder(encoder);
+        
+                LevelFilter filter = new LevelFilter();
+                filter.setContext(loggerContext);
+                filter.setLevel(level);
+                filter.setOnMatch(FilterReply.ACCEPT);
+                filter.setOnMismatch(FilterReply.DENY);
+                rollingFileAppender.addFilter(filter);
+        
+                TimeBasedRollingPolicy policy = new TimeBasedRollingPolicy();
+                policy.setContext(loggerContext);
+                policy.setFileNamePattern("${catalina.base}/logs/webapps/" + name + "/" + name + ".%d{yyyy-MM-dd}.log.gz");
+                policy.setMaxHistory(30);
+                rollingFileAppender.setRollingPolicy(policy);
+        
+                return rollingFileAppender;
+            }
+        }
+        ```
 ## 参考
 
 - [Spring MVC Quickstart Maven Archetype](https://github.com/kolorobot/spring-mvc-quickstart-archetype.git)
 - [sqlite3使用入门](https://yuanzhifei89.iteye.com/blog/1123870)
+- [logback 配置详解](https://www.jianshu.com/p/1ded57f6c4e3)

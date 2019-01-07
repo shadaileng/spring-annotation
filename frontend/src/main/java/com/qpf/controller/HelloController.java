@@ -12,6 +12,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,7 @@ import com.qpf.service.HelloService;
 @Controller
 public class HelloController {
     private static Queue<DeferredResult<Object>> queue = new ConcurrentLinkedQueue<DeferredResult<Object>>();
+    private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     @Autowired
     private ConfigProperties configProperties;
@@ -39,7 +42,7 @@ public class HelloController {
 	private HelloService helloService;
     @RequestMapping("/")
     public String index() {
-        System.out.println("index");
+        logger.info("direct to {}", "index");
         return "index";
     }
     @ResponseBody

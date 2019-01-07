@@ -2,6 +2,8 @@ package com.qpf.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -26,4 +28,9 @@ public class BasicTest {
 		int insert = personMapper.insertPerson(new Person(null, "qpf", "1"));
 		System.out.println(insert);
 	}
+	@Test
+	public void testLogback() {
+        Logger logger = LoggerFactory.getLogger(getClass());
+        logger.error("Hello {}", "shadaileng");
+    }
 }

@@ -53,9 +53,9 @@ public class FileService {
 		if (files != null) Arrays.asList(files).forEach(file -> {
 			if (file.exists()) {
 				if (file.isDirectory()) {
-					collectImgs(file.getAbsolutePath(), host + "/" + file.getName(), map);
+					collectImgs(file.getAbsolutePath(), host + file.getName() + "/", map);
 				} else if (file.isFile()) {
-					list.add(host + "/" + file.getName());
+					list.add(host + file.getName());
 				}
 			}
 		});
