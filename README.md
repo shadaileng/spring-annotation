@@ -420,3 +420,5 @@
 - [Spring MVC Quickstart Maven Archetype](https://github.com/kolorobot/spring-mvc-quickstart-archetype.git)
 - [sqlite3使用入门](https://yuanzhifei89.iteye.com/blog/1123870)
 - [logback 配置详解](https://www.jianshu.com/p/1ded57f6c4e3)
+- [Bootstrap File Input](http://plugins.krajee.com/file-input)
+- [基于Metronic的Bootstrap开发框架经验总结（5）--Bootstrap文件上传插件File Input的使用](http://www.cnblogs.com/wuhuacong/p/4774396.html)

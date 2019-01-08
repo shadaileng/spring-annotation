@@ -45,6 +45,10 @@ public class HelloController {
         logger.info("direct to {}", "index");
         return "index";
     }
+    @GetMapping("direct2upload")
+    public String redirectUpload() {
+        return "upload";
+    }
     @ResponseBody
 	@RequestMapping("/tomcat")
 	public String hello() {
