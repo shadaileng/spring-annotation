@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />-->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">-->
+</head>
+<body>
+    <div th:fragment="upload">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+
+        <input data-component-upload="true" id="input-id" type="file" class="file" data-preview-file-type="text" data-browse-on-zone-click="true">
+
+        <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/js/plugins/piexif.min.js" type="text/javascript"></script>
+        <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
+            This must be loaded before fileinput.min.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/js/plugins/sortable.min.js" type="text/javascript"></script>
+        <!-- purify.min.js is only needed if you wish to purify HTML content in your preview for
+            HTML files. This must be loaded before fileinput.min.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/js/plugins/purify.min.js" type="text/javascript"></script>
+        <!-- bootstrap.min.js below is needed if you wish to zoom and preview file content in a detail modal
+            dialog. bootstrap 4.x is supported. You can also use the bootstrap js 3.3.x versions. -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <!-- the main fileinput plugin file -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/js/fileinput.min.js"></script>
+        <!-- following theme script is needed to use the Font Awesome 5.x theme (`fas`) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/themes/fas/theme.min.js"></script>
+        <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.1/js/locales/zh.js"></script>
+        <script th:src="@{/resources/js/components.js}"></script>
+    </div>
+    <div th:fragment="markdown">
+        <!-- awesome icon -->
+        <link th:href="@{https://use.fontawesome.com/releases/v5.0.13/css/all.css}" rel="stylesheet">
+        <!-- markdown-edit css style -->
+        <link th:href="@{/resources/markdown_it/css/markdown-editor.css}" media="all" rel="stylesheet" type="text/css"/>
+        <!-- height js provider -->
+        <link th:href="@{/resources/markdown_it/plugins/highlight/highlight.min.css}" media="all" rel="stylesheet" type="text/css"/>
+
+        <textarea data-component-markdown="ture" id="editor-id" rows="15" class="markdown" required data-bs-version="3" data-theme="fa5" title="Krajee Markdown Editor"></textarea>
+
+        <!-- emojis -->
+        <script th:src="@{http://twemoji.maxcdn.com/2/twemoji.min.js?11.0}"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-deflist.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-footnote.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-abbr.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-sub.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-sup.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-ins.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-mark.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-smartarrows.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-checkbox.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-cjk-breaks.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/markdown-it/markdown-it-emoji.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/plugins/highlight/highlight.min.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/js/markdown-editor.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/markdown_it/themes/fa5/theme.js}" type="text/javascript"></script>
+        <script th:src="@{/resources/js/components.js}"></script>
+    </div>
+</body>
+</html>

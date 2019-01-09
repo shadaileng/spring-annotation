@@ -49,6 +49,10 @@ public class HelloController {
     public String redirectUpload() {
         return "upload";
     }
+    @GetMapping("direct2markdown")
+    public String redirectMarkdown() {
+        return "markdown";
+    }
     @ResponseBody
 	@RequestMapping("/tomcat")
 	public String hello() {

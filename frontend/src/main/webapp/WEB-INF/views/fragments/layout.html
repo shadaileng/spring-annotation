@@ -44,7 +44,7 @@
             </form>
         </div>
     </nav>
-    <div th:fragment="footer" th:align="center">
+    <div th:fragment="footer" th:align="center" class="fixed-bottom">
         &copy;&nbsp;<span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2017</span>
         Frontend <span th:text="${@environment.getProperty('app.version')}"></span>
     </div>
