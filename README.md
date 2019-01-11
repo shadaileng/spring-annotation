@@ -68,6 +68,48 @@
 			<version>1.1.2</version>
 		</dependency>
     </dependencies>
+    <build>
+        <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF8</encoding>
+				</configuration>
+			</plugin>
+            <!-- 热部署插件 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- 本地运行端口 -->
+                    <port>8080</port>
+                    <!-- 项目名称 -->
+                    <path>/frontend</path>
+                    <!-- 热部署tomcat用户名称 -->
+                    <username>tomcat</username>
+                    <!-- 热部署tomcat用户密码 -->
+                    <password>tomcat</password>
+                    <!-- 热部署tomcat路径 -->
+                    <url>http://localhost:8080/manager/text</url>
+                    <!-- 编码格式 -->
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build> 
     ```
 2. 编写`IOC`容器类,扫面业务注解
     ```java
