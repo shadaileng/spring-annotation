@@ -44,6 +44,12 @@ public class DataConfig {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource());
 		factoryBean.setTypeAliasesPackage("com.qpf.bean");
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        // 自动生成主键
+        configuration.setUseGeneratedKeys(true);
+        // 驼峰法命名规则
+        configuration.setMapUnderscoreToCamelCase(true);
+        factoryBean.setConfiguration(configuration);
 		return factoryBean;
 	}
 }

@@ -8,6 +8,199 @@
 
 # frontend
 
+## 创建无配置Spring Web工程
+
+1. 导入依赖
+    ```xml
+    <properties>
+        <spring.version>4.3.11.RELEASE</spring.version>
+    </properties>
+    <dependencies>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- 文件上传 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+        <!-- Json -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- jsp相关的依赖 -->
+        <dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+    </dependencies>
+    ```
+2. 编写`IOC`容器类,扫面业务注解
+    ```java
+    @ComponentScan(value = {"com.qpf"}, excludeFilters = {
+            @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
+    })
+    public class RootConfig {
+    }
+    ```
+3. 编写`WebMvc`容器类,扫描`@Controller`注解
+    ```java
+    @PropertySource("classpath:/application.properties")
+    @Configuration
+    @ComponentScan(value = {"com.qpf"}, includeFilters = {
+            @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
+    }, useDefaultFilters = false)
+    @EnableWebMvc
+    public class WebConfig extends WebMvcConfigurerAdapter {
+        private static final String RESOURCES_LOCATION = "/resources/";
+        /**
+         * 静态资源交给Servlet容器处理
+         */
+        @Override
+        public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+            configurer.enable();
+        }
+        /**
+         * 视图解析器
+         */
+        @Override
+        public void configureViewResolvers(ViewResolverRegistry registry) {
+            registry.jsp();
+        }
+        
+        /**
+         * 静态资源映射
+         */
+        @Override
+        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+            registry.addResourceHandler("/tmp/" + "**").addResourceLocations("file:/home/shadaileng/develop/tmp/");
+            registry.addResourceHandler(RESOURCES_LOCATION + "**").addResourceLocations(RESOURCES_LOCATION);
+        }
+        /**
+         * 拦截器
+         */
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            InterceptorRegistration registration = registry.addInterceptor(new HelloInterceptor());
+            registration.addPathPatterns("/**");
+        }
+        /**
+         * 文件上传解析器
+         */
+        @Bean
+        public CommonsMultipartResolver multipartResolver() {
+            return new CommonsMultipartResolver();
+        }
+        /**
+         * 消息类型转换
+         */
+        @Override
+        public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+            StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter();
+            stringHttpMessageConverter.setSupportedMediaTypes(Arrays.asList(new MediaType[]{MediaType.TEXT_PLAIN, MediaType.TEXT_HTML}));
+            stringHttpMessageConverter.setDefaultCharset(Charset.forName("UTF-8"));
+            converters.add(stringHttpMessageConverter);
+            // jacksonConverter
+            MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+            converters.add(mappingJackson2HttpMessageConverter);
+        }
+        /**
+         * 自定义配置类
+         */
+        @Bean
+        public ConfigProperties configProperties() {
+            return new ConfigProperties();
+        }
+    }
+    ```
+4. 继承`AbstractAnnotationConfigDispatcherServletInitializer`类,加载`Spring`容器配置
+    ```java
+    public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+    
+        /**
+         * 加载主容器配置类
+         * @return 
+         */
+        @Override
+        protected Class<?>[] getRootConfigClasses() {
+            return new Class<?>[]{RootConfig.class};
+        }
+        /**
+        * 加载Web容器配置类
+        * @return 
+        */
+        @Override
+        protected Class<?>[] getServletConfigClasses() {
+            return new Class<?>[]{WebConfig.class};
+        }
+        /**
+        * DispatchServlet映射路径
+        * @return 
+        */
+        @Override
+        protected String[] getServletMappings() {
+            return new String[]{"/"};
+        }
+        /**
+        * 配置容器启动参数
+        * @param registration
+        */
+        @Override
+        protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+            registration.setInitParameter("defaultHtmlEscape", "true");
+            registration.setInitParameter("spring.profiles.active", "default");
+            System.setProperty("app.version", "1.0.0.RELEASE");
+        }
+        /**
+        * 字符编码过滤器
+        * @return 
+        */
+        @Override
+        protected Filter[] getServletFilters() {
+            CharacterEncodingFilter filter = new CharacterEncodingFilter();
+            filter.setEncoding("UTF-8");
+            filter.setForceRequestEncoding(true);
+            filter.setForceResponseEncoding(true);
+            System.out.println("-------------------------------------");
+            return new Filter[]{filter};
+        }
+    
+    }
+    ```
 ## 整合Mybatis
 
 1. 导入相关依赖
@@ -75,6 +268,12 @@
 		    factoryBean.setDataSource(dataSource());
 		    // 实体类所在的包
 		    factoryBean.setTypeAliasesPackage("com.qpf.bean");
+            org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+            // 自动生成主键
+            configuration.setUseGeneratedKeys(true);
+            // 驼峰法命名规则
+            configuration.setMapUnderscoreToCamelCase(true);
+            factoryBean.setConfiguration(configuration);
 		    return factoryBean;
 	    }
     }
@@ -88,6 +287,7 @@
 	    @Select("Select * from person")
 	    List<Person> listPerson();
 	    @Insert("insert into person(name,gender) values(#{name}, #{gender})")
+        @Options(useGeneratedKeys = true, keyProperty = "id")
 	    int insertPerson(Person person);
 	    @Update("update person name = #{person.name}, gender = #{gender} where id = #{id}")
 	    int updatePersonById(Person person);

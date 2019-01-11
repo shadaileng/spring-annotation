@@ -35,7 +35,7 @@ public class AsyncServlet extends HttpServlet {
                 }
             }
         });
-//        resp.getWriter().write("hello....");
+        resp.getWriter().write("hello....");
         System.out.println("[2]" + Thread.currentThread() + "...." + new Date().getTime());
     }
     private void work() throws Exception {

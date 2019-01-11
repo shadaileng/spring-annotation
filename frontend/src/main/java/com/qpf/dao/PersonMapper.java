@@ -13,6 +13,7 @@ public interface PersonMapper {
 	@Select("Select * from person")
 	List<Person> listPerson();
 	@Insert("insert into person(name,gender) values(#{name}, #{gender})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
 	int insertPerson(Person person);
 	@Update("update person name = #{person.name}, gender = #{gender} where id = #{id}")
 	int updatePersonById(Person person);

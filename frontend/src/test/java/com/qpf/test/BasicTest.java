@@ -25,7 +25,9 @@ public class BasicTest {
 	}
 	@Test
 	public void testSavePerson() {
-		int insert = personMapper.insertPerson(new Person(null, "qpf", "1"));
+        Person person = new Person(null, "qpf", "1");
+        int insert = personMapper.insertPerson(person);
+		System.out.println(person);
 		System.out.println(insert);
 	}
 	@Test
