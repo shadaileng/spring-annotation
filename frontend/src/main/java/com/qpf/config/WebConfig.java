@@ -4,7 +4,6 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -43,12 +42,12 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 }, useDefaultFilters = false)
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
-	@Autowired
+//	@Autowired
 //	private FileService fileService;
 	private static final String VIEWS = "/WEB-INF/views/";
 	private static final String CHARACTER_ENCODING = "UTF-8";
 	private static final String RESOURCES_LOCATION = "/resources/";
-	private boolean THTMELEAF_CACHEABLE = false;
+	private static final boolean THYMELEAF_CACHEABLES = false;
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -66,7 +65,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         resolver.setSuffix(".html");
         resolver.setTemplateMode(TemplateMode.HTML);
         resolver.setCharacterEncoding(CHARACTER_ENCODING);
-        resolver.setCacheable(THTMELEAF_CACHEABLE);
+        resolver.setCacheable(THYMELEAF_CACHEABLES);
         return resolver;
     }
     @Bean
@@ -84,6 +83,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         thymeleafViewResolver.setCharacterEncoding(CHARACTER_ENCODING);
         return thymeleafViewResolver;
     }
+
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -118,7 +118,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter();
-        stringHttpMessageConverter.setSupportedMediaTypes(Arrays.asList(new MediaType[]{MediaType.TEXT_PLAIN, MediaType.TEXT_HTML}));
+        stringHttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, MediaType.TEXT_HTML));
         stringHttpMessageConverter.setDefaultCharset(Charset.forName("UTF-8"));
         converters.add(stringHttpMessageConverter);
         // jacksonConverter
