@@ -1,6 +1,5 @@
 package com.qpf.config;
 
-import java.io.File;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +15,6 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -24,12 +22,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+//import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.qpf.bean.ConfigProperties;
 import com.qpf.component.HelloInterceptor;
-import com.qpf.service.FileService;
+//import com.qpf.service.FileService;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -46,7 +44,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 	@Autowired
-	private FileService fileService;
+//	private FileService fileService;
 	private static final String VIEWS = "/WEB-INF/views/";
 	private static final String CHARACTER_ENCODING = "UTF-8";
 	private static final String RESOURCES_LOCATION = "/resources/";
