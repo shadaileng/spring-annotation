@@ -33,7 +33,7 @@ public class LogbackConfigurator extends ContextAwareBase implements Configurato
         // same as
         // TTLLLayout layout = new TTLLLayout();
         PatternLayout layout = new PatternLayout();
-        layout.setPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %line => %msg%n");
+        layout.setPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %line ==> %msg%n");
 
         layout.setContext(loggerContext);
         layout.start();

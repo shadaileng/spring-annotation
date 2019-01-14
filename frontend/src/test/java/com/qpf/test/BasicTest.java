@@ -1,5 +1,8 @@
 package com.qpf.test;
 
+import com.qpf.config.RootConfig;
+import com.qpf.config.WebConfig;
+import com.qpf.service.PersonService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -12,11 +15,15 @@ import com.qpf.bean.Person;
 import com.qpf.config.DataConfig;
 import com.qpf.dao.PersonMapper;
 
-@ContextConfiguration(classes={DataConfig.class})
+import java.util.List;
+
+@ContextConfiguration(classes={RootConfig.class, WebConfig.class, DataConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BasicTest {
 	@Autowired
 	private PersonMapper personMapper;
+	@Autowired
+	private PersonService personService;
 	@Test
 	public void testPersonMapper() {
 		Person person = personMapper.selectPersonById(1);
@@ -30,6 +37,11 @@ public class BasicTest {
 		System.out.println(person);
 		System.out.println(insert);
 	}
+	@Test
+	public void testPersonService() {
+        List<Person> list = personService.queryAll();
+        System.out.println(list);
+    }
 	@Test
 	public void testLogback() {
         Logger logger = LoggerFactory.getLogger(getClass());
