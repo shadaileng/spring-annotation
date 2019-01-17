@@ -38,17 +38,17 @@
             <version>${spring.version}</version>
         </dependency>
         <!-- 文件上传 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.3</version>
-		</dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.3</version>
+        </dependency>
         <!-- Json -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.5</version>
-		</dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.5</version>
+        </dependency>
         <!-- Servlet API -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -58,36 +58,36 @@
         </dependency>
         <!-- jsp相关的依赖 -->
         <dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
-		</dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<encoding>UTF8</encoding>
-				</configuration>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF8</encoding>
+                </configuration>
+            </plugin>
             <!-- 热部署插件 -->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -249,27 +249,27 @@
     ```xml
     <dependencies>
         <dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis</artifactId>
-		    <version>3.4.2</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis-spring</artifactId>
-		    <version>1.3.2</version>
-		</dependency>
-		<!-- C3P0 -->
-		<dependency>
-		    <groupId>c3p0</groupId>
-		    <artifactId>c3p0</artifactId>
-		    <version>0.9.1</version>
-		</dependency>
-		<dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <!-- C3P0 -->
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.21.0.1</version>
-		</dependency>
+        </dependency>
     </dependencies>
     ```
 2. 配置`Mybatis`
@@ -280,61 +280,61 @@
     // mapper接口所在的包
     @MapperScan("com.qpf.dao") 
     public class DataConfig {
-	    @Value("${jdbc.url}")
-	    private String jdbcUrl;
-	    @Value("${jdbc.driver}")
-	    private String jdbcDriver;
-	    @Value("${jdbc.user}")
-	    private String user;
-	    @Value("${jdbc.password}")
-	    private String password;
-	    // 数据源
-	    @Bean
-	    public DataSource dataSource() throws Exception {
-		    ComboPooledDataSource dataSource = new ComboPooledDataSource();
-		    dataSource.setDriverClass(jdbcDriver);
-		    dataSource.setJdbcUrl(jdbcUrl);
-		    dataSource.setUser(user);
-		    dataSource.setPassword(password);
-		    return dataSource;
-	    }
-	    // 数据源管理器
-	    @Bean
-	    public DataSourceTransactionManager transactionManager() throws Exception {
-		    return new DataSourceTransactionManager(dataSource());
-	    }
-	    // Sql工厂类
-	    @Bean
-	    public SqlSessionFactoryBean sqlSessionFactoryBean() throws Exception {
-		    SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-		    factoryBean.setDataSource(dataSource());
-		    // 实体类所在的包
-		    factoryBean.setTypeAliasesPackage("com.qpf.bean");
+        @Value("${jdbc.url}")
+        private String jdbcUrl;
+        @Value("${jdbc.driver}")
+        private String jdbcDriver;
+        @Value("${jdbc.user}")
+        private String user;
+        @Value("${jdbc.password}")
+        private String password;
+        // 数据源
+        @Bean
+        public DataSource dataSource() throws Exception {
+            ComboPooledDataSource dataSource = new ComboPooledDataSource();
+            dataSource.setDriverClass(jdbcDriver);
+            dataSource.setJdbcUrl(jdbcUrl);
+            dataSource.setUser(user);
+            dataSource.setPassword(password);
+            return dataSource;
+        }
+        // 数据源管理器
+        @Bean
+        public DataSourceTransactionManager transactionManager() throws Exception {
+            return new DataSourceTransactionManager(dataSource());
+        }
+        // Sql工厂类
+        @Bean
+        public SqlSessionFactoryBean sqlSessionFactoryBean() throws Exception {
+            SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+            factoryBean.setDataSource(dataSource());
+            // 实体类所在的包
+            factoryBean.setTypeAliasesPackage("com.qpf.bean");
             org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
             // 自动生成主键
             configuration.setUseGeneratedKeys(true);
             // 驼峰法命名规则
             configuration.setMapUnderscoreToCamelCase(true);
             factoryBean.setConfiguration(configuration);
-		    return factoryBean;
-	    }
+            return factoryBean;
+        }
     }
     ```
 3. `mapper`接口
     ```
     @Mapper // 标注接口
     public interface PersonMapper {
-	    @Select("select * from person where id = #{id}")
-	    Person selectPersonById(@Param("id") int id);
-	    @Select("Select * from person")
-	    List<Person> listPerson();
-	    @Insert("insert into person(name,gender) values(#{name}, #{gender})")
+        @Select("select * from person where id = #{id}")
+        Person selectPersonById(@Param("id") int id);
+        @Select("Select * from person")
+        List<Person> listPerson();
+        @Insert("insert into person(name,gender) values(#{name}, #{gender})")
         @Options(useGeneratedKeys = true, keyProperty = "id")
-	    int insertPerson(Person person);
-	    @Update("update person name = #{person.name}, gender = #{gender} where id = #{id}")
-	    int updatePersonById(Person person);
-	    @Delete("delete person where id = #{id}")
-	    int deletePersonById(@Param("id") int id);
+        int insertPerson(Person person);
+        @Update("update person name = #{person.name}, gender = #{gender} where id = #{id}")
+        int updatePersonById(Person person);
+        @Delete("delete person where id = #{id}")
+        int deletePersonById(@Param("id") int id);
     }
     ```
 4. 配置文件
@@ -361,10 +361,10 @@
     select * from person;
     -----------------------------------------------------
     public class Person {
-	    private Integer id;
-	    private String name;
-	    private String gender;
-	    // constructors,getter,settor和toString
+        private Integer id;
+        private String name;
+        private String gender;
+        // constructors,getter,settor和toString
     }
     ```
 6. 测试类
@@ -372,19 +372,19 @@
     @ContextConfiguration(classes={DataConfig.class})
     @RunWith(SpringJUnit4ClassRunner.class)
     public class BasicTest {
-	    @Autowired
-	    private PersonMapper personMapper;
-	    @Test
-	    public void testPersonMapper() {
-		    Person person = personMapper.selectPersonById(1);
-		    System.out.println(person);
-		    System.out.println(personMapper.listPerson());
-	    }
-	    @Test
-	    public void testSavePerson() {
-		    int insert = personMapper.insertPerson(new Person(null, "qpf", "1"));
-		    System.out.println(insert);
-	    }
+        @Autowired
+        private PersonMapper personMapper;
+        @Test
+        public void testPersonMapper() {
+            Person person = personMapper.selectPersonById(1);
+            System.out.println(person);
+            System.out.println(personMapper.listPerson());
+        }
+        @Test
+        public void testSavePerson() {
+            int insert = personMapper.insertPerson(new Person(null, "qpf", "1"));
+            System.out.println(insert);
+        }
     }
     ```
 ## 整合Thymeleaf
@@ -419,10 +419,10 @@
     }, useDefaultFilters = false)
     @EnableWebMvc
     public class WebConfig extends WebMvcConfigurerAdapter {
-    	private static final String VIEWS = "/WEB-INF/views/";
-    	private static final String CHARACTER_ENCODING = "UTF-8";
-    	private boolean THTMELEAF_CACHEABLE = false;
- 	    @Bean
+        private static final String VIEWS = "/WEB-INF/views/";
+        private static final String CHARACTER_ENCODING = "UTF-8";
+        private boolean THTMELEAF_CACHEABLE = false;
+        @Bean
         public ITemplateResolver templateResolver() {
             SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
             resolver.setPrefix(VIEWS);
@@ -657,6 +657,9 @@
             }
         }
         ```
+## 使用Redis缓存
+
+
 ## 参考
 
 - [Spring MVC Quickstart Maven Archetype](https://github.com/kolorobot/spring-mvc-quickstart-archetype.git)
@@ -664,3 +667,4 @@
 - [logback 配置详解](https://www.jianshu.com/p/1ded57f6c4e3)
 - [Bootstrap File Input](http://plugins.krajee.com/file-input)
 - [基于Metronic的Bootstrap开发框架经验总结（5）--Bootstrap文件上传插件File Input的使用](http://www.cnblogs.com/wuhuacong/p/4774396.html)
+- [SpringCache与redis集成，优雅的缓存解决方案](https://www.cnblogs.com/chenkeyu/p/8028781.html)
