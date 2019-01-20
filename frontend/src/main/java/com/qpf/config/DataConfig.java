@@ -11,10 +11,12 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:/application.properties")
 @MapperScan("com.qpf.dao")
+@EnableTransactionManagement
 public class DataConfig {
 	@Value("${jdbc.url}")
 	private String jdbcUrl;

@@ -26,7 +26,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.qpf.bean.ConfigProperties;
 import com.qpf.component.HelloInterceptor;
-//import com.qpf.service.FileService;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -42,8 +41,6 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 }, useDefaultFilters = false)
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
-//	@Autowired
-//	private FileService fileService;
 	private static final String VIEWS = "/WEB-INF/views/";
 	private static final String CHARACTER_ENCODING = "UTF-8";
 	private static final String RESOURCES_LOCATION = "/resources/";
@@ -92,9 +89,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		String img = configProperties().getImgPre();
 		String root = configProperties().getFileRoot();
 		registry.addResourceHandler(img  + "**").addResourceLocations("file:" + root);
-//		fileService.collectDir(root).forEach( file -> {
-//			registry.addResourceHandler(img + file.substring(root.length()) + "/**").addResourceLocations("file:" + file + File.separator);
-//		});
     }
 
     @Override

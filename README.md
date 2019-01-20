@@ -278,7 +278,8 @@
     // 配置文件位置
     @PropertySource("classpath:/application.properties")
     // mapper接口所在的包
-    @MapperScan("com.qpf.dao") 
+    @MapperScan("com.qpf.dao")
+    @EnableTransactionManagement
     public class DataConfig {
         @Value("${jdbc.url}")
         private String jdbcUrl;
@@ -661,6 +662,40 @@
 
 `Redis`是一种`key-value`型数据库
 
+## 定时备份
+
+- 使用数据库的备份命令生成数据备份`sql`文件
+    ```
+    $ mysqldump -uroot -proot ssm > /root/backup/sql/ssm-`date +%Y%m%d%H%M%S`.sql
+    ```
+- 备份图片文件
+    ```
+    $ tar -zcvf /root/backup/image/img-`data +%Y%m%d%H%M%S`.tar.gz ~/work/image/upload/
+    ```
+- 将备份命令放入`Shell`文件中
+    ```
+    # /root/backup/backup.sh
+    ---------------------------
+    #!/bin/sh
+    mysqldump -uroot -proot ssm > /root/backup/sql/ssm-`date +%Y%m%d%H%M%S`.sql
+    tar -zcvf /root/backup/image/img-`data +%Y%m%d%H%M%S`.tar.gz ~/work/image/upload/
+    ```
+- 使用`crontab`执行定时任务
+    - 查看定时任务
+        ```
+        $ crontab -l
+        ```
+    - 设置定时任务
+        ```
+        $ crontab -e
+        -------------------------
+        # 执行定时任务,每天00::00执行一次
+        0 0 * * * sh /root/backup/backup.sh
+        ```
+     - 查看`crontab`日志
+        ```
+        $ tail -f /var/log/cron
+        ```
 ## 参考
 
 - [Spring MVC Quickstart Maven Archetype](https://github.com/kolorobot/spring-mvc-quickstart-archetype.git)
