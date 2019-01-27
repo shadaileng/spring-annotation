@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/resources/css/main.css}">
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!--<script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>-->
+        <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+        <style>
+            .tree li {
+                list-style-type: none;
+                cursor:pointer;
+            }
+            table tbody tr:nth-child(odd){background:#F4F4F4;}
+            table tbody td:nth-child(even){color:#C00;}
+        </style>
+        <script type="text/javascript">
+            $("tbody .btn-success").click(function(){
+                window.location.href = "assignRole.html";
+            });
+            $("tbody .btn-primary").click(function(){
+                window.location.href = "edit.html";
+            });
+            function changerPage(index) {
+                let loadingIndex;
+                $.ajax({
+                    type: 'POST',
+                    url: 'pageQuery',
+                    data: {
+                        'index': index,
+                        'pageSize': 2
+                    },
+                    beforeSend: function() {
+                        loadingIndex = layer.msg('处理中', {icon: 16})
+                    },
+                    success: function(result) {
+                        layer.close(loadingIndex)
+                        if(result.success) {
+                            // location.href = '/frontend/user/index'
+                            let page = result.data
+                            let data = page.data
+                            // console.log(page)
+                            let content = ''
+                            data.forEach((el, i) => {
+                                // console.log(el, i)
+                                content += '<tr>'
+                                content += '    <th scope="row">' + (i + 1) + '</th>'
+                                content += '        <td><input type="checkbox"></td>'
+                                content += '        <td>' + el.username + '</td>'
+                                content += '        <td>' + el.username + '</td>'
+                                content += '        <td>' + el.email + '</td>'
+                                content += '        <td>'
+                                content += '        <a role="button" class="btn btn-sm"><ion-icon name="checkmark"></ion-icon></a>'
+                                content += '    <a role="button" class="btn btn-sm"><ion-icon name="create"></ion-icon></a>'
+                                content += '    <a role="button" class="btn btn-sm"><ion-icon name="close"></ion-icon></a>'
+                                content += '    </td>'
+                                content += '</tr>'
+                            })
+                            $('#table_content').html(content)
+                            let page_content = ''
+                            page_content += '<tr >'
+                            page_content += '    <td colspan="6">'
+                            page_content += '        <ul class="pagination justify-content-center">'
+                            if(page.index == 1) {
+                                page_content += '            <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>'
+                            } else {
+                                page_content += '            <li class="page-item"><a class="page-link" href="#" onclick="changerPage(' + (page.index - 1) + ')">上一页</a></li>'
+
+                            }
+                            for (let i = 1, l = page.pageCount; i <= l; i++) {
+                                if (i == page.index) {
+                                    page_content += '            <li class="page-item active"><a class="page-link" href="#" onclick="changerPage(' + i + ')">' + i + '</a></li>'
+                                } else {
+                                    page_content += '            <li class="page-item"><a class="page-link" href="#" onclick="changerPage(' + i + ')">' + i + '</a></li>'
+                                }
+                            }
+                            if(page.index == page.pageCount) {
+                                page_content += '            <li class="page-item disabled"><a class="page-link" href="#">下一页</a></li>'
+                            } else {
+                                page_content += '            <li class="page-item"><a class="page-link" href="#" onclick="changerPage(' + (page.index + 1) + ')">下一页</a></li>'
+                            }
+                            page_content += '        </ul>'
+                            page_content += '    </td>'
+                            page_content += '</tr>'
+                            $('#table_page').html(page_content)
+                        } else {
+                            // layer.msg('登陆帐号或帐号密码不正确', {time: 2000, icon: 5, shift: 6}, function() {
+                            //
+                            // })
+                        }
+                    },
+                    error: function(){
+                        layer.msg('登陆请求失败', {time: 2000, icon: 5, shift: 6}, function() {
+
+                        })
+                    }
+                })
+            }
+            $(function () {
+
+                changerPage(1)
+
+            })
+        </script>
+    </head>
+
+    <body>
+
+    <div th:replace="fragments/layout :: header"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="fragments/layout :: sidebar-tree"></div>
+            <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 数据列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline" role="form" style="float:left;">
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">查询条件</span>
+                                    </div>
+                                    <input class="form-control has-success" type="text" placeholder="请输入查询条件">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button">查询</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>-->
+                        </form>
+                        <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><ion-icon name="close-circle"></ion-icon> 删除</button>
+                        <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='add.html'"><ion-icon name="add-circle"></ion-icon> 新增</button>
+                        <br>
+                        <hr style="clear:both;">
+                        <div class="table-responsive">
+                            <table class="table  table-bordered">
+                                <thead>
+                                <tr >
+                                    <th scope="col" width="30">#</th>
+                                    <th scope="col" width="30"><input type="checkbox"></th>
+                                    <th scope="col">账号</th>
+                                    <th scope="col">名称</th>
+                                    <th scope="col">邮箱地址</th>
+                                    <th scope="col" width="140">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="table_content">
+                                <!--<tr>-->
+                                    <!--<th scope="row">1</th>-->
+                                    <!--<td><input type="checkbox"></td>-->
+                                    <!--<td>Lorem</td>-->
+                                    <!--<td>ipsum</td>-->
+                                    <!--<td>dolor</td>-->
+                                    <!--<td>-->
+                                        <!--<a role="button" class="btn btn-sm"><ion-icon name="checkmark"></ion-icon></a>-->
+                                        <!--<a role="button" class="btn btn-sm"><ion-icon name="create"></ion-icon></a>-->
+                                        <!--<a role="button" class="btn btn-sm"><ion-icon name="close"></ion-icon></a>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                </tbody>
+                                <tfoot id="table_page">
+                                    <!--<tr >-->
+                                        <!--<td colspan="6">-->
+                                            <!--<ul class="pagination justify-content-center">-->
+                                                <!--<li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>-->
+                                                <!--<li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>-->
+                                                <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
+                                                <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                                                <!--<li class="page-item"><a class="page-link" href="#">4</a></li>-->
+                                                <!--<li class="page-item"><a class="page-link" href="#">5</a></li>-->
+                                                <!--<li class="page-item"><a class="page-link" href="#">下一页</a></li>-->
+                                            <!--</ul>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

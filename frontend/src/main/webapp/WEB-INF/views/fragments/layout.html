@@ -9,8 +9,8 @@
 </head>
 <body>
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="header">
-        <a class="navbar-brand" href="#">Shadaileng</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" th:fragment="header">
+        <a  class="navbar-brand"  href="#">众筹平台 - 控制面板</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,21 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                    <!--<a class="btn btn-default btn-danger" href="#">帮助 <span class="sr-only">(current)</span></a>-->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
@@ -40,13 +26,121 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
             </form>
+            <div class="nav-item dropdown">
+                <a th:if="${session.user != null}" th:text="${session.user.username}" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    张三
+                </a>
+                <a th:if="${session.user == null}" class="nav-link" th:href="@{/login}">
+                    游客
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">个人设置</a>
+                    <a class="dropdown-item" href="#">消息</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/logout}">退出系统</a>
+                </div>
+            </div>
+            <a class="btn btn-default btn-danger" href="#">帮助 <span class="sr-only">(current)</span></a>
         </div>
     </nav>
     <div th:fragment="footer" th:align="center" class="fixed-bottom">
         &copy;&nbsp;<span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2017</span>
         Frontend <span th:text="${@environment.getProperty('app.version')}"></span>
     </div>
+    <nav th:fragment="sidebar-tree" class="col-md-2 d-none d-md-block bg-light sidebar">
+        <style>
+            .tree li {
+                list-style-type: none;
+                cursor:pointer;
+            }
+            .tree-closed {
+                height : 40px;
+            }
+            .tree-expanded {
+                height : auto;
+            }
+        </style>
+        <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+        <div class="tree">
+            <ul style="padding-left:0px;" class="list-group">
+                <li class="list-group-item tree-closed" >
+                    <a href="main.html"><ion-icon name="speedometer"></ion-icon> 控制面板</a>
+                </li>
+                <li class="list-group-item tree-closed">
+                    <span><ion-icon name="list"></ion-icon> 权限管理 <span class="badge" style="float:right">3</span></span>
+                    <ul style="margin-top:10px;display:none;">
+                        <li style="height:30px;">
+                            <a href="user"><ion-icon name="man"></ion-icon> 用户维护</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="role.html"><ion-icon name="ribbon"></ion-icon> 角色维护</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="permission.html"><ion-icon name="lock"></ion-icon> 许可维护</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item tree-closed">
+                    <span><ion-icon name="checkmark-circle"></ion-icon> 业务审核 <span class="badge" style="float:right">3</span></span>
+                    <ul style="margin-top:10px;display:none;">
+                        <li style="height:30px;">
+                            <a href="auth_cert.html"><ion-icon name="checkmark-circle-outline"></ion-icon> 实名认证审核</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="auth_adv.html"><ion-icon name="checkmark-circle-outline"></ion-icon> 广告审核</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="auth_project.html"><ion-icon name="checkmark-circle-outline"></ion-icon> 项目审核</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item tree-closed">
+                    <span><ion-icon name="apps"></ion-icon> 业务管理 <span class="badge" style="float:right">7</span></span>
+                    <ul style="margin-top:10px;display:none;">
+                        <li style="height:30px;">
+                            <a href="cert.html"><ion-icon name="images"></ion-icon> 资质维护</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="type.html"><ion-icon name="keypad"></ion-icon> 分类管理</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="process.html"><ion-icon name="shuffle"></ion-icon> 流程管理</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="advertisement.html"><ion-icon name="desktop"></ion-icon> 广告管理</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="message.html"><ion-icon name="chatbubbles"></ion-icon> 消息模板</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="project_type.html"><ion-icon name="folder-open"></ion-icon> 项目分类</a>
+                        </li>
+                        <li style="height:30px;">
+                            <a href="tag.html"><ion-icon name="star"></ion-icon> 项目标签</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item tree-closed" >
+                    <a href="param.html"><ion-icon name="stats"></ion-icon> 参数管理</a>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $(".list-group-item").click(function(){
+                    if ( $(this).find("ul") ) {
+                        $(this).toggleClass("tree-closed");
+                        if ( $(this).hasClass("tree-closed") ) {
+                            $("ul", this).hide("fast");
+                        } else {
+                            $("ul", this).show("fast");
+                        }
+                    }
+                });
+            });
+        </script>
+    </nav>
 </body>
 </html>

@@ -705,3 +705,6 @@
 - [基于Metronic的Bootstrap开发框架经验总结（5）--Bootstrap文件上传插件File Input的使用](http://www.cnblogs.com/wuhuacong/p/4774396.html)
 - [SpringCache与redis集成，优雅的缓存解决方案](https://www.cnblogs.com/chenkeyu/p/8028781.html)
 - [Spring 后置处理器 PropertyPlaceholderConfigurer 类（引用外部文件）](https://www.cnblogs.com/libra0920/p/6169338.html)
+- [layer](https://www.layui.com/doc/modules/layer.html)
+- [Ionicons](https://ionicons.com/usage)
+- [Holder](https://github.com/imsky/holder)
