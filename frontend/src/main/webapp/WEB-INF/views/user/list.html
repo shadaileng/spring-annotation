@@ -59,9 +59,9 @@
                                 content += '        <td>' + el.username + '</td>'
                                 content += '        <td>' + el.email + '</td>'
                                 content += '        <td>'
-                                content += '        <a role="button" class="btn btn-sm"><ion-icon name="checkmark"></ion-icon></a>'
-                                content += '    <a role="button" class="btn btn-sm"><ion-icon name="create"></ion-icon></a>'
-                                content += '    <a role="button" class="btn btn-sm"><ion-icon name="close"></ion-icon></a>'
+                                content += '        <a role="button" class="btn btn-sm"><ion-icon name="checkmark" name="assign" data-target="' + el.id + '"></ion-icon></a>'
+                                content += '    <a role="button" class="btn btn-sm" name="update" data-target="' + el.id + '"><ion-icon name="create"></ion-icon></a>'
+                                content += '    <a role="button" class="btn btn-sm" name="delete" data-target="' + el.id + '"><ion-icon name="close"></ion-icon></a>'
                                 content += '    </td>'
                                 content += '</tr>'
                             })
@@ -92,22 +92,95 @@
                             page_content += '    </td>'
                             page_content += '</tr>'
                             $('#table_page').html(page_content)
+
+                            $("[name='update']").each(function(){
+                                $(this).on('click', function () {
+                                    $('#panelModalCenter').data('type', 2)// 更新
+                                    $('#panelModalCenter').data('userid', $(this).data('target'))
+                                    $('#panelModalCenter').modal('show')
+                                })
+                            })
                         } else {
-                            // layer.msg('登陆帐号或帐号密码不正确', {time: 2000, icon: 5, shift: 6}, function() {
-                            //
-                            // })
+                            layer.msg('数据更新失败', {time: 2000, icon: 5, shift: 6}, function() {
+
+                            })
                         }
                     },
                     error: function(){
-                        layer.msg('登陆请求失败', {time: 2000, icon: 5, shift: 6}, function() {
+                        layer.msg('请求失败', {time: 2000, icon: 5, shift: 6}, function() {
 
                         })
                     }
                 })
             }
             $(function () {
-
+                var title = ''
                 changerPage(1)
+                $('#panelModalCenter').on('show.bs.modal', function() {
+                    $('#panelModalTitle').text(title);
+                    if ($('#panelModalCenter').data('type') == 2) {
+                        // 查询
+                        console.log('查询: ', $('#panelModalCenter').data('userid'))
+                    }
+                })
+                $('#add').on('click', function(){
+                    title = '新增用户'
+                    $('#panelModalCenter').data('type', 1)//新增
+                    $('#commit').text('新增')
+                })
+                $('#commit').on('click', function () {
+                    let type = $('#panelModalCenter').data('type')
+                    let uri = ''
+                    if (type == 1) {
+                        uri = 'add'
+                    } else {
+                        uri = 'edit'
+                    }
+                    if($('#panel_form [name=username]').val() == '') {
+                        layer.msg('请输入用户名称', {time: 2000, icon: 5, shift: 6}, function() {
+
+                        })
+                        return
+                    }
+                    if($('#panel_form [name=email]').val() == '') {
+                        layer.msg('请输入用户邮箱', {time: 2000, icon: 5, shift: 6}, function() {
+
+                        })
+                        return
+                    }
+
+                    let data = $('#panel_form').serialize()
+                    console.log(data)
+                    let loadingIndex
+                    $.ajax({
+                        type: 'POST',
+                        url: uri,
+                        data: data,
+                        beforeSend: function() {
+                            loadingIndex = layer.msg('处理中', {icon: 16})
+                        },
+                        success: function(result) {
+                            layer.close(loadingIndex)
+                            if(result.success) {
+                                layer.msg('数据操作成功', {time: 2000, icon: 6, shift: 6}, function() {
+                                    $('#panelModalCenter').modal('hide')
+                                })
+                            } else {
+                                layer.msg('数据操作失败', {time: 2000, icon: 5, shift: 6}, function() {
+
+                                })
+                            }
+                        },
+                        error: function(){
+                            layer.close(loadingIndex)
+                            layer.msg('请求失败', {time: 2000, icon: 5, shift: 6}, function() {
+
+                            })
+                        }
+                })
+                $('#reset').on('click', function () {
+                    $('#panel_form')[0].reset()
+                })
 
             })
         </script>
@@ -139,8 +212,8 @@
                             </div>
                             <!--<button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>-->
                         </form>
-                        <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><ion-icon name="close-circle"></ion-icon> 删除</button>
-                        <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='add.html'"><ion-icon name="add-circle"></ion-icon> 新增</button>
+                        <button id="delete" type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><ion-icon name="close-circle"></ion-icon> 删除</button>
+                        <button id="add" type="button" class="btn btn-primary" style="float:right;" data-toggle="modal" data-target="#panelModalCenter"><ion-icon name="add-circle"></ion-icon> 新增</button>
                         <br>
                         <hr style="clear:both;">
                         <div class="table-responsive">
@@ -187,6 +260,42 @@
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="panelModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="panelModalTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <!--<div class="card-header">表单数据<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><ion-icon name="help"></ion-icon></div></div>-->
+                        <div class="card-body">
+                            <form role="form" id="panel_form">
+                                <div class="form-group">
+                                    <label for="name">用户名称</label>
+                                    <input type="text" class="form-control" name="username" id="name" placeholder="请输入用户名称">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">邮箱地址</label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="请输入邮箱地址">
+                                    <p class="text-warning">请输入合法的邮箱地址, 格式为： xxxx@xxxx.com</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="reset" type="button" class="btn btn-danger"><ion-icon name="refresh"></ion-icon> 重置</button>
+                    <button id="commit" type="button" class="btn btn-primary"><ion-icon name="add"></ion-icon> 新增</button>
                 </div>
             </div>
         </div>

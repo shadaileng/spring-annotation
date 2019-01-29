@@ -66,19 +66,19 @@
         <div class="tree">
             <ul style="padding-left:0px;" class="list-group">
                 <li class="list-group-item tree-closed" >
-                    <a href="main.html"><ion-icon name="speedometer"></ion-icon> 控制面板</a>
+                    <a th:href="@{/user/index}"><ion-icon name="speedometer"></ion-icon> 控制面板</a>
                 </li>
                 <li class="list-group-item tree-closed">
                     <span><ion-icon name="list"></ion-icon> 权限管理 <span class="badge" style="float:right">3</span></span>
                     <ul style="margin-top:10px;display:none;">
                         <li style="height:30px;">
-                            <a href="user"><ion-icon name="man"></ion-icon> 用户维护</a>
+                            <a th:href="@{/user/list}"><ion-icon name="man"></ion-icon> 用户维护</a>
                         </li>
                         <li style="height:30px;">
-                            <a href="role.html"><ion-icon name="ribbon"></ion-icon> 角色维护</a>
+                            <a th:href="@{/role/list}"><ion-icon name="ribbon"></ion-icon> 角色维护</a>
                         </li>
                         <li style="height:30px;">
-                            <a href="permission.html"><ion-icon name="lock"></ion-icon> 许可维护</a>
+                            <a th:href="@{/permision/list}"><ion-icon name="lock"></ion-icon> 许可维护</a>
                         </li>
                     </ul>
                 </li>

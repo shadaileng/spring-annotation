@@ -1,4 +1,4 @@
-package com.qpf.service;
+package com.qpf.service.impl;
 
 import com.qpf.bean.User;
 import com.qpf.bean.dto.Page;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class UserService {
+public class UserServiceImpl {
     @Autowired
     private UserMapper userMapper;
     public User queryUser(User user) {
@@ -29,5 +29,9 @@ public class UserService {
         page.setTotal(count);
 
         return page;
+    }
+
+    public int addUser(User user) {
+        return 0;
     }
 }
