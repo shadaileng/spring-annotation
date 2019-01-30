@@ -24,6 +24,7 @@
             table tbody td:nth-child(even){color:#C00;}
         </style>
         <script type="text/javascript">
+            var total = 0, size = 2
             $("tbody .btn-success").click(function(){
                 window.location.href = "assignRole.html";
             });
@@ -37,7 +38,7 @@
                     url: 'pageQuery',
                     data: {
                         'index': index,
-                        'pageSize': 2
+                        'pageSize': size
                     },
                     beforeSend: function() {
                         loadingIndex = layer.msg('处理中', {icon: 16})
@@ -49,6 +50,8 @@
                             let page = result.data
                             let data = page.data
                             // console.log(page)
+                            total = page.total
+                            size = page.pageSize
                             let content = ''
                             data.forEach((el, i) => {
                                 // console.log(el, i)
@@ -116,14 +119,14 @@
             $(function () {
                 var title = ''
                 changerPage(1)
-                $('#panelModalCenter').on('show.bs.modal', function() {
+                $('#panelModalCenter').on('show.bs.modal', function () {
                     $('#panelModalTitle').text(title);
                     if ($('#panelModalCenter').data('type') == 2) {
                         // 查询
                         console.log('查询: ', $('#panelModalCenter').data('userid'))
                     }
                 })
-                $('#add').on('click', function(){
+                $('#add').on('click', function () {
                     title = '新增用户'
                     $('#panelModalCenter').data('type', 1)//新增
                     $('#commit').text('新增')
@@ -136,52 +139,57 @@
                     } else {
                         uri = 'edit'
                     }
-                    if($('#panel_form [name=username]').val() == '') {
-                        layer.msg('请输入用户名称', {time: 2000, icon: 5, shift: 6}, function() {
+                    if ($('#panel_form [name=username]').val() == '') {
+                        layer.msg('请输入用户名称', {time: 2000, icon: 5, shift: 6}, function () {
 
                         })
                         return
                     }
-                    if($('#panel_form [name=email]').val() == '') {
-                        layer.msg('请输入用户邮箱', {time: 2000, icon: 5, shift: 6}, function() {
+                    if ($('#panel_form [name=email]').val() == '') {
+                        layer.msg('请输入用户邮箱', {time: 2000, icon: 5, shift: 6}, function () {
 
                         })
                         return
                     }
 
                     let data = $('#panel_form').serialize()
-                    console.log(data)
+                    // console.log(data)
                     let loadingIndex
                     $.ajax({
                         type: 'POST',
                         url: uri,
                         data: data,
-                        beforeSend: function() {
+                        beforeSend: function () {
                             loadingIndex = layer.msg('处理中', {icon: 16})
                         },
-                        success: function(result) {
+                        success: function (result) {
                             layer.close(loadingIndex)
-                            if(result.success) {
-                                layer.msg('数据操作成功', {time: 2000, icon: 6, shift: 6}, function() {
+                            if (result.success) {
+                                layer.msg('数据操作成功', {time: 1000, icon: 6, shift: 6}, function () {
                                     $('#panelModalCenter').modal('hide')
+                                    total++
+
+                                    console.log( (total - 1) / size + 1 )
+                                    changerPage((total - 1) / size + 1)
                                 })
                             } else {
-                                layer.msg('数据操作失败', {time: 2000, icon: 5, shift: 6}, function() {
+                                layer.msg('数据操作失败', {time: 2000, icon: 5, shift: 6}, function () {
 
                                 })
                             }
                         },
-                        error: function(){
+                        error: function () {
                             layer.close(loadingIndex)
-                            layer.msg('请求失败', {time: 2000, icon: 5, shift: 6}, function() {
+                            layer.msg('请求失败', {time: 2000, icon: 5, shift: 6}, function () {
 
                             })
                         }
-                })
-                $('#reset').on('click', function () {
-                    $('#panel_form')[0].reset()
-                })
+                    })
+                    $('#reset').on('click', function () {
+                        $('#panel_form')[0].reset()
+                    })
 
+                })
             })
         </script>
     </head>

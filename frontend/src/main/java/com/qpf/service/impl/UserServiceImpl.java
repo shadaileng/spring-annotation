@@ -3,6 +3,7 @@ package com.qpf.service.impl;
 import com.qpf.bean.User;
 import com.qpf.bean.dto.Page;
 import com.qpf.dao.UserMapper;
+import com.qpf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
     public User queryUser(User user) {
@@ -18,8 +19,8 @@ public class UserServiceImpl {
     }
 
     public Page<User> queryUserPage(Map<String, Object> map) {
-        List<User> users = userMapper.queryUserPage(map);
         int count = userMapper.queryCount(map);
+        List<User> users = userMapper.queryUserPage(map);
 
         Page<User> page = new Page<>();
         page.setData(users);
@@ -32,6 +33,14 @@ public class UserServiceImpl {
     }
 
     public int addUser(User user) {
-        return 0;
+        user.setPassword("123456");
+        int id = userMapper.addUser(user);
+        return id;
+    }
+
+    @Override
+    public int editUser(User user) {
+        int count = userMapper.editUser(user);
+        return count;
     }
 }

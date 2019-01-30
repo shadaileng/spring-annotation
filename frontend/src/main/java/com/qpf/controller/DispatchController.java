@@ -2,7 +2,7 @@ package com.qpf.controller;
 
 import com.qpf.bean.User;
 import com.qpf.bean.dto.AJAXResult;
-import com.qpf.service.impl.UserService;
+import com.qpf.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,7 @@
 package com.qpf.dao;
 
 import com.qpf.bean.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -15,4 +14,9 @@ public interface UserMapper {
     List<User> queryUserPage(Map<String, Object> map);
     @Select("SELECT COUNT(*) FROM USER")
     int queryCount(Map<String, Object> map);
+    @Insert("INSERT INTO USER(username, password, email) values( #{username}, #{password}, #{email})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    int addUser(User user);
+    @Update("UPDATE USER SET username = #{username}, password = #{password}, email = #{email} where id = #{id}")
+    int editUser(User user);
 }
