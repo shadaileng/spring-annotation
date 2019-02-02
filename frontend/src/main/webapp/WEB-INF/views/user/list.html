@@ -104,7 +104,7 @@
                                 })
                             })
                         } else {
-                            layer.msg('数据更新失败', {time: 2000, icon: 5, shift: 6}, function() {
+                            layer.msg('数据更新失败 | ' + result.error, {time: 2000, icon: 5, shift: 6}, function() {
 
                             })
                         }
@@ -170,10 +170,10 @@
                                     total++
 
                                     console.log( (total - 1) / size + 1 )
-                                    changerPage((total - 1) / size + 1)
+                                    changerPage(parseInt((total - 1) / size)+ 1)
                                 })
                             } else {
-                                layer.msg('数据操作失败', {time: 2000, icon: 5, shift: 6}, function () {
+                                layer.msg('数据操作失败 | ' + result.error, {time: 2000, icon: 5, shift: 6}, function () {
 
                                 })
                             }

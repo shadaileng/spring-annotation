@@ -32,14 +32,19 @@ public class UserServiceImpl implements UserService {
         return page;
     }
 
-    public int addUser(User user) {
+    public int addUser(User user) throws Exception {
         user.setPassword("123456");
-        int id = userMapper.addUser(user);
+        int id = -1;
+        try {
+            id = userMapper.addUser(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
         return id;
     }
 
     @Override
-    public int editUser(User user) {
+    public int editUser(User user) throws Exception {
         int count = userMapper.editUser(user);
         return count;
     }

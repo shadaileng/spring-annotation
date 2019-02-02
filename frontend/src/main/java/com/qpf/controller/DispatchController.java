@@ -34,6 +34,7 @@ public class DispatchController {
             session.setAttribute("user", user);
         } else {
             result.setSuccess(false);
+            result.setError("登陆帐号或者密码不正确");
         }
 
         return result;

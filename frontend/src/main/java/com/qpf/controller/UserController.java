@@ -40,7 +40,9 @@ public class UserController {
             result.setSuccess(true);
             result.setData(page);
         } catch (Exception e) {
+            logger.error(e.getMessage());
             result.setSuccess(false);
+            result.setError("查询用户失败");
         }
         return result;
     }
@@ -53,7 +55,9 @@ public class UserController {
             logger.info("add user: {}", id);
             result.setSuccess(true);
         } catch (Exception e) {
+            logger.error(e.getMessage());
             result.setSuccess(false);
+            result.setError("添加用户失败");
         }
         return result;
     }
@@ -66,7 +70,9 @@ public class UserController {
             logger.info("edit user: {}", counts);
             result.setSuccess(true);
         } catch (Exception e) {
+            logger.error(e.getMessage());
             result.setSuccess(false);
+            result.setError("更新用户失败");
         }
         return result;
     }
