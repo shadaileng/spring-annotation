@@ -47,6 +47,21 @@ public class UserController {
         return result;
     }
     @ResponseBody
+    @GetMapping("/query/{id}")
+    public Object queryId(@PathVariable("id") Integer id) {
+        AJAXResult result = new AJAXResult();
+        try{
+            User user = userService.queryUserById(id);
+            result.setSuccess(true);
+            result.setData(user);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result.setSuccess(false);
+            result.setError("查询用户(" + id + ")失败");
+        }
+        return result;
+    }
+    @ResponseBody
     @PostMapping("/add")
     public Object add(User user) {
         AJAXResult result = new AJAXResult();

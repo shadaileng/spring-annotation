@@ -12,4 +12,6 @@ public interface UserService {
     int editUser(User user) throws Exception;
 
     User queryUser(User user);
+
+    User queryUserById(Integer id);
 }

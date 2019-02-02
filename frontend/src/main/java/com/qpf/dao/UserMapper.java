@@ -17,6 +17,8 @@ public interface UserMapper {
     @Insert("INSERT INTO USER(username, password, email) values( #{username}, #{password}, #{email})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int addUser(User user);
-    @Update("UPDATE USER SET username = #{username}, password = #{password}, email = #{email} where id = #{id}")
+    @Update("<script>UPDATE USER <set> <if test='username != null'> username = #{username},</if> <if test='password != null'> password = #{password},</if> <if test='email != null'> email = #{email}</if> </set> where id = #{id}</script>")
     int editUser(User user);
+    @Select("SELECT * from USER WHERE id = #{id}")
+    User queryUserById(Integer id);
 }

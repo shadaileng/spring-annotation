@@ -24,13 +24,32 @@
             table tbody td:nth-child(even){color:#C00;}
         </style>
         <script type="text/javascript">
-            var total = 0, size = 2
-            $("tbody .btn-success").click(function(){
-                window.location.href = "assignRole.html";
-            });
-            $("tbody .btn-primary").click(function(){
-                window.location.href = "edit.html";
-            });
+            var total = 0, size = 2, index_
+            let initData = {'username': '', 'email': ''}
+            // $("tbody .btn-success").click(function(){
+            //     window.location.href = "assignRole.html";
+            // });
+            // $("tbody .btn-primary").click(function(){
+            //     window.location.href = "edit.html";
+            // });
+            function setFormData(data, formId) {
+                for (let key in data) {
+                    // console.log(key, data[key])
+                    let tag = $(formId).find('[name="' + key + '"]')
+                    if (tag.length > 1) {
+                        tag.prop('checked', false)
+                        if(data[key]) {
+                            let item = data[key].split(',')
+                            item.forEach((el, i) => {
+                                let e = $(formId).find('[name="' + key + '"][value="' + el + '"]')
+                                e.prop('checked', true)
+                            })
+                        }
+                    } else {
+                        tag.val(data[key])
+                    }
+                }
+            }
             function changerPage(index) {
                 let loadingIndex;
                 $.ajax({
@@ -52,6 +71,7 @@
                             // console.log(page)
                             total = page.total
                             size = page.pageSize
+                            index_ = page.index
                             let content = ''
                             data.forEach((el, i) => {
                                 // console.log(el, i)
@@ -120,23 +140,56 @@
                 var title = ''
                 changerPage(1)
                 $('#panelModalCenter').on('show.bs.modal', function () {
-                    $('#panelModalTitle').text(title);
                     if ($('#panelModalCenter').data('type') == 2) {
                         // 查询
-                        console.log('查询: ', $('#panelModalCenter').data('userid'))
+                        // console.log('查询: ', $('#panelModalCenter').data('userid'))
+                        title = '新增用户'
+                        $('#commit').text('更新')
+                        let loadingIndex
+                        $.ajax({
+                            type: 'GET',
+                            url: 'query/' + $('#panelModalCenter').data('userid'),
+                            beforeSend: function () {
+                                loadingIndex = layer.msg('处理中', {icon: 16})
+                            },
+                            success: function (result) {
+                                layer.close(loadingIndex)
+                                if (result.success) {
+                                    let data = result.data
+                                    // console.log(data)
+                                    initData = data
+                                    setFormData(data, '#panel_form')
+                                } else {
+                                    layer.open({content: '数据操作失败 | ' + result.error, icon: 5, shift: 6}, function () {
+
+                                    })
+                                }
+                            },
+                            error: function () {
+                                layer.close(loadingIndex)
+                                layer.open({content: '请求失败', icon: 5, shift: 6}, function () {
+
+                                })
+                            }
+                        })
+                    } else if ($('#panelModalCenter').data('type') == 1)  {
+                        title = '新增用户'
+                        $('#commit').text('新增')
+                        initData = {"username": "", "email": ""}
+                        setFormData(initData, '#panel_form')
+                        // $('#panel_form')[0].reset()
                     }
+                    $('#panelModalTitle').text(title)
                 })
                 $('#add').on('click', function () {
-                    title = '新增用户'
                     $('#panelModalCenter').data('type', 1)//新增
-                    $('#commit').text('新增')
                 })
                 $('#commit').on('click', function () {
                     let type = $('#panelModalCenter').data('type')
                     let uri = ''
                     if (type == 1) {
                         uri = 'add'
-                    } else {
+                    } else if(type == 2) {
                         uri = 'edit'
                     }
                     if ($('#panel_form [name=username]').val() == '') {
@@ -167,28 +220,34 @@
                             if (result.success) {
                                 layer.msg('数据操作成功', {time: 1000, icon: 6, shift: 6}, function () {
                                     $('#panelModalCenter').modal('hide')
-                                    total++
+                                    $('#panel_form')[0].reset()
 
-                                    console.log( (total - 1) / size + 1 )
-                                    changerPage(parseInt((total - 1) / size)+ 1)
+                                    if (type == 1) {
+                                        total++
+                                        console.log( parseInt((total - 1) / size)+ 1 )
+                                        changerPage(parseInt((total - 1) / size)+ 1)
+                                    } else if(type == 2) {
+                                        // console.log(index_)
+                                        changerPage(index_)
+                                    }
                                 })
                             } else {
-                                layer.msg('数据操作失败 | ' + result.error, {time: 2000, icon: 5, shift: 6}, function () {
+                                layer.open({content: '数据操作失败 | ' + result.error, icon: 5, shift: 6}, function () {
 
                                 })
                             }
                         },
                         error: function () {
                             layer.close(loadingIndex)
-                            layer.msg('请求失败', {time: 2000, icon: 5, shift: 6}, function () {
+                            layer.open({content: '请求失败', icon: 5, shift: 6}, function () {
 
                             })
                         }
                     })
-                    $('#reset').on('click', function () {
-                        $('#panel_form')[0].reset()
-                    })
-
+                })
+                $('#reset').on('click', function () {
+                    setFormData(initData, '#panel_form')
+                    // $('#panel_form')[0].reset()
                 })
             })
         </script>
@@ -287,6 +346,7 @@
                         <!--<div class="card-header">表单数据<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><ion-icon name="help"></ion-icon></div></div>-->
                         <div class="card-body">
                             <form role="form" id="panel_form">
+                                <input type="hidden" name="id" id="id">
                                 <div class="form-group">
                                     <label for="name">用户名称</label>
                                     <input type="text" class="form-control" name="username" id="name" placeholder="请输入用户名称">

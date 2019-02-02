@@ -18,6 +18,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUserCondition(user);
     }
 
+    @Override
+    public User queryUserById(Integer id) {
+        return userMapper.queryUserById(id);
+    }
+
     public Page<User> queryUserPage(Map<String, Object> map) {
         int count = userMapper.queryCount(map);
         List<User> users = userMapper.queryUserPage(map);
