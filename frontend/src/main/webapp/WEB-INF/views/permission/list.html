@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>许可维护</title>
+
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/resources/css/main.css}">
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!--<script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>-->
+        <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+        <script>
+            jQuery.browser={};(function(){jQuery.browser.msie=false; jQuery.browser.version=0;if(navigator.userAgent.match(/MSIE ([0-9]+)./)){ jQuery.browser.msie=true;jQuery.browser.version=RegExp.$1;}})();
+        </script>
+        <script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.all.js"></script>
+        <style>
+            .tree li {
+                list-style-type: none;
+                cursor:pointer;
+            }
+            table tbody tr:nth-child(odd){background:#F4F4F4;}
+            table tbody td:nth-child(even){color:#C00;}
+        </style>
+        <script type="text/javascript">
+            $(function () {
+                let setting = {}
+                let zNodes =[
+                    { name:"父节点1 - 展开11111", open:true,
+                        children: [
+                            { name:"父节点11 - 折叠",
+                                children: [
+                                    { name:"叶子节点111"},
+                                    { name:"叶子节点112"},
+                                    { name:"叶子节点113"},
+                                    { name:"叶子节点114"}
+                                ]},
+                            { name:"父节点12 - 折叠",
+                                children: [
+                                    { name:"叶子节点121"},
+                                    { name:"叶子节点122"},
+                                    { name:"叶子节点123"},
+                                    { name:"叶子节点124"}
+                                ]},
+                            { name:"父节点13 - 没有子节点", isParent:true}
+                        ]},
+                    { name:"父节点2 - 折叠",
+                        children: [
+                            { name:"父节点21 - 展开", open:true,
+                                children: [
+                                    { name:"叶子节点211"},
+                                    { name:"叶子节点212"},
+                                    { name:"叶子节点213"},
+                                    { name:"叶子节点214"}
+                                ]},
+                            { name:"父节点22 - 折叠",
+                                children: [
+                                    { name:"叶子节点221"},
+                                    { name:"叶子节点222"},
+                                    { name:"叶子节点223"},
+                                    { name:"叶子节点224"}
+                                ]},
+                            { name:"父节点23 - 折叠",
+                                children: [
+                                    { name:"叶子节点231"},
+                                    { name:"叶子节点232"},
+                                    { name:"叶子节点233"},
+                                    { name:"叶子节点234"}
+                                ]}
+                        ]},
+                    { name:"父节点3 - 没有子节点", isParent:true}
+
+                ];
+                $.fn.zTree.init($("#permissionTree"), setting, zNodes);
+            })
+        </script>
+    </head>
+
+    <body>
+
+    <div th:replace="fragments/layout :: header"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="fragments/layout :: sidebar-tree"></div>
+            <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 数据列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="permissionTree" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="panelModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="panelModalTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <!--<div class="card-header">表单数据<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><ion-icon name="help"></ion-icon></div></div>-->
+                        <div class="card-body">
+                            <form role="form" id="panel_form">
+                                <input type="hidden" name="id" id="id">
+                                <div class="form-group">
+                                    <label for="name">角色名称</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="请输入角色名称">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="reset" type="button" class="btn btn-danger"><ion-icon name="refresh"></ion-icon> 重置</button>
+                    <button id="commit" type="button" class="btn btn-primary"><ion-icon name="add"></ion-icon> 新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

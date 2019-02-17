@@ -13,7 +13,7 @@ import java.util.Set;
 @HandlesTypes(value = {HttpServlet.class})
 public class ServletContainerInitializerImpl implements ServletContainerInitializer {
     @Override
-    public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
+    public void onStartup(Set<Class<?>> set, ServletContext servletContext) {
         if (set != null) {
             for(Class<?> clazz: set) {
                 System.out.println(clazz);

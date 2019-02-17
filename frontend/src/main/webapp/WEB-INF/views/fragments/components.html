@@ -156,14 +156,14 @@
         <script>
             $(function() {
                 $('.hamburger').on('click', (e) => {
-                    $('#wrapper').toggleClass('toggle')
-                    console.log($('.hamburger')[0].classList.contains('is-close'))
-                    console.log($('.hamburger')[0].classList.contains('is-open'))
+                    $('#wrapper').toggleClass('toggle');
+                    console.log($('.hamburger')[0].classList.contains('is-close'));
+                    console.log($('.hamburger')[0].classList.contains('is-open'));
                     if($('.hamburger')[0].classList.contains('is-close')) {
-                        $('.hamburger').removeClass('is-close')
+                        $('.hamburger').removeClass('is-close');
                         $('.hamburger').addClass('is-open')
                     } else if($('.hamburger')[0].classList.contains('is-open')) {
-                        $('.hamburger').removeClass('is-open')
+                        $('.hamburger').removeClass('is-open');
                         $('.hamburger').addClass('is-close')
                     }
                 })

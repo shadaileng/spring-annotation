@@ -23,11 +23,7 @@ public class FileService {
 		File[] files = new File(root).listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
-				if (pathname.isDirectory()) {
-					return false;
-				} else {
-					return true;
-				}
+                return !pathname.isDirectory();
 			}
 		});
 		if (files != null) Arrays.asList(files).forEach(file -> list.add(host + "/" + file.getName()));

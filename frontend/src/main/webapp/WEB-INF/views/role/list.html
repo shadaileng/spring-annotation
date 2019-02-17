@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>用户维护</title>
+        <title>角色维护</title>
 
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
@@ -26,7 +26,6 @@
         </style>
         <script type="text/javascript">
             var total = 0, size = 4, index_;
-            var unassigned = '', assigned = '';
             let initData = {'username': '', 'email': ''};
             // $("tbody .btn-success").click(function(){
             //     window.location.href = "assignRole.html";
@@ -52,7 +51,7 @@
                     }
                 }
             }
-            function deleteUser(ids) {
+            function deleteRole(ids) {
                 let loadingIndex;
                 let data = '';
                 ids.forEach((el, i) => {
@@ -72,6 +71,7 @@
                     success: function(result){
                         layer.close(loadingIndex);
                         if (result.success) {
+                            // layer.msg('数据操作成功', {time: 1000, icon: 6, shift: 6})
                             total -= result.data;
                             // console.log( parseInt((total - 1) / size)+ 1 )
                             changerPage(parseInt((total - 1) / size)+ 1)
@@ -115,14 +115,12 @@
                                 // console.log(el, i)
                                 content += '<tr>';
                                 content += '    <th scope="row">' + (i + 1) + '</th>';
-                                content += '        <td><input type="checkbox" name="checkUser" data-target="' + el.id + '-' + el.username + '"></td>';
-                                content += '        <td>' + el.username + '</td>';
-                                content += '        <td>' + el.username + '</td>';
-                                content += '        <td>' + el.email + '</td>';
+                                content += '        <td><input type="checkbox" name="checkUser" data-target="' + el.id + '-' + el.name + '"></td>';
+                                content += '        <td>' + el.name + '</td>';
                                 content += '        <td>';
-                                content += '        <a role="button" class="btn btn-sm" name="assign" data-target="' + el.id + '-' + el.username + '"><ion-icon name="checkmark" name="assign" data-target="' + el.id + '"></ion-icon></a>';
+                                content += '        <a role="button" class="btn btn-sm"><ion-icon name="checkmark" name="assign" data-target="' + el.id + '"></ion-icon></a>';
                                 content += '    <a role="button" class="btn btn-sm" name="update" data-target="' + el.id + '"><ion-icon name="create"></ion-icon></a>';
-                                content += '    <a role="button" class="btn btn-sm" name="delete" data-target="' + el.id + '-' + el.username + '"><ion-icon name="close"></ion-icon></a>';
+                                content += '    <a role="button" class="btn btn-sm" name="delete" data-target="' + el.id + '-' + el.name + '"><ion-icon name="close"></ion-icon></a>';
                                 content += '    </td>';
                                 content += '</tr>'
                             });
@@ -157,7 +155,7 @@
                             $("[name='update']").each(function(){
                                 $(this).on('click', function () {
                                     $('#panelModalCenter').data('type', 2);// 更新
-                                    $('#panelModalCenter').data('userid', $(this).data('target'));
+                                    $('#panelModalCenter').data('id', $(this).data('target'));
                                     $('#panelModalCenter').modal('show')
                                 })
                             });
@@ -167,14 +165,10 @@
                                     layer.confirm('是否删除[' + str.substr(str.indexOf('-') + 1) + ']?', {icon: 3, title: '删除'}, function(index) {
                                         let ids = str.substr(0, str.indexOf('-'));
                                         // console.log(ids)
-                                        deleteUser([ids]);
+                                        deleteRole([ids]);
                                         layer.close(index)
                                     })
                                 })
-                            });
-                            $("[name='assign']").on('click', function () {
-                                $('#panelAssignRole').data('userid', $(this).data('target'));
-                                $('#panelAssignRole').modal('show')
                             })
                         } else {
                             layer.msg('数据更新失败 | ' + result.error, {time: 2000, icon: 5, shift: 6}, function() {
@@ -192,58 +186,16 @@
             $(function () {
                 var title = '';
                 changerPage(1);
-                $('#panelAssignRole').on('show.bs.modal', function () {
-                    let loadingIndex;
-                    let str = $('#panelAssignRole').data('userid')
-                    $.ajax({
-                        type: 'GET',
-                        url: 'queryRoles/' + str.substr(0, str.indexOf('-')),
-                        beforeSend: function () {
-                            loadingIndex = layer.msg('处理中', {icon: 16})
-                        },
-                        success: function (result) {
-                            layer.close(loadingIndex);
-                            if (result.success) {
-                                let data = result.data;
-                                // console.log(data)
-                                // initData = data
-                                // setFormData(data, '#role_panel_form')
-                                unassigned = ''
-                                assigned = ''
-                                $('#panelAssignTitle').text('角色分配 - ' + str.substr(str.indexOf('-') + 1))
-                                result.data.unassigned.forEach((el, i)=>{
-                                    unassigned += '<option value="' + el.id + '">' + el.name + '</option>'
-                                });
-                                result.data.assigned.forEach((el, i)=>{
-                                    assigned += '<option value="' + el.id + '">' + el.name + '</option>'
-                                });
-                                // console.log(result)
-                                $('#leftRole').html(unassigned);
-                                $('#rightRole').html(assigned)
-                            } else {
-                                layer.open({content: '数据操作失败 | ' + result.error, icon: 5, shift: 6}, function () {
-
-                                })
-                            }
-                        },
-                        error: function () {
-                            layer.close(loadingIndex);
-                            layer.open({content: '请求失败', icon: 5, shift: 6}, function () {
-
-                            })
-                        }
-                    })
-                });
                 $('#panelModalCenter').on('show.bs.modal', function () {
                     if ($('#panelModalCenter').data('type') == 2) {
                         // 查询
                         // console.log('查询: ', $('#panelModalCenter').data('userid'))
-                        title = '更新用户';
+                        title = '更新角色';
                         $('#commit').text('更新');
                         let loadingIndex;
                         $.ajax({
                             type: 'GET',
-                            url: 'query/' + $('#panelModalCenter').data('userid'),
+                            url: 'query/' + $('#panelModalCenter').data('id'),
                             beforeSend: function () {
                                 loadingIndex = layer.msg('处理中', {icon: 16})
                             },
@@ -268,9 +220,9 @@
                             }
                         })
                     } else if ($('#panelModalCenter').data('type') == 1)  {
-                        title = '新增用户';
+                        title = '新增角色';
                         $('#commit').text('新增');
-                        initData = {"username": "", "email": ""};
+                        initData = {"name": ""};
                         setFormData(initData, '#panel_form')
                         // $('#panel_form')[0].reset()
                     }
@@ -287,14 +239,8 @@
                     } else if(type == 2) {
                         uri = 'edit'
                     }
-                    if ($('#panel_form [name=username]').val() == '') {
-                        layer.msg('请输入用户名称', {time: 2000, icon: 5, shift: 6}, function () {
-
-                        });
-                        return
-                    }
-                    if ($('#panel_form [name=email]').val() == '') {
-                        layer.msg('请输入用户邮箱', {time: 2000, icon: 5, shift: 6}, function () {
+                    if ($('#panel_form [name=name]').val() == '') {
+                        layer.msg('请输入角色名称', {time: 2000, icon: 5, shift: 6}, function () {
 
                         });
                         return
@@ -364,71 +310,10 @@
                         }
                     });
                     // console.log(ids)
-                    deleteUser(ids)
+                    deleteRole(ids)
                 });
                 $('#queryCondition').on('click', function () {
                     changerPage(1)
-                })
-                $('#assign2right').on('click', function () {
-                    let opts = $('#leftRole :selected')
-                    if (opts.length == 0) {
-                        layer.msg('请选择需要分配的角色', {time:2000, icon:5, shift:6}, function(){
-
-                        });
-                    } else {
-                        $('#rightRole').append(opts)
-                    }
-                })
-                $('#assign2left').on('click', function () {
-                    let opts = $('#rightRole :selected')
-                    if (opts.length == 0) {
-                        layer.msg('请选择取消分配的角色', {time:2000, icon:5, shift:6}, function(){
-
-                        });
-                    } else {
-                        $('#leftRole').append(opts)
-                    }
-                })
-                $('#resetRole').on('click', function () {
-                    $('#leftRole').html(unassigned);
-                    $('#rightRole').html(assigned)
-                })
-                $('#commitRole').on('click', function () {
-                    let loadingIndex;
-                    let data = ''
-                    $('#rightRole option').each((i, el)=>{
-                        if(data.length > 0) {
-                            data += '&'
-                        }
-                        data += 'roleids=' + el.value
-                    })
-                    let str = $('#panelAssignRole').data('userid')
-                    $.ajax({
-                        type: 'POST',
-                        url: 'assign/' + str.substr(0, str.indexOf('-')),
-                        data: data,
-                        beforeSend: function () {
-                            loadingIndex = layer.msg('处理中', {icon: 16})
-                        },
-                        success: function (result) {
-                            layer.close(loadingIndex);
-                            if (result.success) {
-                                layer.msg('数据操作成功', {time: 1000, icon: 6, shift: 6}, function () {
-                                    $('#panelAssignRole').modal('hide');
-                                })
-                            } else {
-                                layer.open({content: '数据操作失败 | ' + result.error, icon: 5, shift: 6}, function () {
-
-                                })
-                            }
-                        },
-                        error: function () {
-                            layer.close(loadingIndex);
-                            layer.open({content: '请求失败', icon: 5, shift: 6}, function () {
-
-                            })
-                        }
-                    })
                 })
             })
         </script>
@@ -470,41 +355,12 @@
                                 <tr >
                                     <th scope="col" width="30">#</th>
                                     <th scope="col" width="30"><input type="checkbox" id="selectAll"></th>
-                                    <th scope="col">账号</th>
                                     <th scope="col">名称</th>
-                                    <th scope="col">邮箱地址</th>
                                     <th scope="col" width="140">操作</th>
                                 </tr>
                                 </thead>
-                                <tbody id="table_content">
-                                <!--<tr>-->
-                                    <!--<th scope="row">1</th>-->
-                                    <!--<td><input type="checkbox"></td>-->
-                                    <!--<td>Lorem</td>-->
-                                    <!--<td>ipsum</td>-->
-                                    <!--<td>dolor</td>-->
-                                    <!--<td>-->
-                                        <!--<a role="button" class="btn btn-sm"><ion-icon name="checkmark"></ion-icon></a>-->
-                                        <!--<a role="button" class="btn btn-sm"><ion-icon name="create"></ion-icon></a>-->
-                                        <!--<a role="button" class="btn btn-sm"><ion-icon name="close"></ion-icon></a>-->
-                                    <!--</td>-->
-                                <!--</tr>-->
-                                </tbody>
-                                <tfoot id="table_page">
-                                    <!--<tr >-->
-                                        <!--<td colspan="6">-->
-                                            <!--<ul class="pagination justify-content-center">-->
-                                                <!--<li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>-->
-                                                <!--<li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>-->
-                                                <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
-                                                <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                                                <!--<li class="page-item"><a class="page-link" href="#">4</a></li>-->
-                                                <!--<li class="page-item"><a class="page-link" href="#">5</a></li>-->
-                                                <!--<li class="page-item"><a class="page-link" href="#">下一页</a></li>-->
-                                            <!--</ul>-->
-                                        <!--</td>-->
-                                    <!--</tr>-->
-                                </tfoot>
+                                <tbody id="table_content"></tbody>
+                                <tfoot id="table_page"></tfoot>
                             </table>
                         </div>
                     </div>
@@ -529,13 +385,8 @@
                             <form role="form" id="panel_form">
                                 <input type="hidden" name="id" id="id">
                                 <div class="form-group">
-                                    <label for="name">用户名称</label>
-                                    <input type="text" class="form-control" name="username" id="name" placeholder="请输入用户名称">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">邮箱地址</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="请输入邮箱地址">
-                                    <p class="text-warning">请输入合法的邮箱地址, 格式为： xxxx@xxxx.com</p>
+                                    <label for="name">角色名称</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="请输入角色名称">
                                 </div>
                             </form>
                         </div>
@@ -545,57 +396,6 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button id="reset" type="button" class="btn btn-danger"><ion-icon name="refresh"></ion-icon> 重置</button>
                     <button id="commit" type="button" class="btn btn-primary"><ion-icon name="add"></ion-icon> 新增</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="panelAssignRole" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="panelAssignTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <!--<div class="card-header">表单数据<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><ion-icon name="help"></ion-icon></div></div>-->
-                        <div class="card-body">
-                            <form role="form" id="role_panel_form" class="d-flex justify-content-around">
-                                <div class="form-group" style="display: inline-block;">
-                                    <label for="leftRole">未分配角色列表</label><br>
-                                    <select id="leftRole" class="form-control" multiple size="10" style="width:150px;overflow-y:auto;">
-                                        <option value="se">SE</option>
-                                        <option value="tl">TL</option>
-                                        <option value="gl">GL</option>
-                                        <option value="qa">QA</option>
-                                        <option value="pm">PM</option>
-                                    </select>
-                                </div>
-                                <div class="form-group" style="display: inline-block;">
-                                    <ul class="" style="padding: 0px;margin-top: 100px">
-                                        <li id="assign2right" class="btn btn-default"><ion-icon name="arrow-dropright"></ion-icon></li>
-                                        <br>
-                                        <li id="assign2left" class="btn btn-default" style="margin-top:20px;"><ion-icon name="arrow-dropleft"></ion-icon></li>
-                                    </ul>
-                                </div>
-                                <div class="form-group" style="display: inline-block;">
-                                    <label for="rightRole">已分配角色列表</label><br>
-                                    <select id="rightRole" class="form-control" multiple size="10" style="width:150px;overflow-y:auto;">
-                                        <option value="qc">QC</option>
-                                        <option value="pg">PG</option>
-                                        <option value="sa">SA</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="resetRole" type="button" class="btn btn-danger"><ion-icon name="refresh"></ion-icon> 重置</button>
-                    <button id="commitRole" type="button" class="btn btn-primary"><ion-icon name="add"></ion-icon> 分配</button>
                 </div>
             </div>
         </div>

@@ -3,27 +3,67 @@ package com.qpf.service.impl;
 import com.qpf.bean.User;
 import com.qpf.bean.dto.Page;
 import com.qpf.dao.UserMapper;
-import com.qpf.service.UserService;
+import com.qpf.service.ModelService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Service
-public class UserServiceImpl implements UserService {
+@Service("userService")
+public class UserServiceImpl implements ModelService<User> {
+    private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private UserMapper userMapper;
-    public User queryUser(User user) {
+    public User query(User user) {
         return userMapper.selectUserCondition(user);
     }
 
     @Override
-    public User queryUserById(Integer id) {
+    public User queryById(Integer id) {
         return userMapper.queryUserById(id);
     }
 
-    public Page<User> queryUserPage(Map<String, Object> map) {
+    @Override
+    public int deleteByIds(List<Integer> ids) {
+        int delete = userMapper.deleteUserByIds(ids);
+        return delete;
+    }
+
+    @Override
+    public boolean assign(Integer id, List<Integer> ids) {
+        boolean result = false;
+        try {
+            int delete = userMapper.deleteRolesById(id);
+            logger.info("删除角色: {}", delete);
+            int add = userMapper.addRolesById(id, ids);
+            logger.info("添加角色: {}", add);
+            result = true;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<User> queryCondition(User user) {
+        return null;
+    }
+
+    @Override
+    public List<User> queryAll() {
+        return null;
+    }
+
+    @Override
+    public List queryManyById(Integer id) {
+        List<Integer> roles = userMapper.queryRolesIdById(id);
+        return roles;
+    }
+
+    public Page<User> queryPage(Map<String, Object> map) {
         int count = userMapper.queryCount(map);
         List<User> users = userMapper.queryUserPage(map);
 
@@ -37,7 +77,7 @@ public class UserServiceImpl implements UserService {
         return page;
     }
 
-    public int addUser(User user) throws Exception {
+    public int add(User user) {
         user.setPassword("123456");
         int id = -1;
         try {
@@ -49,7 +89,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int editUser(User user) throws Exception {
+    public int edit(User user) {
         int count = userMapper.editUser(user);
         return count;
     }

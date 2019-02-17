@@ -18,7 +18,7 @@ public class AsyncServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         AsyncContext asyncContext = req.startAsync();
         System.out.println("[1]" + Thread.currentThread() + "...." + new Date().getTime());
         asyncContext.start(new Runnable() {
