@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" th:href="@{/resources/css/main.css}">
+        <link href="https://cdn.bootcss.com/zTree.v3/3.5.40/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
 
         <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
         <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -19,7 +20,11 @@
         <script>
             jQuery.browser={};(function(){jQuery.browser.msie=false; jQuery.browser.version=0;if(navigator.userAgent.match(/MSIE ([0-9]+)./)){ jQuery.browser.msie=true;jQuery.browser.version=RegExp.$1;}})();
         </script>
-        <script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.all.js"></script>
+        <!--<script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.all.js"></script>-->
+        <script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.core.js"></script>
+        <script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.excheck.js"></script>
+        <script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.exedit.js"></script>
+        <script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.exhide.js"></script>
         <style>
             .tree li {
                 list-style-type: none;
@@ -30,54 +35,64 @@
         </style>
         <script type="text/javascript">
             $(function () {
-                let setting = {}
-                let zNodes =[
-                    { name:"父节点1 - 展开11111", open:true,
-                        children: [
-                            { name:"父节点11 - 折叠",
-                                children: [
-                                    { name:"叶子节点111"},
-                                    { name:"叶子节点112"},
-                                    { name:"叶子节点113"},
-                                    { name:"叶子节点114"}
-                                ]},
-                            { name:"父节点12 - 折叠",
-                                children: [
-                                    { name:"叶子节点121"},
-                                    { name:"叶子节点122"},
-                                    { name:"叶子节点123"},
-                                    { name:"叶子节点124"}
-                                ]},
-                            { name:"父节点13 - 没有子节点", isParent:true}
-                        ]},
-                    { name:"父节点2 - 折叠",
-                        children: [
-                            { name:"父节点21 - 展开", open:true,
-                                children: [
-                                    { name:"叶子节点211"},
-                                    { name:"叶子节点212"},
-                                    { name:"叶子节点213"},
-                                    { name:"叶子节点214"}
-                                ]},
-                            { name:"父节点22 - 折叠",
-                                children: [
-                                    { name:"叶子节点221"},
-                                    { name:"叶子节点222"},
-                                    { name:"叶子节点223"},
-                                    { name:"叶子节点224"}
-                                ]},
-                            { name:"父节点23 - 折叠",
-                                children: [
-                                    { name:"叶子节点231"},
-                                    { name:"叶子节点232"},
-                                    { name:"叶子节点233"},
-                                    { name:"叶子节点234"}
-                                ]}
-                        ]},
-                    { name:"父节点3 - 没有子节点", isParent:true}
+                let loadingIndex;
+                $.ajax({
+                    type: 'GET',
+                    url: 'loadData',
+                    beforeSend: function () {
+                        loadingIndex = layer.msg('处理中', {icon: 16})
+                    },
+                    success: function (result) {
+                        layer.close(loadingIndex);
+                        if (result.success) {
+                            let data = result.data;
+                            console.log(data)
+                            $.fn.zTree.init($("#permissionTree"), {}, data);
+                        } else {
+                            layer.open({content: '数据操作失败 | ' + result.error, icon: 5, shift: 6}, function () {
 
-                ];
-                $.fn.zTree.init($("#permissionTree"), setting, zNodes);
+                            })
+                        }
+                    },
+                    error: function () {
+                        layer.close(loadingIndex);
+                        layer.open({content: '请求失败', icon: 5, shift: 6}, function () {
+
+                        })
+                    }
+                })
+                // let setting = {
+                //     async: true,
+                //     url: 'loadData',
+                //     autoParam: ['id']
+                // }
+                // let zNodes =[
+                //     { name:"系统权限菜单", open:true,
+                //         children: [
+                //             { name: "控制面板", isParent: false},
+                //             { name: "消息管理", isParent: false},
+                //             { name: "权限管理", open: true,
+                //                 children: [
+                //                     { name: "用户管理"},
+                //                     { name: "角色管理"},
+                //                     { name: "许可管理"},
+                //                 ]
+                //             },
+                //             { name: "业务管理", open: true,
+                //                 children: [
+                //                     {name: "项目分类"},
+                //                     {name: "项目标签"},
+                //                     {name: "资质管理"},
+                //                     {name: "资质维护"},
+                //                     {name: "流程管理"},
+                //                     {name: "广告管理"},
+                //                     {name: "消息模板"},
+                //                 ]
+                //             }
+                //         ]
+                //     }
+                // ];
+                // $.fn.zTree.init($("#permissionTree"), setting);
             })
         </script>
     </head>

@@ -706,5 +706,6 @@
 - [SpringCache与redis集成，优雅的缓存解决方案](https://www.cnblogs.com/chenkeyu/p/8028781.html)
 - [Spring 后置处理器 PropertyPlaceholderConfigurer 类（引用外部文件）](https://www.cnblogs.com/libra0920/p/6169338.html)
 - [layer](https://www.layui.com/doc/modules/layer.html)
+- [zTree](http://www.treejs.cn/v3/main.php)
 - [Ionicons](https://ionicons.com/usage)
 - [Holder](https://github.com/imsky/holder)
