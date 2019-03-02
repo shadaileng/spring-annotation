@@ -111,6 +111,17 @@
         </plugins>
     </build> 
     ```
+- 本地运行
+    ```
+    $ mvn tomcat7:run
+    ```
+- 远程部署
+    ```
+    # 第一次部署
+    $ mvn tomcat7:deploy
+    # 非第一次部署
+    $ mvn tomcat7:redeploy
+    ```
 2. 编写`IOC`容器类,扫面业务注解
     ```java
     @ComponentScan(value = {"com.qpf"}, excludeFilters = {
