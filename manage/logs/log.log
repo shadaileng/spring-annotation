@@ -1,0 +1,1051 @@
+2019-03-03 21:03:24,316 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:03:24,403 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:03:24 HKT 2019]; root of context hierarchy
+2019-03-03 21:03:24,468 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2019-03-03 21:03:24,470 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource [/WEB-INF/applicationContext.xml]; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource [/WEB-INF/applicationContext.xml]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:129)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:614)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:515)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4939)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.FileNotFoundException: Could not open ServletContext resource [/WEB-INF/applicationContext.xml]
+	at org.springframework.web.context.support.ServletContextResource.getInputStream(ServletContextResource.java:141)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330)
+	... 22 more
+2019-03-03 21:03:24,769 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Closing Root WebApplicationContext: startup date [Sun Mar 03 21:03:24 HKT 2019]; root of context hierarchy
+2019-03-03 21:07:33,709 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:07:34,044 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:07:34 HKT 2019]; root of context hierarchy
+2019-03-03 21:07:34,133 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2019-03-03 21:07:34,134 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource [/WEB-INF/applicationContext.xml]; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource [/WEB-INF/applicationContext.xml]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:129)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:614)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:515)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4939)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.FileNotFoundException: Could not open ServletContext resource [/WEB-INF/applicationContext.xml]
+	at org.springframework.web.context.support.ServletContextResource.getInputStream(ServletContextResource.java:141)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330)
+	... 21 more
+2019-03-03 21:07:34,266 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Closing Root WebApplicationContext: startup date [Sun Mar 03 21:07:34 HKT 2019]; root of context hierarchy
+2019-03-03 21:17:09,688 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:17:09,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:17:09,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:17:09,708 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:20:26,469 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:20:26,483 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:20:26,484 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:20:26,484 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:20:26,484 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:20:26,484 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:20:26,484 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:20:26,484 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:20:26,484 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:20:26,485 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:20:26,486 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:20:26,486 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:20:26,486 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:20:26,486 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:21:26,190 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:21:26,191 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:21:26,191 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:21:26,191 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:21:26,191 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:21:26,191 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:21:26,192 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:21:26,193 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:21:26,193 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:21:26,193 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:21:26,193 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:21:26,193 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:21:26,193 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:21:26,193 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:23:47,798 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:23:47,798 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:23:47,798 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:23:47,798 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:23:47,798 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:23:47,798 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:23:47,799 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:23:47,800 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:23:47,800 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:23:47,800 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:23:47,800 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:23:47,800 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:23:48,081 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:23:48,199 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:23:48 HKT 2019]; root of context hierarchy
+2019-03-03 21:23:48,297 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]
+2019-03-03 21:23:48,675 WARN [org.springframework.web.context.support.XmlWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+2019-03-03 21:23:48,687 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:511)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:481)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1152)
+	... 23 more
+Caused by: java.lang.NullPointerException
+	at com.qpf.manage.commons.utils.SpringContext.getBean(SpringContext.java:36)
+	at com.qpf.manage.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 25 more
+2019-03-03 21:25:37,704 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:25:37,704 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:25:37,705 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:25:37,706 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:25:37,707 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:25:37,780 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:25:37,883 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:25:37 HKT 2019]; root of context hierarchy
+2019-03-03 21:25:37,972 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]
+2019-03-03 21:25:38,222 WARN [org.springframework.web.context.support.XmlWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+2019-03-03 21:25:38,234 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:511)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:481)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1152)
+	... 23 more
+Caused by: java.lang.NullPointerException
+	at com.qpf.manage.commons.utils.SpringContext.getBean(SpringContext.java:36)
+	at com.qpf.manage.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 25 more
+2019-03-03 21:28:27,619 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:28:27,619 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:28:27,620 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:28:27,621 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:28:27,621 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:28:27,621 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:28:27,621 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:28:27,621 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:28:27,621 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:28:27,621 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:28:27,845 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:28:27,955 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:28:27 HKT 2019]; root of context hierarchy
+2019-03-03 21:28:28,030 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]
+2019-03-03 21:28:28,291 WARN [org.springframework.web.context.support.XmlWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+2019-03-03 21:28:28,304 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:511)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:481)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1152)
+	... 23 more
+Caused by: java.lang.NullPointerException
+	at com.qpf.manage.commons.utils.SpringContext.getBean(SpringContext.java:36)
+	at com.qpf.manage.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 25 more
+2019-03-03 21:29:58,061 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:29:58,062 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:29:58,063 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:29:58,063 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:29:58,063 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:29:58,063 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:29:58,063 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:29:58,063 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:29:58,063 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:29:58,064 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:29:58,064 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:29:58,132 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:29:58,235 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:29:58 HKT 2019]; root of context hierarchy
+2019-03-03 21:29:58,334 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]
+2019-03-03 21:29:58,656 WARN [org.springframework.web.context.support.XmlWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+2019-03-03 21:29:58,671 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:511)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:481)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1152)
+	... 23 more
+Caused by: java.lang.NullPointerException
+	at com.qpf.manage.commons.utils.SpringContext.getBean(SpringContext.java:36)
+	at com.qpf.manage.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 25 more
+2019-03-03 21:31:10,826 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:31:10,827 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:31:10,827 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:31:10,827 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:31:10,827 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:31:10,827 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:31:10,827 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:31:10,828 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:31:10,829 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:31:10,829 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:31:10,829 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:31:10,829 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:31:10,829 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:31:10,829 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:31:11,054 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:31:11,168 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:31:11 HKT 2019]; root of context hierarchy
+2019-03-03 21:31:11,245 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]
+2019-03-03 21:31:14,142 WARN [org.springframework.web.context.support.XmlWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+2019-03-03 21:31:14,143 INFO [com.qpf.manage.commons.utils.SpringContext] - Clear applicationContext
+2019-03-03 21:31:14,152 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:511)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:481)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1152)
+	... 23 more
+Caused by: java.lang.IllegalStateException: applicationContext 未注入
+	at org.apache.commons.lang3.Validate.validState(Validate.java:829)
+	at com.qpf.manage.commons.utils.SpringContext.assertContextInjected(SpringContext.java:26)
+	at com.qpf.manage.commons.utils.SpringContext.getBean(SpringContext.java:35)
+	at com.qpf.manage.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 25 more
+2019-03-03 21:32:29,857 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:32:29,858 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:32:29,858 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:32:29,858 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:32:29,858 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:32:29,858 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:32:29,859 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:32:29,860 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:32:29,860 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:32:29,860 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:32:29,860 INFO [com.qpf.manage.web.controller.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:32:29,922 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:32:30,024 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:32:30 HKT 2019]; root of context hierarchy
+2019-03-03 21:32:30,112 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [/home/shadaileng/Program/idea-IU/git_repository/spring-annotation/manage/target/classes/spring-context.xml]
+2019-03-03 21:42:29,435 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:42:29,526 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:42:29,527 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:42:29,528 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:42:29,528 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:42:29,528 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:42:30,098 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:42:30,162 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:42:30 HKT 2019]; root of context hierarchy
+2019-03-03 21:42:30,372 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:42:31,068 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 970 ms
+2019-03-03 21:43:49,092 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:43:49,093 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:43:49,093 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:43:49,093 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:43:49,093 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:43:49,093 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:43:49,093 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:43:49,094 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:43:49,095 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:43:49,095 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:43:49,095 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:43:49,095 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:43:49,095 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:43:49,095 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:43:49,132 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:43:49,218 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:43:49 HKT 2019]; root of context hierarchy
+2019-03-03 21:43:49,406 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:43:50,111 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 979 ms
+2019-03-03 21:45:51,545 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:45:51,545 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:45:51,546 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:45:51,547 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:45:51,548 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:45:51,548 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:45:51,918 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:45:51,981 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:45:51 HKT 2019]; root of context hierarchy
+2019-03-03 21:45:52,189 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:45:52,743 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 824 ms
+2019-03-03 21:48:32,781 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:48:32,782 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:48:32,783 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:48:32,784 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:48:32,784 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:48:33,188 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:48:33,232 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:48:33 HKT 2019]; root of context hierarchy
+2019-03-03 21:48:33,357 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:48:33,724 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 536 ms
+2019-03-03 21:50:06,831 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:50:06,831 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:50:06,831 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:50:06,831 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:50:06,831 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:50:06,831 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:50:06,832 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:50:06,833 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:50:06,833 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:50:06,833 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:50:06,870 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:50:06,921 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:50:06 HKT 2019]; root of context hierarchy
+2019-03-03 21:50:07,080 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:50:07,512 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 642 ms
+2019-03-03 21:50:52,357 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:50:52,358 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:50:52,358 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:50:52,358 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:50:52,359 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:50:52,360 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:50:52,361 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:50:52,480 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:50:52,528 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:50:52 HKT 2019]; root of context hierarchy
+2019-03-03 21:50:52,683 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:50:53,037 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 557 ms
+2019-03-03 21:52:35,577 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:52:35,578 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:52:35,579 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:52:35,580 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:52:35,580 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:52:35,580 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:52:35,580 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:52:35,832 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:52:35,890 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:52:35 HKT 2019]; root of context hierarchy
+2019-03-03 21:52:36,006 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:52:36,394 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 561 ms
+2019-03-03 21:53:09,334 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:53:09,335 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:53:09,335 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:53:09,335 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:53:09,335 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:53:09,335 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:53:09,335 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:53:09,336 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:53:09,337 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:53:09,337 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:53:09,337 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:53:09,337 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:53:09,337 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:53:09,337 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:53:09,337 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:53:09,734 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:53:09,830 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:53:09 HKT 2019]; root of context hierarchy
+2019-03-03 21:53:10,069 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:53:10,802 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 1068 ms
+2019-03-03 21:55:20,329 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:55:20,331 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:55:20,331 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:55:20,331 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:55:20,331 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:55:20,331 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:55:20,331 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:55:20,331 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:55:20,332 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:55:20,333 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:55:20,333 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:55:20,333 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:55:20,333 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:55:20,333 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:55:20,333 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:55:20,372 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 21:55:20,451 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 21:55:20 HKT 2019]; root of context hierarchy
+2019-03-03 21:55:20,663 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 21:55:21,147 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 775 ms
+2019-03-03 21:59:47,947 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:59:47,948 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 21:59:47,948 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 21:59:47,948 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 21:59:47,948 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 21:59:47,948 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 21:59:47,948 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 21:59:47,949 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 21:59:47,950 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 21:59:47,950 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 21:59:47,950 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 21:59:47,950 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 21:59:47,950 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 21:59:47,955 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 21:59:48,003 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 21:59:48 HKT 2019]; root of context hierarchy
+2019-03-03 21:59:48,136 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.manage.web.config.RootConfig]
+2019-03-03 21:59:48,339 WARN [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.qpf.manage.web.config.RootConfig]; nested exception is java.lang.IllegalArgumentException: @ComponentScan ANNOTATION type filter requires an annotation type: interface org.springframework.web.servlet.mvc.Controller
+2019-03-03 21:59:48,356 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.qpf.manage.web.config.RootConfig]; nested exception is java.lang.IllegalArgumentException: @ComponentScan ANNOTATION type filter requires an annotation type: interface org.springframework.web.servlet.mvc.Controller
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:183)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:308)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:228)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:272)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:92)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:525)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalArgumentException: @ComponentScan ANNOTATION type filter requires an annotation type: interface org.springframework.web.servlet.mvc.Controller
+	at org.springframework.util.Assert.assignableCheckFailed(Assert.java:407)
+	at org.springframework.util.Assert.isAssignable(Assert.java:357)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.typeFiltersFor(ComponentScanAnnotationParser.java:145)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:105)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:289)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:247)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:200)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:169)
+	... 19 more
+2019-03-03 22:00:37,841 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:00:37,841 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 22:00:37,841 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 22:00:37,841 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 22:00:37,842 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 22:00:37,843 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:00:38,151 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 22:00:38,196 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 22:00:38 HKT 2019]; root of context hierarchy
+2019-03-03 22:00:38,300 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.manage.web.config.RootConfig]
+2019-03-03 22:00:39,530 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:00:47,773 WARN [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in com.qpf.manage.web.config.RootConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.UserService]: Factory method 'userService' threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+2019-03-03 22:00:47,773 INFO [com.qpf.manage.commons.utils.SpringContext] - Clear applicationContext
+2019-03-03 22:00:47,776 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in com.qpf.manage.web.config.RootConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.UserService]: Factory method 'userService' threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1178)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1072)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:511)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:481)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.UserService]: Factory method 'userService' threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	... 24 more
+Caused by: java.lang.IllegalStateException: applicationContext 未注入
+	at org.apache.commons.lang3.Validate.validState(Validate.java:829)
+	at com.qpf.manage.commons.utils.SpringContext.assertContextInjected(SpringContext.java:26)
+	at com.qpf.manage.commons.utils.SpringContext.getBean(SpringContext.java:35)
+	at com.qpf.manage.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:16)
+	at com.qpf.manage.web.config.RootConfig.userService(RootConfig.java:29)
+	at com.qpf.manage.web.config.RootConfig$$EnhancerBySpringCGLIB$$d7d6c57e.CGLIB$userService$0(<generated>)
+	at com.qpf.manage.web.config.RootConfig$$EnhancerBySpringCGLIB$$d7d6c57e$$FastClassBySpringCGLIB$$31d8b61d.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at com.qpf.manage.web.config.RootConfig$$EnhancerBySpringCGLIB$$d7d6c57e.userService(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	... 25 more
+2019-03-03 22:01:22,158 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:01:22,159 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 22:01:22,159 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 22:01:22,159 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 22:01:22,160 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 22:01:22,161 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:01:22,166 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 22:01:22,214 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 22:01:22 HKT 2019]; root of context hierarchy
+2019-03-03 22:01:22,336 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.manage.web.config.RootConfig]
+2019-03-03 22:01:22,861 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:03:56,606 WARN [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in com.qpf.manage.web.config.RootConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.UserService]: Factory method 'userService' threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+2019-03-03 22:03:56,606 INFO [com.qpf.manage.commons.utils.SpringContext] - Clear applicationContext
+2019-03-03 22:03:56,610 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in com.qpf.manage.web.config.RootConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.UserService]: Factory method 'userService' threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1178)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1072)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:511)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:481)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4937)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.qpf.manage.service.UserService]: Factory method 'userService' threw exception; nested exception is java.lang.IllegalStateException: applicationContext 未注入
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	... 24 more
+Caused by: java.lang.IllegalStateException: applicationContext 未注入
+	at org.apache.commons.lang3.Validate.validState(Validate.java:829)
+	at com.qpf.manage.commons.utils.SpringContext.assertContextInjected(SpringContext.java:26)
+	at com.qpf.manage.commons.utils.SpringContext.getBean(SpringContext.java:35)
+	at com.qpf.manage.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:16)
+	at com.qpf.manage.web.config.RootConfig.userService(RootConfig.java:29)
+	at com.qpf.manage.web.config.RootConfig$$EnhancerBySpringCGLIB$$e3b5d0f2.CGLIB$userService$0(<generated>)
+	at com.qpf.manage.web.config.RootConfig$$EnhancerBySpringCGLIB$$e3b5d0f2$$FastClassBySpringCGLIB$$c2a99451.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at com.qpf.manage.web.config.RootConfig$$EnhancerBySpringCGLIB$$e3b5d0f2.userService(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	... 25 more
+2019-03-03 22:05:34,065 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:05:34,066 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 22:05:34,066 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 22:05:34,067 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 22:05:34,068 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 22:05:34,069 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 22:05:34,069 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 22:05:34,069 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:05:34,081 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 22:05:34,142 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 22:05:34 HKT 2019]; root of context hierarchy
+2019-03-03 22:05:34,265 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.manage.web.config.RootConfig]
+2019-03-03 22:05:34,729 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:05:35,334 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 1253 ms
+2019-03-03 22:05:35,363 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 22:05:35,371 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 22:05:35 HKT 2019]; parent: Root WebApplicationContext
+2019-03-03 22:05:35,375 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:05:36,289 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 926 ms
+2019-03-03 22:08:45,982 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 22:08:45,983 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 22:08:45,984 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 22:08:45,985 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 22:08:45,985 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 22:08:45,985 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:08:46,199 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 22:08:46,240 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 22:08:46 HKT 2019]; root of context hierarchy
+2019-03-03 22:08:46,310 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.manage.web.config.RootConfig]
+2019-03-03 22:08:46,598 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:08:46,724 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 524 ms
+2019-03-03 22:08:46,927 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 22:08:46,932 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 22:08:46 HKT 2019]; parent: Root WebApplicationContext
+2019-03-03 22:08:46,934 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:08:47,182 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 255 ms
+2019-03-03 22:13:41,995 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:13:42,011 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-03 22:13:42,011 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-03 22:13:42,011 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class com.qpf.manage.web.controller.UserController
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-03 22:13:42,012 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-03 22:13:42,013 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-03 22:13:42,013 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-03 22:13:42,013 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-03 22:13:42,013 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-03 22:13:42,013 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-03 22:13:42,013 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-03 22:13:42,013 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-03 22:13:42,014 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-03 22:13:42,014 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-03 22:13:42,014 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-03 22:13:42,014 INFO [com.qpf.manage.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-03 22:13:42,148 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-03 22:13:42,178 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sun Mar 03 22:13:42 HKT 2019]; root of context hierarchy
+2019-03-03 22:13:42,267 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.manage.web.config.RootConfig]
+2019-03-03 22:13:42,672 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:13:42,894 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 746 ms
+2019-03-03 22:13:42,979 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-03 22:13:42,985 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Mar 03 22:13:42 HKT 2019]; parent: Root WebApplicationContext
+2019-03-03 22:13:42,989 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-03 22:13:43,364 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 385 ms
+2019-03-03 22:14:01,057 INFO [com.qpf.manage.dao.impl.UserDaoImpl] - get User: User{username='shadaileng', userPwd='null', email='admin@qq.com'}
