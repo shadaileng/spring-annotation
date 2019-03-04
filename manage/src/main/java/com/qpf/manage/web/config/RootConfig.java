@@ -20,12 +20,4 @@ public class RootConfig {
     public SpringContext springContext() {
         return new SpringContext();
     }
-    @Bean
-    public UserDao userDao() {
-        return new UserDaoImpl();
-    }
-    @Bean
-    public UserService userService() {
-        return new UserServiceImpl();
-    }
 }
