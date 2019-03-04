@@ -5,9 +5,9 @@ import com.qpf.manage.entity.User;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component("userDao")
+@Repository("userDao")
 public class UserDaoImpl implements UserDao {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
     @Override
@@ -20,6 +20,7 @@ public class UserDaoImpl implements UserDao {
                 user = new User();
                 user.setEmail(email);
                 user.setUsername("shadaileng");
+                user.setUserPwd("******");
 
                 logger.info("get User: {}", user);
             }

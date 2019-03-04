@@ -23,7 +23,7 @@ public class SpringContext implements ApplicationContextAware, DisposableBean {
     }
 
     private static void assertContextInjected() {
-        Validate.validState(applicationContext == null, "applicationContext 未注入");
+        Validate.validState(applicationContext != null, "applicationContext 未注入");
     }
 
     public static ApplicationContext getApplicationContext() {

@@ -19,7 +19,6 @@ import java.io.IOException;
 @WebServlet("/login")
 public class UserController extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-//    @Autowired
     private UserService userService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,7 +41,8 @@ public class UserController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-        userService = (UserService) context.getBean("userService");
+//        WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+//        userService = (UserService) context.getBean("userService");
+        userService = SpringContext.getBean("userService");
     }
 }
