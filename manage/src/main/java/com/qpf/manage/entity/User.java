@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String username;
-    private String userPwd;
+    private String password;
     private String email;
 
     public String getUsername() {
@@ -15,12 +15,12 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public String getUserPwd() {
-        return userPwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -35,7 +35,7 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
-                ", userPwd='" + userPwd + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

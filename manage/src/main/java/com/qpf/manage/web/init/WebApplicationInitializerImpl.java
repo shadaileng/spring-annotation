@@ -1,5 +1,6 @@
 package com.qpf.manage.web.init;
 
+import com.qpf.manage.web.config.DataConfig;
 import com.qpf.manage.web.config.RootConfig;
 import com.qpf.manage.web.config.WebConfig;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ public class WebApplicationInitializerImpl extends AbstractAnnotationConfigDispa
     private static final Logger logger = LoggerFactory.getLogger(WebApplicationInitializer.class);
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{RootConfig.class};
+        return new Class[]{RootConfig.class, DataConfig.class};
     }
 
     @Override
@@ -48,4 +49,5 @@ public class WebApplicationInitializerImpl extends AbstractAnnotationConfigDispa
         registration.setInitParameter("defaultHtmlEscape", "true");
         registration.setInitParameter("spring.profiles.active", "default");
     }
+
 }

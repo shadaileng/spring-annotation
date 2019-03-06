@@ -15,11 +15,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
     @Override
-    public User login(String email, String passworld) {
-        logger.debug("call login | email: {}, password: {}", email, passworld);
+    public User login(String email, String password) {
+        logger.debug("call login | email: {}, password: {}", email, password);
         User user = null;
 
-        user = userDao.getUserByEmailAndPassword(email, passworld);
+        user = userDao.getUserByEmailAndPassword(email, password);
 
         return user;
     }
