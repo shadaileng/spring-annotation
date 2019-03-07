@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 //@Repository("userDao")
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
-    @Override
+//    @Override
     public User getUserByEmailAndPassword(String email, String password) {
         logger.debug("call getUserByEmailAndPassword() | email: {}, password: {}", email, password);
         User user = null;
@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    @Override
+//    @Override
     public List<User> getAll() {
         return null;
     }

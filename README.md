@@ -358,6 +358,14 @@
     jdbc.user=
     jdbc.password=
     ```
+    > `sqlite3`的`url`配置方式
+    - `jdbc:sqlite::resource:path/to/file`: 类路径下的`db`文件
+    - `jdbc:sqlite:file:path/to/file`: 绝对路径
+    - `jdbc:sqlite:/path/to/file`: 绝对路径
+    - `jdbc:sqlite:path/to/file`: 当前项目下的路径
+    - `jdbc:sqlite::memory:`: 内存中的数据库
+    - `jdbc:sqlite::xxx:mode=memory`: 内存
+    
 5. 初始数据和实体类
     ```sql
     Create table if not exists person(
