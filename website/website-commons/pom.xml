@@ -14,5 +14,14 @@
     <artifactId>website-commons</artifactId>
     <packaging>jar</packaging>
     <name>website-commons</name>
+    <dependencies>
+        <!-- Servlet Begin -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Servlet End -->
+    </dependencies>
 
 </project>

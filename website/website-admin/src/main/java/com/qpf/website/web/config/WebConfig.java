@@ -32,7 +32,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("druid/**", "login/**");
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("1druid/**", "/1login/**");
     }
     /**
      * 静态资源映射
