@@ -1,11 +1,11 @@
 package com.qpf.website.web.interceptor;
 
+import com.qpf.website.commons.utils.Constant;
 import com.qpf.website.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import com.qpf.website.commons.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,12 +24,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         logger.info("user in session: {}, uri: {}", user, uri);
         if (user == null && !uri.startsWith(request.getContextPath() + "/login")) {
             logger.info("redirect to login");
-            response.sendRedirect("login");
+            response.sendRedirect(String.format("%s%s", request.getContextPath(), "/login"));
             return false;
         }
         if (user != null && uri.startsWith(request.getContextPath() + "/login")) {
             logger.info("redirect to main");
-            response.sendRedirect("main");
+            response.sendRedirect(String.format("%s%s", request.getContextPath(), "/main"));
             return false;
         }
         return true;

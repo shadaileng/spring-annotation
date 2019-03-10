@@ -11,8 +11,8 @@ public class User implements Serializable {
     private String password;
     private String email;
     private String phone;
-    private Date create;
-    private Date update;
+    private Date created;
+    private Date updated;
 
     public Integer getId() {
         return id;
@@ -54,20 +54,20 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public Date getCreate() {
-        return create;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setCreate(Date create) {
-        this.create = create;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Date getUpdate() {
-        return update;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public void setUpdate(Date update) {
-        this.update = update;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     @Override
@@ -78,8 +78,8 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", create=" + create +
-                ", update=" + update +
+                ", created=" + created +
+                ", updated=" + updated +
                 '}';
     }
 }

@@ -1,7 +1,7 @@
 package com.qpf.website.web.controller;
 
-import com.qpf.website.commons.Constant;
-import com.qpf.website.commons.CookieUtils;
+import com.qpf.website.commons.utils.Constant;
+import com.qpf.website.commons.utils.CookieUtils;
 import com.qpf.website.entity.User;
 import com.qpf.website.service.UserService;
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,24 +31,28 @@ public class LoginController {
             String password = split[1];
             map.put("email", email);
             map.put("password", password);
-//            map.put("isRemember", true);
+            map.put("isRemember", true);
         }
+        logger.info(request.getParameter("msg"));
         return "login";
     }
     @PostMapping("login")
-    public String doLogin(String email, String password, boolean isRemember, HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+    public String doLogin(String email, String password, boolean isRemember, HttpServletRequest request, HttpServletResponse response, RedirectAttributes map) {
         User user = userService.login(email, password);
-        logger.info("isRemember: {}", isRemember);
         if (user != null) {
+            logger.info("isRemember: {}", isRemember);
             request.getSession().setAttribute(Constant.SESSION_USER, user);
+            logger.info("set Cookies");
             if (isRemember) {
-                logger.info("set Cookies");
                 CookieUtils.setCookie(request, response, Constant.COOKIE_LOGIN_USER, String.format("%s:%s", email, password), 7 * 24 * 60 * 60);
+            } else {
+                CookieUtils.setCookie(request, response, Constant.COOKIE_LOGIN_USER, "", 7 * 24 * 60 * 60);
             }
             return "redirect:main";
         }
         else {
-            map.put("msg", "用户注册失败");
+            logger.warn("用户登陆失败");
+            map.addFlashAttribute("msg", "用户登陆失败");
             return "redirect:login";
         }
     }

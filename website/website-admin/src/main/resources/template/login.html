@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +33,9 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-
+        <div class="callout callout-danger" th:if="${msg != null}">
+            <p th:utext="${msg}"></p>
+        </div>
         <form action="login" method="post">
             <div class="form-group has-feedback">
                 <input name="email" type="email" class="form-control" placeholder="Email" th:value="${email}">
@@ -46,12 +48,12 @@
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox" name="isRemember" > Remember Me
+                        <label th:if="${isRemember != null}">
+                            <input type="checkbox" name="isRemember" checked> Remember Me
                         </label>
-                        <label th:text="${email}"></label>
-                        <label th:text="${password}"></label>
-                        <label th:text="${isRemember}"></label>
+                        <label th:if="${isRemember == null}">
+                            <input type="checkbox" name="isRemember"> Remember Me
+                        </label>
                     </div>
                 </div>
                 <!-- /.col -->

@@ -1,9 +1,7 @@
 package com.qpf.website.dao;
 
 import com.qpf.website.entity.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,4 +13,13 @@ public interface UserDao {
     User getUserByEmail(@Param("email") String email);
     @Select("SELECT * FROM USER")
     List<User> getAll();
+    @Insert("insert into user(username, password, email, phone, created, updated) values(#{username}, #{password}, #{email}, #{phone}, #{created}, #{updated})")
+    @Options(useGeneratedKeys = true)
+    int insert(User user);
+    @Update("UPDATE USER set username=#{username}, email=#{email}, phone=#{phone}, updated=#{updated} where id=#{id}")
+    int update(User user);
+    @Delete("DELETE FROM USER WHERE id = #{id}")
+    int deleteUserById(int id);
+    @Select("SELECT * FROM USER WHERE id = #{id}")
+    User selectUserById(int id);
 }
