@@ -25,6 +25,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     private String VIEWS = "classpath:template/";
     private String CHARACTER_ENCODING = "UTF-8";
     private boolean THYMELEAF_CACHE = false;
+    private String RESOURCES_LOCATION = "static/";
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -39,6 +40,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(RESOURCES_LOCATION + "**").addResourceLocations("classpath:/public/");
 //        registry.addResourceHandler(RESOURCES_LOCATION + "**").addResourceLocations(RESOURCES_LOCATION);
     }
 

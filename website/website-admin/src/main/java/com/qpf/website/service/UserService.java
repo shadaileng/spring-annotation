@@ -13,4 +13,6 @@ public interface UserService {
     List<User> list();
 
     BaseResult delete(int id);
+
+    User getUserById(int id);
 }

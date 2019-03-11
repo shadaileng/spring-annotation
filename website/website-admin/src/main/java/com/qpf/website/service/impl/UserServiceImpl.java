@@ -54,6 +54,11 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
+    @Override
+    public User getUserById(int id) {
+        return userDao.selectUserById(id);
+    }
+
     public BaseResult save(User user) {
 
         BaseResult result = checkUser(user);
@@ -69,7 +74,7 @@ public class UserServiceImpl implements UserService {
                 }
                 // 新增
                 else {
-                    user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+                    user.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
                     user.setCreated(now);
                     if (userDao.insert(user) <= 0) {
                         result = BaseResult.failed("新增用户失败");

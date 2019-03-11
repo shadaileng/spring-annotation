@@ -5,6 +5,7 @@ import com.qpf.website.entity.User;
 import com.qpf.website.web.config.DataConfig;
 import com.qpf.website.web.config.RootConfig;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -36,6 +37,7 @@ public class TestDataConfig {
         System.out.println(users);
     }
 
+    @Ignore
     @Test
     public void testInsert() {
         int insert = 0;
@@ -55,6 +57,8 @@ public class TestDataConfig {
         Assert.assertEquals(insert, 1);
     }
 
+
+    @Ignore
     @Test
     public void testUpdate() {
         int update = 0;
