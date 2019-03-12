@@ -5543,3 +5543,71 @@
 2019-03-12 17:28:20,273 INFO [com.qpf.website.web.interceptor.LoginInterceptor] - user in session: null, uri: /admin/
 2019-03-12 17:28:20,274 INFO [com.qpf.website.web.interceptor.LoginInterceptor] - redirect to login
 2019-03-12 17:28:20,284 INFO [com.qpf.website.web.interceptor.LoginInterceptor] - user in session: null, uri: /admin/login
+2019-03-12 17:29:41,903 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-12 17:29:41,906 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.DefaultServlet
+2019-03-12 17:29:41,907 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.LiveBeansViewServlet
+2019-03-12 17:29:41,907 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.JMXProxyServlet
+2019-03-12 17:29:41,907 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.runtime.HttpJspBase
+2019-03-12 17:29:41,907 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.jasper.servlet.JspServlet
+2019-03-12 17:29:41,907 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.CGIServlet
+2019-03-12 17:29:41,908 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.HttpServletBean
+2019-03-12 17:29:41,908 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HTMLHostManagerServlet
+2019-03-12 17:29:41,908 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.DispatcherServlet
+2019-03-12 17:29:41,908 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class com.alibaba.druid.support.http.ResourceServlet
+2019-03-12 17:29:41,908 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.StatusManagerServlet
+2019-03-12 17:29:41,909 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.web.context.support.HttpRequestHandlerServlet
+2019-03-12 17:29:41,909 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.FrameworkServlet
+2019-03-12 17:29:41,909 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class com.alibaba.druid.support.http.StatViewServlet
+2019-03-12 17:29:41,909 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.host.HostManagerServlet
+2019-03-12 17:29:41,912 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class com.alibaba.druid.support.monitor.MonitorServlet
+2019-03-12 17:29:41,912 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.servlets.WebdavServlet
+2019-03-12 17:29:41,913 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.ssi.SSIServlet
+2019-03-12 17:29:41,913 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.test.web.servlet.TestDispatcherServlet
+2019-03-12 17:29:41,913 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.HTMLManagerServlet
+2019-03-12 17:29:41,913 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ViewRendererServlet
+2019-03-12 17:29:41,914 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.springframework.web.servlet.ResourceServlet
+2019-03-12 17:29:41,914 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.manager.ManagerServlet
+2019-03-12 17:29:41,914 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - class org.apache.catalina.websocket.WebSocketServlet
+2019-03-12 17:29:41,914 INFO [com.qpf.website.web.init.ServletContainerInitializerImpl] - ***********************************************************************************
+2019-03-12 17:29:42,237 INFO [org.springframework.web.WebApplicationInitializer] - **************************************************************************
+2019-03-12 17:29:42,238 INFO [org.springframework.web.WebApplicationInitializer] - DispactcherServlet mapping: /
+2019-03-12 17:29:42,238 INFO [org.springframework.web.WebApplicationInitializer] - **************************************************************************
+2019-03-12 17:29:42,244 INFO [org.springframework.web.WebApplicationInitializer] - **************************************************************************
+2019-03-12 17:29:42,244 INFO [org.springframework.web.WebApplicationInitializer] - CharacterEncodingFilter set Encoding: UTF-8, forceEncoding: true
+2019-03-12 17:29:42,245 INFO [org.springframework.web.WebApplicationInitializer] - **************************************************************************
+2019-03-12 17:29:42,252 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2019-03-12 17:29:42,294 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Tue Mar 12 17:29:42 CST 2019]; root of context hierarchy
+2019-03-12 17:29:42,399 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.website.web.config.RootConfig,class com.qpf.website.web.config.DataConfig]
+2019-03-12 17:29:43,175 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-12 17:29:43,927 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2019-03-12 17:29:45,015 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/login || ],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.LoginController.login(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-12 17:29:45,018 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/logout],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-12 17:29:45,019 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/login],methods=[POST]}" onto public java.lang.String com.qpf.website.web.controller.LoginController.doLogin(java.lang.String,java.lang.String,boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2019-03-12 17:29:45,022 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/main],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.MainController.main()
+2019-03-12 17:29:45,027 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/add],methods=[POST]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.add(com.qpf.website.entity.User)
+2019-03-12 17:29:45,028 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/{id}],methods=[GET]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.get(java.lang.Integer)
+2019-03-12 17:29:45,029 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/update],methods=[POST]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.update(com.qpf.website.entity.User)
+2019-03-12 17:29:45,029 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/delete],methods=[POST]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.delete(java.lang.String[])
+2019-03-12 17:29:45,030 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/list],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.UserController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-12 17:29:45,193 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-12 17:29:45,202 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+2019-03-12 17:29:45,703 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Tue Mar 12 17:29:42 CST 2019]; root of context hierarchy
+2019-03-12 17:29:46,493 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 4241 ms
+2019-03-12 17:29:46,582 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization started
+2019-03-12 17:29:46,589 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Mar 12 17:29:46 CST 2019]; parent: Root WebApplicationContext
+2019-03-12 17:29:46,592 INFO [org.springframework.web.context.support.AnnotationConfigWebApplicationContext] - Registering annotated classes: [class com.qpf.website.web.config.WebConfig]
+2019-03-12 17:29:46,718 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-12 17:29:46,899 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-2} inited
+2019-03-12 17:29:47,044 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/login || ],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.LoginController.login(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-12 17:29:47,045 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/logout],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-12 17:29:47,045 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/login],methods=[POST]}" onto public java.lang.String com.qpf.website.web.controller.LoginController.doLogin(java.lang.String,java.lang.String,boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2019-03-12 17:29:47,046 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/main],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.MainController.main()
+2019-03-12 17:29:47,051 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/add],methods=[POST]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.add(com.qpf.website.entity.User)
+2019-03-12 17:29:47,051 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/{id}],methods=[GET]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.get(java.lang.Integer)
+2019-03-12 17:29:47,052 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/update],methods=[POST]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.update(com.qpf.website.entity.User)
+2019-03-12 17:29:47,052 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/delete],methods=[POST]}" onto public java.lang.Object com.qpf.website.web.controller.UserController.delete(java.lang.String[])
+2019-03-12 17:29:47,053 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/user/list],methods=[GET]}" onto public java.lang.String com.qpf.website.web.controller.UserController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-12 17:29:47,122 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-12 17:29:47,124 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+2019-03-12 17:29:47,211 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Mar 12 17:29:46 CST 2019]; parent: Root WebApplicationContext
+2019-03-12 17:29:47,589 INFO [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcher': initialization completed in 1006 ms
