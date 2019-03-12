@@ -14,6 +14,8 @@
     <link href="https://cdn.bootcss.com/ionicons/4.4.8/css/ionicons.min.css" rel="stylesheet"/>
     <!-- Theme style -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.9/css/AdminLTE.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="https://cdn.bootcss.com/iCheck/1.0.2/skins/square/blue.css" rel="stylesheet">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.9/css/skins/_all-skins.min.css" rel="stylesheet"/>
@@ -52,14 +54,15 @@
             <!-- Main content -->
             <section class="content">
                 <!-- Small boxes (Stat box) -->
+
                 <div class="row">
-                    <div class="box-tools col-md-4">
-                        <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i>新增</a>
-                        <a type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>删除</a>
-                        <a type="button" class="btn btn-success btn-sm"><i class="fa fa-upload"></i>上传</a>
-                        <a type="button" class="btn btn-warning btn-sm"><i class="fa  fa-download"></i>导出</a>
+                    <div class="box-tools col-xs-12 col-sm-4">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i>新增</button>
+                        <button type="button" class="btn btn-danger btn-sm" id="batchDel"><i class="fa fa-trash"></i>删除</button>
+                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-upload"></i>上传</button>
+                        <button type="button" class="btn btn-warning btn-sm"><i class="fa  fa-download"></i>导出</button>
                     </div>
-                    <div class="box-tools col-md-2 col-md-offset-6">
+                    <div class="box-tools col-xs-12 col-sm-2 col-sm-offset-5">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
                             <div class="input-group-btn">
@@ -69,10 +72,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th><input type="checkbox" class="minimal check-master"></th>
                                     <th>ID</th>
                                     <th>姓名</th>
                                     <th>邮箱</th>
@@ -84,6 +88,7 @@
                             </thead>
                             <tbody>
                                 <tr th:each="user: ${users}">
+                                    <td ><input type="checkbox" class="minimal" th:attr="data-id=${user.id}"></td>
                                     <td th:utext="${user.id}"></td>
                                     <td th:utext="${user.username}"></td>
                                     <td th:utext="${user.email}"></td>
@@ -91,8 +96,8 @@
                                     <td th:utext="${#dates.format(user.created,'yyyy-MM-dd HH:mm:ss')}"></td>
                                     <td th:utext="${#dates.format(user.updated,'yyyy-MM-dd HH:mm:ss')}"></td>
                                     <td >
-                                        <a type="button" class="btn btn-success btn-xs" th:attr="data-id=${user.id}" data-toggle="modal" data-target="#modal-default"><i class="fa fa-edit"></i>更新</a>
-                                        <a type="button" class="btn btn-danger btn-xs" th:attr="data-id=${user.id}"><i class="fa fa-trash"></i>删除</a>
+                                        <button type="button" class="btn btn-success btn-xs" th:attr="data-id=${user.id}" data-toggle="modal" data-target="#modal-default"><i class="fa fa-edit"></i>更新</button>
+                                        <button type="button" class="btn btn-danger btn-xs" th:attr="data-id=${user.id}" name="del"><i class="fa fa-trash"></i>删除</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -112,22 +117,24 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">新增用户</h4>
+                    <h4 class="modal-title" id="modal_title">新增用户</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form" id="inputForm">
+                        <input type="hidden" name="id">
                         <div class="form-group">
                             <label class="control-label" for="inputUsername"><i class="fa fa-user"></i>姓名:</label>
                             <input type="text" class="form-control required" id="inputUsername" placeholder="请输入姓名..." name="username">
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="inputEmail"><i class="fa fa-envelope-o"></i>邮箱:</label>
-                            <input type="text" class="form-control required" id="inputEmail" placeholder="请输入邮箱地址..." name="email">
+                            <input type="email" class="form-control required" id="inputEmail" placeholder="请输入邮箱地址..." name="email">
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="inputPhone"><i class="fa fa-mobile"></i>手机:</label>
-                            <input type="text" class="form-control required" id="inputPhone" placeholder="请输入手机号码..." name="phone">
+                            <input type="number" maxlength="11" minlength="11" class="form-control required mobile" id="inputPhone" placeholder="请输入手机号码..." name="phone">
                         </div>
+                        <!--<input type="submit">-->
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -158,59 +165,19 @@
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.9/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.9/js/demo.js"></script>
+    <!-- iCheck -->
+    <script src="https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
     <!-- jQuery-validate -->
     <script src="https://cdn.bootcss.com/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.bootcss.com/jquery-validate/1.19.0/additional-methods.js"></script>
     <script src="https://cdn.bootcss.com/jquery-validate/1.19.0/localization/messages_zh.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
     <script th:src="@{/static/js/validate.js}"></script>
+    <script th:src="@{/static/js/app.js}"></script>
     <script>
-        function setFormData(data, formId) {
-            for (let key in data) {
-                // console.log(key, data[key])
-                let tag = $(formId).find('[name="' + key + '"]');
-                if (tag.length > 1) {
-                    tag.prop('checked', false);
-                    if(data[key]) {
-                        let item = data[key].split(',');
-                        item.forEach((el, i) => {
-                            let e = $(formId).find('[name="' + key + '"][value="' + el + '"]');
-                            e.prop('checked', true)
-                        })
-                    }
-                } else {
-                    tag.val(data[key])
-                }
-            }
-        }
         $(function () {
-            $('#modal-default').on('shown.bs.modal', function (e) {
-                let id = $(e.relatedTarget).data('id')
-                if (id) {
-                    $.ajax({
-                        url: id,
-                        type: 'GET',
-                        beforeSend: function () {
-
-                        },
-                        success: function (result) {
-                            console.log('查询成功: ')
-                            setFormData(result, "#inputForm")
-                        },
-                        error: function () {
-                            console.log('查询失败')
-                            setFormData({username:'',email: '', phone: ''}, "#inputForm")
-                        }
-                    })
-                } else {
-                    console.log("清空表单")
-                    setFormData({username:'',email: '', phone: ''}, "#inputForm")
-                }
-            })
-            $('#modal_save').on("click", function () {
-                console.log("save...")
-            })
-
             Validate.validateForm('inputForm')
+            APP.initModal('#modal-default', '更新用户', '新增用户')
         })
     </script>
 </body>

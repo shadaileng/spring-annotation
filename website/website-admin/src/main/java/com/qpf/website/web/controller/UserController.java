@@ -1,16 +1,15 @@
 package com.qpf.website.web.controller;
 
+import com.qpf.website.commons.dto.BaseResult;
 import com.qpf.website.entity.User;
 import com.qpf.website.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +38,45 @@ public class UserController {
         } catch (Exception e) {
             logger.error("getUserById({id}): {}", id, e.getMessage());
         }
-
         return user;
+    }
+    @ResponseBody
+    @PostMapping("add")
+    public Object add(User user) {
+        BaseResult result = null;
+
+        try {
+            result = userService.save(user);
+        } catch (Exception e) {
+            result = BaseResult.failed("新增用户失败");
+        }
+
+        return result;
+    }
+    @ResponseBody
+    @PostMapping("update")
+    public Object update(User user) {
+        BaseResult result = null;
+
+        try {
+            result = userService.save(user);
+        } catch (Exception e) {
+            result = BaseResult.failed("新增用户失败");
+        }
+
+        return result;
+    }
+    @ResponseBody
+    @PostMapping("delete")
+    public Object delete(String[] ids) {
+        BaseResult result = null;
+        try {
+            result = userService.delete(Arrays.asList(ids));
+//            result = BaseResult.success();
+        } catch (Exception e) {
+            result = BaseResult.failed("删除用户失败");
+        }
+
+        return result;
     }
 }

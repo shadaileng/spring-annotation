@@ -18,8 +18,13 @@ public interface UserDao {
     int insert(User user);
     @Update("UPDATE USER set username=#{username}, email=#{email}, phone=#{phone}, updated=#{updated} where id=#{id}")
     int update(User user);
-    @Delete("DELETE FROM USER WHERE id = #{id}")
-    int deleteUserById(int id);
+    @Delete("<script>" +
+            "DELETE FROM USER WHERE id in" +
+            "<foreach item='id' collection='list' open='(' separator=',' close=')'>" +
+            " #{id}" +
+            "</foreach>" +
+            "</script>")
+    int deleteUserById(List<String> ids);
     @Select("SELECT * FROM USER WHERE id = #{id}")
     User selectUserById(int id);
 }

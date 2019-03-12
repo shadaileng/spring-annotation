@@ -12,7 +12,7 @@ public interface UserService {
 
     List<User> list();
 
-    BaseResult delete(int id);
+    BaseResult delete(List<String> ids);
 
     User getUserById(int id);
 }

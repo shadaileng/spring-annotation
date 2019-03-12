@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
         user = userDao.getUserByEmail(email);
 
-        if (!user.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))) {
+        if (user != null && !user.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))) {
             user = null;
         }
 
@@ -41,10 +41,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResult delete(int id) {
-        BaseResult result = BaseResult.success();
+    public BaseResult delete(List<String> ids) {
+        BaseResult result = BaseResult.success("删除成功");
         try {
-            if (userDao.deleteUserById(id) <= 0) {
+            if (userDao.deleteUserById(ids) <= 0) {
                 result = BaseResult.failed("删除失败");
             }
         } catch (Exception e) {
@@ -99,12 +99,12 @@ public class UserServiceImpl implements UserService {
             result = BaseResult.failed("邮箱不能为空");
         } else if(!RegexpUtils.checkEmail(user.getEmail())) {
             result = BaseResult.failed("邮箱格式不正确");
-        } else if (userDao.getUserByEmail(user.getEmail()) != null) {
+        } else if (user.getId() == null && userDao.getUserByEmail(user.getEmail()) != null) {
             result = BaseResult.failed("邮箱已注册");
         }
         if (StringUtils.isBlank(user.getPhone())) {
             result = BaseResult.failed("手机号码不能为空");
-        } else if(!RegexpUtils.checkEmail(user.getPhone())) {
+        } else if(!RegexpUtils.checkPhone(user.getPhone())) {
             result = BaseResult.failed("手机号码格式不正确");
         }
 
