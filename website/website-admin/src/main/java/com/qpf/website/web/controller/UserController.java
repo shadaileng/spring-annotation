@@ -79,4 +79,11 @@ public class UserController {
 
         return result;
     }
+    @ResponseBody
+    @GetMapping("load")
+    public Object load() {
+        List<User> users = userService.list();
+
+        return users;
+    }
 }

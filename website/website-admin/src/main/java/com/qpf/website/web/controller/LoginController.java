@@ -31,7 +31,7 @@ public class LoginController {
                 String email = split[0];
                 String password = split[1];
                 map.put("email", email);
-                map.put("password", password);
+                map.put("password", StringUtils.equals("-", password) ? "" : password);
                 map.put("isRemember", true);
             }
             logger.info(request.getParameter("msg"));
