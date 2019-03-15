@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Demo</title>
     <meta charset="UTF-8">
@@ -42,10 +42,54 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script th:src="@{/static/js/utils.js}"></script>
     <script>
+
         $(function () {
+            let data = [{
+                id: 1,
+                name: 'sdl',
+                email: 'sdl@qq.com',
+                phone: 13300001111,
+                created: new Date().toLocaleString(),
+                updated: new Date().toLocaleString()
+            },
+            {
+                id: 2,
+                name: 'qpf',
+                email: 'qpf@qq.com',
+                phone: 13300001111,
+                created: new Date().toLocaleString(),
+                updated: new Date().toLocaleString()
+            },
+            {
+                id: 3,
+                name: 'qpf',
+                email: 'qpf@qq.com',
+                phone: 13300001111,
+                created: new Date().toLocaleString(),
+                updated: function () {
+                    return '<input type="checkbox" class="minimal check-master">'
+                }
+            },]
+            let columns = ['id', 'username', 'email', 'phone', 'created', 'updated']
             console.log("load....")
+            AJAX.open({
+                url: '1',
+                success: function (result) {
+                    data = [result]
+                }
+            })
+            console.log(data)
+            TableUtils.init({
+                target: '#tmp',
+                data: data,
+                columns: columns
+            })
+            // TableUtils.setTableData(data, '#tmp');
+
         })
+
     </script>
 </body>
 </html>

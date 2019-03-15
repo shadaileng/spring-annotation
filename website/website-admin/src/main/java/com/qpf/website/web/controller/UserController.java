@@ -20,6 +20,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("test")
+    public String test(Map<String, Object> map) {
+        List<User> users = userService.list();
+
+        map.put("users", users);
+
+        return "demo";
+    }
     @GetMapping("list")
     public String list(Map<String, Object> map) {
         List<User> users = userService.list();
