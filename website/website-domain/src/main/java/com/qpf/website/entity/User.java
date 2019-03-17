@@ -1,5 +1,7 @@
 package com.qpf.website.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ public class User implements Serializable {
 
     private Integer id;
     private String username;
+    @JsonIgnore
     private String password;
     private String email;
     private String phone;

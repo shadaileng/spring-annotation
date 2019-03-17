@@ -1,6 +1,7 @@
 package com.qpf.website.web.controller;
 
 import com.qpf.website.commons.dto.BaseResult;
+import com.qpf.website.commons.dto.PageInfo;
 import com.qpf.website.entity.User;
 import com.qpf.website.service.UserService;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -93,5 +95,12 @@ public class UserController {
         List<User> users = userService.list();
 
         return users;
+    }
+    @ResponseBody
+    @GetMapping("page")
+    public Object loadPage(@RequestParam(required = false, defaultValue = "0") Integer start, @RequestParam(required = false, defaultValue = "2") Integer length) {
+        PageInfo<User> pageInfo = userService.page(start, length, new User());
+
+        return pageInfo;
     }
 }

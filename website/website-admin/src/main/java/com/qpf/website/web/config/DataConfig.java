@@ -16,7 +16,8 @@ import javax.sql.DataSource;
 @MapperScan({"com.qpf.website.dao"})
 public class DataConfig {
     private String JDBC_DRIVER_CLASS = "org.sqlite.JDBC";
-    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:F:/qipf/dev/ideaIU/git-respository/spring-annotation/data/data.db";
+    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:/home/shadaileng/develop/Git/repository/spring-annotation/data/data.db";
+//    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:F:/qipf/dev/ideaIU/git-respository/spring-annotation/data/data.db";
 //    private String JDBC_CONNECTION_URL = "jdbc:sqlite::resource:data/data.db";
     private String JDBC_USERNAME = "";
     private String JDBC_PASSWORD = "";

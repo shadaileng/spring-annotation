@@ -1,6 +1,7 @@
 package com.qpf.website.service;
 
 import com.qpf.website.commons.dto.BaseResult;
+import com.qpf.website.commons.dto.PageInfo;
 import com.qpf.website.entity.User;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface UserService {
     BaseResult delete(List<String> ids);
 
     User getUserById(int id);
+
+    PageInfo<User> page(Integer start, Integer length, User user);
 }

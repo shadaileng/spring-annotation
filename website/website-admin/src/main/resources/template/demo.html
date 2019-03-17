@@ -24,6 +24,7 @@
                 <table class="table table-bordered table-hover" id="tmp">
                     <thead>
                     <tr>
+                        <th><input type="checkbox"></th>
                         <th>ID</th>
                         <th>姓名</th>
                         <th>邮箱</th>
@@ -33,6 +34,7 @@
                     </tr>
                     </thead>
                     <tbody></tbody>
+                    <tfoot><tr></tr></tfoot>
                 </table>
             </div>
         </div>
@@ -46,45 +48,89 @@
     <script>
 
         $(function () {
-            let data = [{
-                id: 1,
-                name: 'sdl',
-                email: 'sdl@qq.com',
-                phone: 13300001111,
-                created: new Date().toLocaleString(),
-                updated: new Date().toLocaleString()
-            },
-            {
-                id: 2,
-                name: 'qpf',
-                email: 'qpf@qq.com',
-                phone: 13300001111,
-                created: new Date().toLocaleString(),
-                updated: new Date().toLocaleString()
-            },
-            {
-                id: 3,
-                name: 'qpf',
-                email: 'qpf@qq.com',
-                phone: 13300001111,
-                created: new Date().toLocaleString(),
-                updated: function () {
-                    return '<input type="checkbox" class="minimal check-master">'
-                }
-            },]
-            let columns = ['id', 'username', 'email', 'phone', 'created', 'updated']
+            let data = {
+                data: [
+                    {
+                        id: 1,
+                        name: 'sdl',
+                        email: 'sdl@qq.com',
+                        phone: 13300001111,
+                        created: new Date().toLocaleString(),
+                        updated: new Date().toLocaleString()
+                    },
+                    {
+                        id: 2,
+                        name: 'qpf',
+                        email: 'qpf@qq.com',
+                        phone: 13300001111,
+                        created: new Date().toLocaleString(),
+                        updated: new Date().toLocaleString()
+                    },
+                    {
+                        id: 3,
+                        name: 'qpf',
+                        email: 'qpf@qq.com',
+                        phone: 13300001111,
+                        created: new Date().toLocaleString(),
+                        updated: function () {
+                            return '<input type="checkbox" class="minimal check-master">'
+                        }
+                    },
+                ]
+            }
+            let columns = [
+                {
+                    data: 1,
+                    type: 'func',
+                    func: (e)=>{
+                        return '<input type="checkbox" data-id="' + e["id"]+ '">'
+                    }
+                },
+                {
+                    data: 'id',
+                    type: 'string'
+                },
+                {
+                    data: 'username',
+                    type: 'string'
+                },
+                {
+                    data: 'email',
+                    type: 'string'
+                },
+                {
+                    data: 'phone',
+                    type: 'string'
+                },
+                {
+                    data: 'updated',
+                    type: 'func',
+                    func: (e)=>{
+                        return new Date(parseInt(e['updated'])).toLocaleString()
+                    }
+                },
+                {
+                    data: 'created',
+                    type: 'func',
+                    func: (e)=>{
+                        return new Date(parseInt(e['created'])).toLocaleString()
+                    }
+                },
+            ]
             console.log("load....")
-            AJAX.open({
-                url: '1',
-                success: function (result) {
-                    data = [result]
-                }
-            })
+            // AJAX.open({
+            //     url: '1',
+            //     success: function (result) {
+            //         data = [result]
+            //     }
+            // })
             console.log(data)
             TableUtils.init({
+                url: 'page',
                 target: '#tmp',
                 data: data,
-                columns: columns
+                columns: columns,
+                mode: 'server'
             })
             // TableUtils.setTableData(data, '#tmp');
 

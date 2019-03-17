@@ -41,10 +41,12 @@ var APP = function () {
                         loadingIndex = layer.msg('处理中', {icon: 16})
                     },
                     success: function (result) {
+                        layer.close(loadingIndex)
                         console.log('查询成功: ')
                         setFormData(result, modalId + " form")
                     },
                     error: function () {
+                        layer.close(loadingIndex)
                         console.log('查询失败')
                         setFormData({username:'',email: '', phone: ''}, modalId + " form")
                         layer.open({content: data.msg, icon: 5, shift: 6}, function () {
@@ -84,8 +86,9 @@ var APP = function () {
                     if(data.code == 200) {
                         $('#modal-default').modal('hide')
                         layer.msg(data.msg, {time:2000, icon: 6, shift: 6}, function () {
-                            console.log("reflash")
-                            window.location.reload()
+                            TableUtils.firstPage()
+                            // console.log("reflash")
+                            // window.location.reload()
                         })
                     } else if (data.code == 500) {
                         layer.open({content: data.msg, icon: 5, shift: 6}, function () {
@@ -94,6 +97,7 @@ var APP = function () {
                     }
                 },
                 error: function () {
+                    layer.close(loadingIndex)
                     layer.open({content: "处理异常", icon: 5, shift: 6}, function () {
 
                     })
@@ -103,6 +107,7 @@ var APP = function () {
     }
 
     let initiCheck = function () {
+        // console.log('init iCheck')
 
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
             checkboxClass: 'icheckbox_square-blue',
@@ -153,7 +158,8 @@ var APP = function () {
                     $('#modal-default').modal('hide')
                     layer.msg(data.msg, {time:2000, icon: 6, shift: 6}, function () {
                         console.log("reflash")
-                        window.location.reload()
+                        TableUtils.firstPage()
+                        // window.location.reload()
                     })
                 } else if (data.code == 500) {
                     layer.open({content: data.msg, icon: 5, shift: 6}, function () {
@@ -162,6 +168,7 @@ var APP = function () {
                 }
             },
             error: function () {
+                layer.close(loadingIndex)
                 layer.open({content: "处理异常", icon: 5, shift: 6}, function () {
 
                 })

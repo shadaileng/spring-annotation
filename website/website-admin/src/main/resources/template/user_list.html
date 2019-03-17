@@ -135,24 +135,6 @@
                         </table>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <table class="table table-bordered table-hover" id="tmp">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>姓名</th>
-                                <th>邮箱</th>
-                                <th>电话</th>
-                                <th>创建时间</th>
-                                <th>更新时间</th>
-                            </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
             </section>
         </div>
 
@@ -229,19 +211,69 @@
     <!-- App -->
     <script th:src="@{/static/js/validate.js}"></script>
     <script th:src="@{/static/js/app.js}"></script>
+    <script th:src="@{/static/js/utils.js}"></script>
     <script>
         $(function () {
             Validate.validateForm('inputForm')
             APP.initModal('#modal-default', '更新用户', '新增用户')
 
-            $('#tmp').DataTable({
-                scrollY: 400,
-                searching: false,
-                select: true,
-                deferRender: true,
-                lengthChange: false,
-                ordering: false
-            });
+            let columns = [
+                {
+                    data: 1,
+                    type: 'func',
+                    func: (e)=>{
+                        return '<input type="checkbox" class="minimal" data-id="' + e["id"]+ '">'
+                    }
+                },
+                {
+                    data: 'id',
+                    type: 'string'
+                },
+                {
+                    data: 'username',
+                    type: 'string'
+                },
+                {
+                    data: 'email',
+                    type: 'string'
+                },
+                {
+                    data: 'phone',
+                    type: 'string'
+                },
+                {
+                    data: 'updated',
+                    type: 'func',
+                    func: (e)=>{
+                        return new Date(parseInt(e['updated'])).toLocaleString()
+                    }
+                },
+                {
+                    data: 'created',
+                    type: 'func',
+                    func: (e)=>{
+                        return new Date(parseInt(e['created'])).toLocaleString()
+                    }
+                },
+                {
+                    data: 'operator',
+                    type: 'func',
+                    func: (e)=>{
+                        let content = '<button type="button" class="btn btn-success btn-xs" data-id=' + e['id'] + ' data-toggle="modal" data-target="#modal-default"><i class="fa fa-edit"></i>更新</button>\
+                                       <button type="button" class="btn btn-danger btn-xs" data-id=' + e['id'] + ' name="del"><i class="fa fa-trash"></i>删除</button>'
+
+                        return content
+                    }
+                },
+            ]
+            TableUtils.init({
+                url: 'page',
+                target: '#showTable',
+                columns: columns,
+                mode: 'server',
+                callback: APP.initiCheck
+            })
+
 
         })
     </script>

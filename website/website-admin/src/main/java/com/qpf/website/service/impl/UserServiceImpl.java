@@ -1,6 +1,7 @@
 package com.qpf.website.service.impl;
 
 import com.qpf.website.commons.dto.BaseResult;
+import com.qpf.website.commons.dto.PageInfo;
 import com.qpf.website.commons.utils.RegexpUtils;
 import com.qpf.website.dao.UserDao;
 import com.qpf.website.entity.User;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -57,6 +60,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(int id) {
         return userDao.selectUserById(id);
+    }
+
+    @Override
+    public PageInfo<User> page(Integer start, Integer length, User user) {
+        PageInfo<User> page = new PageInfo<>();
+        Map<String, Integer> param = new HashMap<>();
+        param.put("start", start - 1);
+        param.put("length", length);
+        List<User> users = userDao.page(param);
+        int count =userDao.count(user);
+        page.setData(users);
+        page.setTotal(count);
+        return page;
     }
 
     public BaseResult save(User user) {
