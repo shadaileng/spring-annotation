@@ -1,21 +1,9 @@
 package com.qpf.website.service;
 
-import com.qpf.website.commons.dto.BaseResult;
-import com.qpf.website.commons.dto.PageInfo;
+import com.qpf.website.commons.persistence.BaseService;
 import com.qpf.website.entity.User;
 
-import java.util.List;
-
-public interface UserService {
+public interface UserService extends BaseService<User> {
     User login(String email, String password);
-
-    BaseResult save(User user);
-
-    List<User> list();
-
-    BaseResult delete(List<String> ids);
-
-    User getUserById(int id);
-
-    PageInfo<User> page(Integer start, Integer length, User user);
+    boolean emailExists(String email);
 }

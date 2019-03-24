@@ -1,88 +1,24 @@
 package com.qpf.website.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.qpf.website.commons.persistence.BaseEntity;
+import com.qpf.website.commons.utils.RegexpUtils;
+import lombok.Data;
+import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
-
-public class User implements Serializable {
-    private static final long serialVersionUID = 201903071516L;
-
-    private Integer id;
+@Data
+@ToString
+public class User extends BaseEntity implements Serializable {
+    @Length(min = 3, max = 20, message = "用户名长度介于3到20个字符之间")
     private String username;
     @JsonIgnore
     private String password;
+    @Pattern(regexp = RegexpUtils.EMAIL, message = "电子邮箱格式不正确")
     private String email;
+    @Pattern(regexp = RegexpUtils.PHONE, message = "手机号码格式不正确")
     private String phone;
-    private Date created;
-    private Date updated;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", created=" + created +
-                ", updated=" + updated +
-                '}';
-    }
 }

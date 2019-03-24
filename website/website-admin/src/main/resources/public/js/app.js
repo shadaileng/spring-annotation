@@ -59,7 +59,7 @@ var APP = function () {
             else {
                 $(modalId + ' .modal-title').html(titleAdd)
                 console.log("清空表单")
-                setFormData({username:'',email: '', phone: ''}, modalId + " form")
+                setFormData({username:'',email: '', phone: '', id: ''}, modalId + " form")
             }
         })
         /**
@@ -137,60 +137,44 @@ var APP = function () {
     }
 
     let deleteByIds = function (ids) {
-
-        if (ids.length == 0) {
+        if (ids.length <= 0) {
             layer.open({content: '请至少选择一条记录删除', icon: 5, shift: 6}, function () {
 
             })
             return
         }
-        let loadingIndex;
-        $.ajax({
-            url: 'delete',
-            type: 'POST',
-            data: {ids: ids.toString()},
-            beforeSend: function () {
-                loadingIndex = layer.msg('处理中', {icon: 16})
-            },
-            success: function (data) {
-                layer.close(loadingIndex);
-                if(data.code == 200) {
-                    $('#modal-default').modal('hide')
-                    layer.msg(data.msg, {time:2000, icon: 6, shift: 6}, function () {
-                        console.log("reflash")
-                        TableUtils.firstPage()
-                        // window.location.reload()
-                    })
-                } else if (data.code == 500) {
-                    layer.open({content: data.msg, icon: 5, shift: 6}, function () {
+        layer.confirm('是否删除[' + ids + ']?', {icon: 3, title: '删除'}, function(index) {
+            let loadingIndex;
+            $.ajax({
+                url: 'delete',
+                type: 'POST',
+                data: {ids: ids.toString()},
+                beforeSend: function () {
+                    loadingIndex = layer.msg('处理中', {icon: 16})
+                },
+                success: function (data) {
+                    layer.close(loadingIndex);
+                    if(data.code == 200) {
+                        $('#modal-default').modal('hide')
+                        layer.msg(data.msg, {time:2000, icon: 6, shift: 6}, function () {
+                            TableUtils.firstPage()
+                            // window.location.reload()
+                        })
+                    } else if (data.code == 500) {
+                        layer.open({content: data.msg, icon: 5, shift: 6}, function () {
+
+                        })
+                    }
+                },
+                error: function () {
+                    layer.close(loadingIndex)
+                    layer.open({content: "处理异常", icon: 5, shift: 6}, function () {
 
                     })
                 }
-            },
-            error: function () {
-                layer.close(loadingIndex)
-                layer.open({content: "处理异常", icon: 5, shift: 6}, function () {
-
-                })
-            }
+            })
         })
     }
-
-    $('button[name=del]').on('click', function (e) {
-        let ids = e.target.dataset.id
-        layer.confirm('是否删除[' + ids + ']?', {icon: 3, title: '删除'}, function(index) {
-            deleteByIds([ids]);
-            layer.close(index);
-        })
-    })
-    $('#batchDel').on('click', function (e) {
-        let ids = getCheckedId()
-
-        layer.confirm('是否删除[' + ids + ']?', {icon: 3, title: '删除'}, function(index) {
-            deleteByIds(ids);
-            layer.close(index);
-        })
-    })
 
     return {
         initModal: function (modalId, titleUpdate, titleAdd) {
@@ -198,6 +182,20 @@ var APP = function () {
         },
         initiCheck: function () {
             initiCheck()
+        },
+        initComponents: function () {
+            initiCheck()
+
+            $('button[name=del]').off('click')
+            $('button[name=del]').on('click', function (e) {
+                let ids = e.target.dataset.id
+                deleteByIds([ids]);
+            })
+            $('#batchDel').off('click')
+            $('#batchDel').on('click', function (e) {
+                let ids = getCheckedId()
+                deleteByIds(ids);
+            })
         }
 
     }

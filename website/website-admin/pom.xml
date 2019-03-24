@@ -15,6 +15,30 @@
     <packaging>war</packaging>
     <name>website-admin</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- 本地运行端口 -->
+                    <port>8080</port>
+                    <!-- 项目名称 -->
+                    <path>/admin</path>
+                    <!-- 热部署tomcat用户名称 -->
+                    <username>tomcat</username>
+                    <!-- 热部署tomcat用户密码 -->
+                    <password>tomcat</password>
+                    <!-- 热部署tomcat路径 -->
+                    <url>http://localhost:8080/manager/text</url>
+                    <!-- 编码格式 -->
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.qpf</groupId>
@@ -75,10 +99,10 @@
         </dependency>
         <!-- Slf4j End -->
         <!-- Commons Begin -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.apache.commons</groupId>-->
+        <!--<artifactId>commons-lang3</artifactId>-->
+        <!--</dependency>-->
         <!-- Commons End -->
         <!-- Druid Begin -->
         <dependency>
@@ -101,35 +125,19 @@
             <artifactId>mybatis-spring</artifactId>
         </dependency>
         <!-- MyBatis End -->
+
         <!-- Jackson Begin -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+        <!-- Jackson End -->
+        <!-- beanvalidator是依赖于与javax validator和javax.el -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <!-- 本地运行端口 -->
-                    <port>8080</port>
-                    <!-- 项目名称 -->
-                    <path>/admin</path>
-                    <!-- 热部署tomcat用户名称 -->
-                    <username>tomcat</username>
-                    <!-- 热部署tomcat用户密码 -->
-                    <password>tomcat</password>
-                    <!-- 热部署tomcat路径 -->
-                    <url>http://localhost:8080/manager/text</url>
-                    <!-- 编码格式 -->
-                    <uriEncoding>UTF-8</uriEncoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

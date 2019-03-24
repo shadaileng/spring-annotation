@@ -2,6 +2,7 @@ var TableUtils = function () {
     let defaultOptions = {
         mode: 'local',          // local | server
         url: '',                // server mode
+        paramEl: null,
         data: {},               //
         head: [],
         page: {
@@ -41,12 +42,19 @@ var TableUtils = function () {
 
     }
     let pageTo = function (url, start) {
+        let _data = {
+            start: start,
+            length: defaultOptions.page.pageSize
+        }
+        let _param_target = defaultOptions.paramEl
+        if (_param_target != null) {
+            document.querySelectorAll(_param_target).forEach(el=>{
+                _data[el.name] = el.value.trim()
+            })
+        }
         AJAX.open({
             url: url,
-            data: {
-                start: start,
-                length: defaultOptions.page.pageSize
-            },
+            data: _data,
             success: function (result) {
                 defaultOptions.data = result
                 // console.log(result)
