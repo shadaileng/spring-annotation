@@ -6,8 +6,6 @@ import com.qpf.website.entity.User;
 import com.qpf.website.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
@@ -45,13 +43,15 @@ public class UserController extends AbstractController<User, UserService> {
     @ResponseBody
     @GetMapping("/{id}")
     public Object get(@PathVariable("id") Integer id) {
-        User user = null;
+        BaseResult result = BaseResult.success();
         try {
-            user = service.getById(id);
+            User user = service.getById(id);
+            result.setData(user);
         } catch (Exception e) {
             logger.error("getById({id}): {}", id, e.getMessage());
+            result = BaseResult.failed(String.format("Error: %s", e.getMessage()));
         }
-        return user;
+        return result;
     }
     @ResponseBody
     @PostMapping("add")

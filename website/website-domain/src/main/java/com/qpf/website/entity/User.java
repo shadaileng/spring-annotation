@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 @Data
 @ToString
-public class User extends BaseEntity implements Serializable {
+public class User extends BaseEntity {
     @Length(min = 3, max = 20, message = "用户名长度介于3到20个字符之间")
     private String username;
     @JsonIgnore

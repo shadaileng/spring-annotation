@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>My Site | Main</title>
+    <title>WebSite | Main</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -215,8 +215,27 @@
     <script>
         $(function () {
             Validate.validateForm('inputForm')
-            APP.initModal('#modal-default', '更新用户', '新增用户')
-
+            // APP.initModal('#modal-default', '更新用户', '新增用户')
+            ModalUtil.init({
+                data: {
+                    username: '',
+                    email: '',
+                    phone: '',
+                    id: ''
+                },
+                title: {
+                    insert: '新增用户',
+                    update: '更新用户'
+                },
+                url: {
+                    add: 'add',
+                    update: 'update'
+                },
+                target: '#modal-default',
+                callback: function () {
+                    TableUtils.firstPage()
+                }
+            })
             let columns = [
                 {
                     data: 1,

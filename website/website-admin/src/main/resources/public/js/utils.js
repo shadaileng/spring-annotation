@@ -221,7 +221,16 @@ var TableUtils = function () {
                 if (el.type === 'func') {
                     _content = el.func(e)
                 } else if(el.type === 'string') {
-                    let _innerEl = e[el.data]
+                    let _data = el.data
+                    let _innerEl = e[_data]
+                    if (_data.lastIndexOf('.') > 0) {
+                        let _preper = _data.split(".")
+                        let el = e
+                        for (let i = 0, l = _preper.length; i < l; i++) {
+                            el = el[_preper[i]]
+                        }
+                        _innerEl = el
+                    }
                     _content = _innerEl === undefined ? '' :  _innerEl.toString()
                 }
                 // let _innerEl = e[el]
@@ -271,7 +280,7 @@ var AJAX = function () {
         }
         if (_opts.url === '') {
             console.log('url为空')
-            return
+            return false
         }
         let str = ''
         if (_opts.type === 'GET' && _opts.data !== null && _opts.data.length > 0) {

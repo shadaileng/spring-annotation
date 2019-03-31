@@ -1,6 +1,10 @@
 package com.qpf.website.dao.test;
 
+import com.qpf.website.dao.ContentCategoryDao;
+import com.qpf.website.dao.ContentDao;
 import com.qpf.website.dao.UserDao;
+import com.qpf.website.entity.Content;
+import com.qpf.website.entity.ContentCategory;
 import com.qpf.website.entity.User;
 import com.qpf.website.web.config.DataConfig;
 import com.qpf.website.web.config.RootConfig;
@@ -28,6 +32,10 @@ public class TestDataConfig {
     private static final Logger logger = LoggerFactory.getLogger(TestDataConfig.class);
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ContentDao contentDao;
+    @Autowired
+    private ContentCategoryDao contentCategoryDao;
 
     @Test
     public void testUserDao() {
@@ -123,5 +131,72 @@ public class TestDataConfig {
             logger.error("users: {}, \n{}", users, e.getMessage());
         }
         Assert.assertEquals(users.size(), 5);
+    }
+
+    @Test
+    public void testContentCount() {
+        int count = 0;
+        try {
+            count = contentDao.count(new Content());
+        } catch (Exception e) {
+            logger.error("count: {}, \n{}", count, e.getMessage());
+        }
+        Assert.assertEquals("Success", count, 4);
+    }
+    @Test
+    public void testContentList() {
+        List<Content> contests = new ArrayList<>();
+        try {
+            contests = contentDao.getAll();
+        } catch (Exception e) {
+            logger.error("count: {}, \n{}", contests.size(), e.getMessage());
+        }
+        Assert.assertEquals("Success", contests.size(), 4);
+    }
+    @Test
+    public void testContentInsert() {
+        int update = 0;
+        try {
+            Content content = new Content();
+            content.setCategoryId(97);
+            content.setTitle("测试");
+            content.setTitleDesc("测试");
+            content.setSubTitle("测试");
+            content.setContent("测试");
+            content.setUrl("测试");
+            content.setPic("测试");
+            Date now = new Date();
+            content.setCreated(now);
+            content.setUpdated(now);
+            update = contentDao.insert(content);
+        } catch (Exception e) {
+            logger.error("count: {}, \n{}", update, e.getMessage());
+        }
+        Assert.assertEquals("Success", update, 1);
+    }
+    @Test
+    public void testContentUpdate() {
+        int update = 0;
+        try {
+            Content content = contentDao.selectById(32);
+            content.setCategoryId(89);
+            Date now = new Date();
+            content.setUpdated(now);
+            update = contentDao.update(content);
+        } catch (Exception e) {
+            logger.error("count: {}, \n{}", update, e.getMessage());
+        }
+        Assert.assertEquals("Success", update, 1);
+    }
+    @Test
+    public void testContentCateGoryList() {
+        List<ContentCategory> contests = new ArrayList<>();
+        try {
+            contests = contentCategoryDao.getAll();
+        } catch (Exception e) {
+            logger.error("count: {}, \n{}", contests.size(), e.getMessage());
+        }
+        System.out.println(contests);
+        Assert.assertEquals("Success", contests.size(), 13);
     }
 }

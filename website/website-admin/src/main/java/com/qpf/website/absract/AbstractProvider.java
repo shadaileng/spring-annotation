@@ -10,14 +10,14 @@ public class AbstractProvider implements BaseProvider {
     protected static List<String> fields = new ArrayList<>();
     protected static Map<String, String> getMethods = new HashMap<>();
     protected static String tableName;
-    private static List<String> exclude = Arrays.asList(new String[]{"length", "start"});
+    protected static List<String> exclude = Arrays.asList(new String[]{"length", "start"});
 
     @Override
     public String insert(Object o) {
         SQL sql = new SQL();
         sql.INSERT_INTO(tableName);
         fields.forEach((el)->{
-            sql.VALUES(el, String.format("#{%s}", el));
+            sql.VALUES(BeanUtils.camelToUnderline(el), String.format("#{%s}", el));
         });
 
         return sql.toString();
@@ -31,7 +31,7 @@ public class AbstractProvider implements BaseProvider {
         sql.WHERE("id=#{id}");
         fields.forEach((el)->{
             if(BeanUtils.getValue(o, getMethods.get(el)) != null){
-                sql.SET(String.format("%s = #{%s}", el, el));
+                sql.SET(String.format("%s = #{%s}", BeanUtils.camelToUnderline(el), el));
             }
         });
         return sql.toString();
@@ -58,7 +58,7 @@ public class AbstractProvider implements BaseProvider {
 
                 fields.forEach((el)->{
                     if(BeanUtils.getValue(o, getMethods.get(el)) != null){
-                        WHERE(String.format("%s like '%%' || #{%s}  || '%%'", el, el));
+                        WHERE(String.format("%s like '%%' || #{%s}  || '%%'", BeanUtils.camelToUnderline(el), el));
                     }
                 });
 
@@ -69,7 +69,7 @@ public class AbstractProvider implements BaseProvider {
     @Override
     public String page(Map map) {
         SQL sql = new SQL();
-        System.out.println(map);
+//        System.out.println(map);
 
         sql.SELECT("*");
         sql.FROM(tableName);
@@ -77,7 +77,7 @@ public class AbstractProvider implements BaseProvider {
         fields.forEach((el)->{
             Object value = map.get(el);
             if(value != null && !exclude.contains(el)){
-                sql.WHERE(String.format("%s like '%%' || #{%s}  || '%%'", el, el));
+                sql.WHERE(String.format("%s like '%%' || #{%s}  || '%%'", BeanUtils.camelToUnderline(el), el));
             }
         });
 

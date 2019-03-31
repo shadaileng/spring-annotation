@@ -29,7 +29,7 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @GetMapping({"login", ""})
+    @GetMapping({"login"})
     public String login(HttpServletRequest request, Map<String, Object> map) {
         try{
             String loginUser = CookieUtils.getCookieValue(request, Constant.COOKIE_LOGIN_USER);

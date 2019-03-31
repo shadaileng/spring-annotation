@@ -52,4 +52,10 @@ public class DemoTest {
         Object value = BeanUtils.getValue(user, "getCreated");
         System.out.println(value);
     }
+
+    @Test
+    public void testCamelToUnderline() {
+        String categoryId = BeanUtils.camelToUnderline("categoryId");
+        System.out.println(categoryId);
+    }
 }

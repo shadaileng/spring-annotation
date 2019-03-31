@@ -3,7 +3,9 @@ package com.qpf.website.dao.test;
 import com.qpf.website.commons.dto.BaseResult;
 import com.qpf.website.commons.dto.PageInfo;
 import com.qpf.website.dao.UserDao;
+import com.qpf.website.entity.Content;
 import com.qpf.website.entity.User;
+import com.qpf.website.service.ContentService;
 import com.qpf.website.service.UserService;
 import com.qpf.website.web.config.DataConfig;
 import com.qpf.website.web.config.RootConfig;
@@ -27,13 +29,17 @@ import java.util.*;
 @WebAppConfiguration
 @ContextConfiguration(classes={RootConfig.class, DataConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
-//@Ignore
+@Ignore
 public class TestService {
     private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
     @Autowired()
     @Qualifier("userService")
     private UserService userService;
+
+    @Autowired()
+//    @Qualifier("contentService")
+    private ContentService contentService;
 
     @Test
     public void testGetAll() {
@@ -71,4 +77,14 @@ public class TestService {
         logger.info(String.format("%s", save));
     }
 
+    @Test
+    public void testPageContent() {
+        PageInfo<Content> page = contentService.page(0, 5, new Content());
+        logger.info(String.format("%s", page));
+    }
+    @Test
+    public void testContentById() {
+        Content content = contentService.getById(28);
+        logger.info(String.format("content: %s", content));
+    }
 }

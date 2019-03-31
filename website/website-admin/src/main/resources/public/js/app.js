@@ -1,110 +1,4 @@
 var APP = function () {
-    let setFormData = function (data, formId) {
-        for (let key in data) {
-            // console.log(key, data[key])
-            let tag = $(formId).find('[name="' + key + '"]');
-            if (tag.length > 1) {
-                tag.prop('checked', false);
-                if(data[key]) {
-                    let item = data[key].split(',');
-                    item.forEach((el, i) => {
-                        let e = $(formId).find('[name="' + key + '"][value="' + el + '"]');
-                        e.prop('checked', true)
-                    })
-                }
-            } else {
-                tag.val(data[key])
-            }
-        }
-    }
-
-    /**
-     * 模态框初始化
-     * @param modalId
-     * @param titleUpdate
-     * @param titleAdd
-     */
-    let initModal = function (modalId, titleUpdate, titleAdd) {
-        /**
-         * modal显示回调处理
-         */
-        $(modalId).on('shown.bs.modal', function (e) {
-            let id = $(e.relatedTarget).data('id')
-            let loadingIndex;
-            // 更新
-            if (id) {
-                $(modalId + ' .modal-title').html(titleUpdate)
-                $.ajax({
-                    url: id,
-                    type: 'GET',
-                    beforeSend: function () {
-                        loadingIndex = layer.msg('处理中', {icon: 16})
-                    },
-                    success: function (result) {
-                        layer.close(loadingIndex)
-                        console.log('查询成功: ')
-                        setFormData(result, modalId + " form")
-                    },
-                    error: function () {
-                        layer.close(loadingIndex)
-                        console.log('查询失败')
-                        setFormData({username:'',email: '', phone: ''}, modalId + " form")
-                        layer.open({content: data.msg, icon: 5, shift: 6}, function () {
-
-                        })
-                    }
-                })
-            }
-            // 新增
-            else {
-                $(modalId + ' .modal-title').html(titleAdd)
-                console.log("清空表单")
-                setFormData({username:'',email: '', phone: '', id: ''}, modalId + " form")
-            }
-        })
-        /**
-         * 确定按钮事件
-         */
-        $(modalId+ ' .modal-footer .btn-primary').on("click", function () {
-            console.log("save...")
-            let loadingIndex;
-            let id = $(modalId + ' form [name="id"]').val()
-            let uri = id == '' || id == 'undefined' ? 'add' : 'update'
-            if (!layer) {
-                console.log("layer 未加载")
-                return
-            }
-            $.ajax({
-                url: uri,
-                type: 'POST',
-                data: $('#inputForm').serialize(),
-                beforeSend: function () {
-                    loadingIndex = layer.msg('处理中', {icon: 16})
-                },
-                success: function (data) {
-                    layer.close(loadingIndex);
-                    if(data.code == 200) {
-                        $('#modal-default').modal('hide')
-                        layer.msg(data.msg, {time:2000, icon: 6, shift: 6}, function () {
-                            TableUtils.firstPage()
-                            // console.log("reflash")
-                            // window.location.reload()
-                        })
-                    } else if (data.code == 500) {
-                        layer.open({content: data.msg, icon: 5, shift: 6}, function () {
-
-                        })
-                    }
-                },
-                error: function () {
-                    layer.close(loadingIndex)
-                    layer.open({content: "处理异常", icon: 5, shift: 6}, function () {
-
-                    })
-                }
-            })
-        })
-    }
 
     let initiCheck = function () {
         // console.log('init iCheck')
@@ -157,7 +51,7 @@ var APP = function () {
                     if(data.code == 200) {
                         $('#modal-default').modal('hide')
                         layer.msg(data.msg, {time:2000, icon: 6, shift: 6}, function () {
-                            TableUtils.firstPage()
+                            TableUtils.firstPage() && window.location.reload()
                             // window.location.reload()
                         })
                     } else if (data.code == 500) {
@@ -201,6 +95,175 @@ var APP = function () {
     }
 }();
 
+var ModalUtil = function() {
+    let defaultOptions = {
+        data: {},
+        target: '#modalId',
+        title: {
+            update: '更新',
+            insert: '新增'
+        },
+        url: {
+            update: 'update',
+            add: 'add'
+        },
+        callback: function () {
+            console.log("callback...")
+        }
+    }
+    let self = this
+
+    let setFormData = function (data, formId) {
+        let names = []
+        document.querySelectorAll(formId + ' [name]').forEach(e=>{
+            names.push(e.name)
+        })
+        names = [...new Set(names)]
+        for (let i = 0, l = names.length; i < l; i++)
+            // for (let key in data)
+            {
+                key = names[i]
+            // console.log(key, data[key])
+            let tag = $(formId).find('[name="' + key + '"]');
+            if (tag.length > 1) {
+                tag.prop('checked', false);
+                if(data[key]) {
+                    let item = data[key].split(',');
+                    item.forEach((el, i) => {
+                        let e = $(formId).find('[name="' + key + '"][value="' + el + '"]');
+                        e.prop('checked', true)
+                    })
+                }
+            } else {
+                let val
+                if (key.lastIndexOf(".") > 0) {
+                    val = data
+                    key.split(".").forEach(el => {
+                        if (val) {
+                            val = val[el]
+                        }
+                    })
+                } else {
+                    val = data[key]
+                }
+                tag.val(val)
+            }
+        }
+    }
+
+    let _extends = function (src, target) {
+        for (let i in src) {
+            let val = src[i]
+            target[i] = val
+        }
+        return target
+    }
+    /**
+     * 模态框初始化
+     * @param modalId
+     * @param titleUpdate
+     * @param titleAdd
+     */
+    let initModal = function (opts) {
+        opts = _extends(opts, defaultOptions)
+        let {target, title, data, url} = opts
+
+        /**
+         * modal显示回调处理
+         */
+        $(target).on('shown.bs.modal', (e)=>{
+            let id = e.relatedTarget.getAttribute('data-id')
+            let loadingIndex;
+            let _title = ''
+            // 更新
+            if (id) {
+                _title = title.update
+                $.ajax({
+                    url: id,
+                    type: 'GET',
+                    beforeSend: function () {
+                        loadingIndex = layer.msg('处理中', {icon: 16})
+                    },
+                    success: function (result) {
+                        layer.close(loadingIndex)
+                        let _data = data
+                        if (result.code === 200) {
+                            console.log('查询成功: ')
+                            _data = result.data
+                        }
+                        setFormData(_data, target + " form")
+                    },
+                    error: function () {
+                        layer.close(loadingIndex)
+                        console.log('查询失败')
+                        setFormData(data, target + " form")
+                        layer.open({content: '处理异常', icon: 5, shift: 6}, function () {
+
+                        })
+                    }
+                })
+            }
+            // 新增
+            else {
+                _title = title.insert
+                // setFormData(data, target + " form")
+                setFormData(data, target + " form")
+            }
+            document.querySelector(target + ' .modal-title').innerHTML = _title
+        })
+
+        /**
+         * 确定按钮事件
+         */
+        $(target + ' .modal-footer .btn-primary').on('click', e => {
+            console.log("save...")
+            let loadingIndex;
+            let id = document.querySelector(target + ' form [name="id"]').value
+            let uri = id === '' || id === 'undefined' ? url.add : url.update
+            if (!layer) {
+                console.log("layer 未加载")
+                return
+            }
+            $.ajax({
+                url: uri,
+                type: 'POST',
+                data: $('#inputForm').serialize(),
+                beforeSend: function () {
+                    loadingIndex = layer.msg('处理中', {icon: 16})
+                },
+                success: function (data) {
+                    layer.close(loadingIndex);
+                    if(data.code == 200) {
+                        $('#modal-default').modal('hide')
+                        layer.msg(data.msg, {time:2000, icon: 6, shift: 6}, function () {
+                            defaultOptions.callback && defaultOptions.callback()
+                            // TableUtils.firstPage()
+                            // console.log("reflash")
+                            // window.location.reload()
+                        })
+                    } else if (data.code == 500) {
+                        layer.open({content: '_' + data.msg, icon: 5, shift: 6}, function () {
+
+                        })
+                    }
+                },
+                error: function () {
+                    layer.close(loadingIndex)
+                    layer.open({content: "处理异常", icon: 5, shift: 6}, function () {
+
+                    })
+                }
+            })
+        })
+    }
+
+    return {
+        init: function (opts) {
+            initModal(opts)
+        }
+    }
+}()
+
 $(function () {
     if(!layer) {
         console.log("layer 未加载...")
@@ -212,4 +275,5 @@ $(function () {
     }
     console.log("加载 app")
     APP.initiCheck()
+    APP.initComponents()
 })

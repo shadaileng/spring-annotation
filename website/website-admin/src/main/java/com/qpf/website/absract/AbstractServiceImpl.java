@@ -67,12 +67,13 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, D extends BaseDa
     public BaseResult delete(List<String> ids) {
         BaseResult result = BaseResult.success("删除成功");
         try {
-            if (dao.deleteUserById(ids) <= 0) {
+            if (dao.deleteById(ids) <= 0) {
                 result = BaseResult.failed("删除失败");
             }
         } catch (Exception e) {
             logger.error("delete: {}", e.getMessage());
             result = BaseResult.failed(String.format("删除失败: %s", e.getMessage()));
+            throw new RuntimeException(e.getMessage());
         }
         return result;
     }

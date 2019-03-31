@@ -11,9 +11,7 @@ public interface BaseDao<T extends BaseEntity> {
 
     int update(T entity);
 
-    int deleteUserById(List<String> ids);
-
-    T selectUserById(int id);
+    int deleteById(List<String> ids);
 
     T selectById(int id);
 

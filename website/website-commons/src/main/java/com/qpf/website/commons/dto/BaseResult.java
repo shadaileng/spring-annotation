@@ -7,6 +7,7 @@ public class BaseResult implements Serializable {
     public static final int STATUS_FAILED = 500;
     private int code;
     private String msg;
+    private Object data;
 
     public int getCode() {
         return code;
@@ -22,6 +23,14 @@ public class BaseResult implements Serializable {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 
     @Override
@@ -43,6 +52,11 @@ public class BaseResult implements Serializable {
     }
     public static BaseResult success() {
         return success("操作成功");
+    }
+    public static BaseResult success(Object data) {
+        BaseResult success = success();
+        success.setData(data);
+        return success;
     }
     public static BaseResult failed(int code, String msg) {
         return new BaseResult(code, msg);
