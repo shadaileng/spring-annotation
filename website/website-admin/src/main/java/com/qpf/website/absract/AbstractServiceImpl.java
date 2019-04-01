@@ -32,29 +32,21 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, D extends BaseDa
         }
 
         BaseResult result = BaseResult.success();
-        if (result.getCode() == BaseResult.STATUS_SUCCESS) {
-            try {
-                Date now = new Date();
-                entity.setUpdated(now);
-                // 更新
-                if (entity.getId() != null) {
-                    if (dao.update(entity) <= 0) {
-                        result = BaseResult.failed("更新失败");
-                    }
-                }
-                // 新增
-                else {
-                    entity.setCreated(now);
-                    if (dao.insert(entity) <= 0) {
-                        result = BaseResult.failed("新增失败");
-                    }
-                }
-            } catch (Exception e) {
-                logger.error("save: {}", e.getMessage());
-                result = BaseResult.failed(String.format("操作失败: %s", e.getMessage()));
+        Date now = new Date();
+        entity.setUpdated(now);
+        // 更新
+        if (entity.getId() != null) {
+            if (dao.update(entity) <= 0) {
+                result = BaseResult.failed("更新失败");
             }
         }
-
+        // 新增
+        else {
+            entity.setCreated(now);
+            if (dao.insert(entity) <= 0) {
+                result = BaseResult.failed("新增失败");
+            }
+        }
         return result;
     }
 
@@ -66,14 +58,8 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, D extends BaseDa
     @Override
     public BaseResult delete(List<String> ids) {
         BaseResult result = BaseResult.success("删除成功");
-        try {
-            if (dao.deleteById(ids) <= 0) {
-                result = BaseResult.failed("删除失败");
-            }
-        } catch (Exception e) {
-            logger.error("delete: {}", e.getMessage());
-            result = BaseResult.failed(String.format("删除失败: %s", e.getMessage()));
-            throw new RuntimeException(e.getMessage());
+        if (dao.deleteById(ids) <= 0) {
+            result = BaseResult.failed("删除失败");
         }
         return result;
     }

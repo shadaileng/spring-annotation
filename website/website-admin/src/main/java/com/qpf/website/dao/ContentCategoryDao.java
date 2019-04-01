@@ -21,6 +21,12 @@ public interface ContentCategoryDao extends BaseDao<ContentCategory> {
     @DeleteProvider(type = ContentCategoryProvider.class, method = "deleteByIds")
     int deleteById(@Param("ids") List<String> ids);
 
+    @UpdateProvider(type = ContentCategoryProvider.class, method = "reduce")
+    int reduce(@Param("ids") List<String> ids);
+
+    @UpdateProvider(type = ContentCategoryProvider.class, method = "increase")
+    int increase(@Param("pid") Integer pid);
+
     @Select("SELECT a.*,ifnull(b.id, '0') as `parent.id`, ifnull(b.name, '/') as `parent.name` FROM CONTENT_CATEGORY a left outer join CONTENT_CATEGORY b on a.parent_id = b.id WHERE a.id = #{id}")
     ContentCategory selectById(@Param("id") int id);
 

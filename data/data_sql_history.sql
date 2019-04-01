@@ -78,3 +78,10 @@ insert  into `content_category`(`id`,`parent_id`,`name`,`status`,`sort_order`,`i
 (97,96,'中广告1',1,1,0,'2015-07-25 18:59:43','2015-07-25 18:59:43');
 
 SELECT a.*,ifnull(b.id, '0'), ifnull(b.name, '/') FROM CONTENT_CATEGORY a left outer join CONTENT_CATEGORY b on a.parent_id = b.id order by a.parent_id, a.`sort_order`, a.`is_parent`;
+
+SELECT a.*,ifnull(b.id, '0') as `parent.id`, ifnull(b.name, '/') as `parent.name` FROM CONTENT_CATEGORY a left outer join CONTENT_CATEGORY b on a.parent_id = b.id order by a.parent_id, a.`sort_order`, a.`is_parent`;
+
+SELECT * FROM CONTENT_CATEGORY WHERE parent_id = '30';
+
+select * from CONTENT_CATEGORY where id in (select distinct parent_id from CONTENT_CATEGORY where id in (97,98,99, 100));
+update CONTENT_CATEGORY set is_parent = is_parent - 1 where id in (select distinct parent_id from CONTENT_CATEGORY where id in (97,98,99, 100));
