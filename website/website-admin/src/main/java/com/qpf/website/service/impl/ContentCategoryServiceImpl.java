@@ -52,14 +52,15 @@ public class ContentCategoryServiceImpl extends AbstractServiceImpl<ContentCateg
     }
 
     @Override
-    public BaseResult delete(List<String> ids) {
+    public BaseResult delete(List<Integer> ids) {
         BaseResult result = BaseResult.success("删除成功");
 
+        List<Integer> parentIds = dao.selectParentIdByIds(ids);
         if (dao.deleteById(ids) <= 0) {
-            logger.warn("未删除任何记录");
+            logger.warn("删除记录失败");
         }
-        if (dao.reduce(ids) <= 0) {
-            logger.warn("未修改父级标志");
+        if (dao.reduce(parentIds, 0) <= 0) {
+            logger.warn("父级标志修改失败");
         }
         return result;
     }
@@ -78,15 +79,21 @@ public class ContentCategoryServiceImpl extends AbstractServiceImpl<ContentCateg
         entity.setUpdated(now);
         // 更新
         if (entity.getId() != null) {
+
             ContentCategory contentCategory = dao.selectById(entity.getId());
+            Integer _pid = contentCategory.getParentId();
+            Integer pid_ = entity.getParentId();
             if (dao.update(entity) <= 0) {
                 result = BaseResult.failed("更新失败");
             }
-            if (entity.getParentId() != null && !contentCategory.getParentId().equals(entity.getParentId())) {
+            if (_pid != null && !_pid.equals(pid_)) {
                 // 原来父级标志-1
-                dao.reduce(Arrays.asList(new String[]{contentCategory.getParentId() + ""}));
+                int reduce = dao.reduce(Collections.singletonList(_pid), entity.getId());
                 // 新的父级标志+1
-                dao.increase(entity.getParentId());
+                int increase = dao.increase(Collections.singletonList(pid_), entity.getId());
+                if (increase <= 0 || reduce <= 0) {
+                    throw new RuntimeException("父级标志修改失败");
+                }
             }
         }
         // 新增
@@ -95,7 +102,10 @@ public class ContentCategoryServiceImpl extends AbstractServiceImpl<ContentCateg
             if (dao.insert(entity) <= 0) {
                 result = BaseResult.failed("新增失败");
             }
-            dao.increase(entity.getParentId());
+            int increase = dao.increase(Collections.singletonList(entity.getParentId()), 0);
+            if (increase <= 0) {
+                throw new RuntimeException("父级标志修改失败");
+            }
         }
         return result;
     }

@@ -4,10 +4,13 @@ import com.qpf.website.absract.AbstractController;
 import com.qpf.website.commons.dto.BaseResult;
 import com.qpf.website.entity.ContentCategory;
 import com.qpf.website.service.ContentCategoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +18,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/content/category")
 public class ContentCategoryController extends AbstractController<ContentCategory, ContentCategoryService> {
+    private final static Logger logger = LoggerFactory.getLogger(ContentCategoryController.class);
     @Override
     @GetMapping({"", "list"})
     public String list(Map<String, Object> map) {
@@ -44,10 +48,15 @@ public class ContentCategoryController extends AbstractController<ContentCategor
     @ResponseBody
     @PostMapping("/tree/data")
     public Object treeId(Integer id) {
-        if (id == null) {
-            id = 0;
+        List<ContentCategory> contentCategories = new ArrayList<>();
+        try {
+            if (id == null) {
+                id = 0;
+            }
+            contentCategories = service.getByPid(id);
+        } catch (Exception e) {
+            logger.error(String.format("Error: %s", e.getMessage()));
         }
-        List<ContentCategory> contentCategories = service.getByPid(id);
         return contentCategories;
     }
 
@@ -55,15 +64,12 @@ public class ContentCategoryController extends AbstractController<ContentCategor
     @ResponseBody
     @PostMapping("add")
     public Object add(ContentCategory entity) {
-        BaseResult result = BaseResult.success();
+        BaseResult result;
         try {
             entity.setParentId(entity.getParent().getId());
             entity.setStatus(1);
             entity.setIsParent(0);
             result = service.save(entity);
-            ContentCategory parent = entity.getParent();
-            parent.setIsParent(1);
-            result = service.save(parent);
         } catch (Exception e) {
             result = BaseResult.failed("Error:" + e.getMessage());
         }
@@ -75,7 +81,7 @@ public class ContentCategoryController extends AbstractController<ContentCategor
     @PostMapping("update")
     public Object update(ContentCategory entity) {
 
-        BaseResult result = BaseResult.success();
+        BaseResult result;
         try {
             entity.setParentId(entity.getParent().getId());
             result = service.save(entity);
@@ -88,8 +94,8 @@ public class ContentCategoryController extends AbstractController<ContentCategor
     @Override
     @ResponseBody
     @PostMapping("delete")
-    public Object delete(String[] ids) {
-        BaseResult result = BaseResult.success();
+    public Object delete(Integer[] ids) {
+        BaseResult result;
         try {
             result = service.delete(Arrays.asList(ids));
         } catch (Exception e) {

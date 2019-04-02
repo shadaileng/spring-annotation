@@ -86,7 +86,7 @@ public class UserController extends AbstractController<User, UserService> {
     }
     @ResponseBody
     @PostMapping("delete")
-    public Object delete(String[] ids) {
+    public Object delete(Integer[] ids) {
         BaseResult result;
         try {
             result = service.delete(Arrays.asList(ids));

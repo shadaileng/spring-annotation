@@ -66,7 +66,7 @@ public class ContentControlle extends AbstractController<Content, ContentService
     @Override
     @ResponseBody
     @PostMapping("delete")
-    public Object delete(String[] ids) {
+    public Object delete(Integer[] ids) {
         BaseResult result = BaseResult.success();
         try {
             result = service.delete(Arrays.asList(ids));

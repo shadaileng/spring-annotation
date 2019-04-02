@@ -6,7 +6,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.util.*;
 
-public class AbstractProvider implements BaseProvider {
+public abstract class AbstractProvider implements BaseProvider {
     protected static List<String> fields = new ArrayList<>();
     protected static Map<String, String> getMethods = new HashMap<>();
     protected static String tableName;
@@ -95,7 +95,7 @@ public class AbstractProvider implements BaseProvider {
         SQL sql = new SQL();
 
         @SuppressWarnings("unchecked")
-        List<String> ids = (List<String>) map.get("ids");
+        List<Integer> ids = (List<Integer>) map.get("ids");
 
         sql.DELETE_FROM(tableName);
         String str = ids.toString();

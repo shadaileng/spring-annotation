@@ -11,7 +11,7 @@ public interface BaseService<T extends BaseEntity> {
 
     List<T> list();
 
-    BaseResult delete(List<String> ids);
+    BaseResult delete(List<Integer> ids);
 
     T getById(int id);
 

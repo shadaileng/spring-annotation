@@ -19,7 +19,7 @@ public abstract class AbstractController<T extends BaseEntity, S extends BaseSer
     public abstract Object get(Integer id) ;
     public abstract Object add(T entity) ;
     public abstract Object update(T entity) ;
-    public abstract Object delete(String[] ids) ;
+    public abstract Object delete(Integer[] ids) ;
     public abstract Object load() ;
     public abstract T loadObj(HttpServletRequest request);
 

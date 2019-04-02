@@ -15,6 +15,24 @@ public class ContentCategoryProvider extends AbstractProvider {
         getMethods = BeanUtils.loadMethods(ContentCategory.class);
         tableName = "content_category";
     }
+    // select distinct parent_id from CONTENT_CATEGORY where id in (97,98,99, 100)
+    public String selectParentIdByIds(Map<String, Object> map) {
+        SQL sql = new SQL();
+
+        sql.SELECT("distinct parent_id");
+
+        @SuppressWarnings("unchecked")
+        List<String> ids = (List<String>) map.get("ids");
+
+        sql.FROM(tableName);
+
+        String str = ids.toString();
+        str = str.replace("[", "(");
+        str = str.replace("]", ")");
+        sql.WHERE(String.format(" id in %s", str));
+
+        return sql.toString();
+    }
 
     public String reduce(Map<String, Object> map) {
         SQL sql = new SQL();
@@ -29,7 +47,7 @@ public class ContentCategoryProvider extends AbstractProvider {
         String str = ids.toString();
         str = str.replace("[", "(");
         str = str.replace("]", ")");
-        sql.WHERE(String.format(" id in (select distinct parent_id from CONTENT_CATEGORY where id in %s)", str));
+        sql.WHERE(String.format(" id in %s", str));
 
         return sql.toString();
     }
@@ -37,13 +55,16 @@ public class ContentCategoryProvider extends AbstractProvider {
         SQL sql = new SQL();
 
         @SuppressWarnings("unchecked")
-        int pid = (int) map.get("pid");
+        List<String> ids = (List<String>) map.get("ids");
 
         sql.UPDATE(tableName);
 
         sql.SET("is_parent = is_parent + 1");
 
-        sql.WHERE(String.format(" id in (%s)", pid));
+        String str = ids.toString();
+        str = str.replace("[", "(");
+        str = str.replace("]", ")");
+        sql.WHERE(String.format(" id in (%s)", str));
 
         return sql.toString();
     }

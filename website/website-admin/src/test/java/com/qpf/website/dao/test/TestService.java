@@ -4,7 +4,9 @@ import com.qpf.website.commons.dto.BaseResult;
 import com.qpf.website.commons.dto.PageInfo;
 import com.qpf.website.dao.UserDao;
 import com.qpf.website.entity.Content;
+import com.qpf.website.entity.ContentCategory;
 import com.qpf.website.entity.User;
+import com.qpf.website.service.ContentCategoryService;
 import com.qpf.website.service.ContentService;
 import com.qpf.website.service.UserService;
 import com.qpf.website.web.config.DataConfig;
@@ -29,7 +31,7 @@ import java.util.*;
 @WebAppConfiguration
 @ContextConfiguration(classes={RootConfig.class, DataConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
-@Ignore
+//@Ignore
 public class TestService {
     private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
@@ -40,6 +42,9 @@ public class TestService {
     @Autowired()
 //    @Qualifier("contentService")
     private ContentService contentService;
+    @Autowired()
+//    @Qualifier("contentService")
+    private ContentCategoryService contentCategoryService;
 
     @Test
     public void testGetAll() {
@@ -86,5 +91,24 @@ public class TestService {
     public void testContentById() {
         Content content = contentService.getById(28);
         logger.info(String.format("content: %s", content));
+    }
+    @Test
+    public void testContentContengCategorylist() {
+        List<ContentCategory> contentCategorys = contentCategoryService.list();
+        System.out.println(contentCategorys);
+    }
+    @Test
+    public void testContentContengCategorydelete() {
+        BaseResult delete = contentCategoryService.delete(Arrays.asList(100));
+        System.out.println(delete);
+    }
+    @Test
+    public void testContentContengCategorySave() {
+        ContentCategory contentCategory = contentCategoryService.getById(96);
+        contentCategory.setParentId(93);
+        BaseResult save = contentCategoryService.save(contentCategory);
+        System.out.println("********************************************");
+        System.out.println(String.format("save: %s", save));
+        System.out.println("********************************************");
     }
 }

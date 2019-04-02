@@ -20,7 +20,7 @@ public interface ContentDao extends BaseDao<Content> {
     int update(Content entity);
 
     @DeleteProvider(type = ContentProvider.class, method = "deleteByIds")
-    int deleteById(@Param("ids") List<String> ids);
+    int deleteById(@Param("ids") List<Integer> ids);
 
     @SelectProvider(type = ContentProvider.class, method = "selectById")
     Content selectById(@Param("id") int id);

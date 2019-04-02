@@ -56,7 +56,7 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, D extends BaseDa
     }
 
     @Override
-    public BaseResult delete(List<String> ids) {
+    public BaseResult delete(List<Integer> ids) {
         BaseResult result = BaseResult.success("删除成功");
         if (dao.deleteById(ids) <= 0) {
             result = BaseResult.failed("删除失败");
