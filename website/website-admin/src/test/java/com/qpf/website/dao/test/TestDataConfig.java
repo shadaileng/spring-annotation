@@ -27,7 +27,7 @@ import java.util.*;
 @WebAppConfiguration
 @ContextConfiguration(classes={RootConfig.class, DataConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
-@Ignore
+//@Ignore
 public class TestDataConfig {
     private static final Logger logger = LoggerFactory.getLogger(TestDataConfig.class);
     @Autowired

@@ -7,17 +7,25 @@ import org.apache.ibatis.session.LocalCacheScope;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 
 @Configuration
 @MapperScan({"com.qpf.website.dao"})
+@PropertySource("classpath:application.properties")
 public class DataConfig {
+
+    @Autowired
+    private Environment env;
+
     private String JDBC_DRIVER_CLASS = "org.sqlite.JDBC";
-    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:/home/shadaileng/develop/Git/repository/spring-annotation/data/data.db";
-//    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:F:/qipf/dev/ideaIU/git-respository/spring-annotation/data/data.db";
+//    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:/home/shadaileng/develop/Git/repository/spring-annotation/data/data.db";
+    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:F:/qipf/dev/ideaIU/git-respository/spring-annotation/data/data.db";
 //    private String JDBC_CONNECTION_URL = "jdbc:sqlite::resource:data/data.db";
     private String JDBC_USERNAME = "";
     private String JDBC_PASSWORD = "";

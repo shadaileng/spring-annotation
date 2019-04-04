@@ -1,13 +1,14 @@
 package com.qpf.website.dao;
 
 import com.qpf.website.commons.persistence.BaseDao;
+import com.qpf.website.commons.persistence.BaseTreeDao;
 import com.qpf.website.entity.Content;
 import com.qpf.website.entity.ContentCategory;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-public interface ContentCategoryDao extends BaseDao<ContentCategory> {
+public interface ContentCategoryDao extends BaseTreeDao<ContentCategory> {
     @Select("SELECT a.*,ifnull(b.id, '0') as `parent.id`, ifnull(b.name, '/') as `parent.name` FROM CONTENT_CATEGORY a left outer join CONTENT_CATEGORY b on a.parent_id = b.id order by a.parent_id, a.`sort_order`, a.`is_parent`")
     List<ContentCategory> getAll();
 

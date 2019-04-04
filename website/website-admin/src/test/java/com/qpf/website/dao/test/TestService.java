@@ -31,7 +31,7 @@ import java.util.*;
 @WebAppConfiguration
 @ContextConfiguration(classes={RootConfig.class, DataConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
-//@Ignore
+@Ignore
 public class TestService {
     private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
