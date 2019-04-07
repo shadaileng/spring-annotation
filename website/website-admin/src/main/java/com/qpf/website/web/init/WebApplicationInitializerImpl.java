@@ -50,4 +50,6 @@ public class WebApplicationInitializerImpl extends AbstractAnnotationConfigDispa
         registration.setInitParameter("spring.profiles.active", "default");
     }
 
+
+
 }

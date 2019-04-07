@@ -138,6 +138,12 @@
             <artifactId>javax.el</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- lombok Begin -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- lombok End -->
     </dependencies>
 
 </project>

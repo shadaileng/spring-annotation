@@ -32,6 +32,15 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css">
 
+    <!-- zTree-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/zTree.v3/3.5.40/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+
+    <!-- DropZone -->
+    <link href="https://cdn.bootcss.com/dropzone/5.5.1/basic.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/dropzone/5.5.1/dropzone.css" rel="stylesheet">
+
+    <!-- WangEditor -->
+    <link href="https://cdn.bootcss.com/wangEditor/10.0.13/wangEditor.css" rel="stylesheet">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -137,9 +146,13 @@
                     <form role="form" id="inputForm">
                         <input type="hidden" name="id">
                         <div class="form-group">
-                            <label class="control-label" for="inputCategory"><i class="fa fa-user"></i>类别:</label>
-                            <input type="text" class="form-control required" id="inputCategory" placeholder="请选择类别..." name="contentCategory.name">
-                            <input type="hidden" class="form-control required" name="contentCategory.id">
+                            <label class="control-label" for="inputCategoryName"><i class="fa fa-user"></i>父级:</label>
+                            <input type="hidden" name="categoryId">
+                            <input type="hidden" name="contentCategory.id">
+                            <input type="text" class="form-control required" id="inputCategoryName" placeholder="请选择父级Id..." name="contentCategory.name" data-toggle="collapse" data-target="#zTree" aria-expanded="false" aria-controls="#zTree">
+                            <ul id="zTree" class="collapse ztree">
+                                <!--<li id="myTree" class="ztree"></ls>-->
+                            </ul>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="inputTitle"><i class="fa fa-envelope-o"></i>标题:</label>
@@ -159,11 +172,13 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="inputPic"><i class="fa fa-mobile"></i>图片:</label>
-                            <input type="text" class="form-control required" id="inputPic" placeholder="请输入图片..." name="pic">
+                            <input type="text" class="form-control required" id="inputPic" placeholder="请输入图片..." name="pic" data-toggle="collapse" data-target="#dropz" aria-expanded="false" aria-controls="#dropz">
+                            <div id="dropz" class="collapse dropzone"></div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="inputContent"><i class="fa fa-mobile"></i>内容:</label>
-                            <input type="text" class="form-control required" id="inputContent" placeholder="请输入内容..." name="content">
+                            <input type="text" class="form-control required" id="inputContent" placeholder="请输入内容..." name="content"  data-toggle="collapse" data-target="#editor" aria-expanded="false" aria-controls="#editor">
+                            <div id="editor" class="collapse"></div>
                         </div>
                         <!--<input type="submit">-->
                     </form>
@@ -206,11 +221,22 @@
     <!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+    <!-- zTree -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zTree.v3/3.5.40/js/jquery.ztree.core.js"></script>
+
+    <!-- Dropzone -->
+    <script src="https://cdn.bootcss.com/dropzone/5.5.1/dropzone.js"></script>
+
+    <!-- WangEditor -->
+    <script src="https://cdn.bootcss.com/wangEditor/10.0.13/wangEditor.js"></script>
+
     <!-- App -->
     <script th:src="@{/static/js/validate.js}"></script>
     <script th:src="@{/static/js/app.js}"></script>
     <script th:src="@{/static/js/utils.js}"></script>
     <script>
+        var tmp
         $(function () {
             Validate.validateForm('inputForm')
             ModalUtil.init({
@@ -235,6 +261,10 @@
                 target: '#modal-default',
                 callback: function () {
                     TableUtils.firstPage()
+                },
+                init: function () {
+                    tmp.removeAllFiles(true)
+                    $('#dropz').collapse('hide')
                 }
             })
             // APP.initModal('#modal-default', '更新用户', '新增用户')
@@ -271,19 +301,23 @@
                     data: 'url',
                     type: 'func',
                     func: function (e) {
-                        return '<a href="' + e['url'] + '">链接</a>'
+                        return '<a target="_blank" href="' + e['url'] + '">链接</a>'
                     }
                 },
                 {
                     data: 'pic',
                     type: 'func',
                     func: function (e) {
-                        return '<a href="' + e['pic'] + '">链接</a>'
+                        return '<a target="_blank" href="' + e['pic'] + '">链接</a>'
                     }
                 },
                 {
                     data: 'content',
-                    type: 'string'
+                    type: 'func',
+                    func: (e) => {
+                        console.log()
+                        return $('<div>').html(e['content']).text().substring(0, 15) + '...'
+                    }
                 },
                 {
                     data: 'updated',
@@ -327,6 +361,60 @@
                 document.querySelectorAll('#collapseSearch input').forEach(el => {
                     el.value = ''
                 })
+            })
+            jQuery.browser={};(function(){jQuery.browser.msie=false; jQuery.browser.version=0;if(navigator.userAgent.match(/MSIE ([0-9]+)./)){ jQuery.browser.msie=true;jQuery.browser.version=RegExp.$1;}})();
+            let setting = {
+                view: {
+                    // 禁止多选
+                    selectedMulti: false
+                },
+                async: {
+                    enable: true,
+                    url: "category/tree/data",
+                    autoParam: ["id"]
+                },
+                callback: {
+                    onClick: function(event, treeId, treeNode) {
+                        $('#inputCategoryName').val(treeNode.name)
+                        $('[name=categoryId]').val(treeNode.id)
+                    }
+                }
+            }
+            // 初始化 zTree 控件
+            $.fn.zTree.init($("#zTree"), setting);
+
+            DropzoneUtil.init({
+                target: '#dropz',
+                url: '/admin/upload',
+                paramName: 'dropzFile',
+                success: function (file, data) {
+                    $('#inputPic').val(data.fileName)
+                }
+            })
+            tmp = DropzoneUtil.dropz()
+
+            EditorUtil.init({
+                target: '#editor',
+                url: '/admin/upload',
+                uploadFileName: 'editorFile',
+                uploadImgHooks: {
+                    customInsert: function (insertImg, result, editor) {
+                        let url = result.url
+                        insertImg(url)
+                    }
+                },
+                onchange: function(html) {
+                    $('#inputContent').val(html)
+                },
+                onblur: function(html) {
+                    $('#editor').collapse('hide')
+                }
+            })
+            let editor = EditorUtil.editor()
+            $('#inputContent').val(editor.txt.html())
+
+            $('#editor').on('show.bs.collapse', function () {
+                editor.txt.html($('#inputContent').val())
             })
 
         })

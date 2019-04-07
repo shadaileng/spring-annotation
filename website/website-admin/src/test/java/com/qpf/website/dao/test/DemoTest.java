@@ -6,7 +6,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 @Ignore
@@ -57,5 +59,15 @@ public class DemoTest {
     public void testCamelToUnderline() {
         String categoryId = BeanUtils.camelToUnderline("categoryId");
         System.out.println(categoryId);
+    }
+
+    @Test
+    public void testProfile() {
+        System.out.println(System.getProperty("os.name"));
+    }
+
+    @Test
+    public void testDatePath() {
+        System.out.println(new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
     }
 }

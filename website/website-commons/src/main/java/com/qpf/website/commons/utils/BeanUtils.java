@@ -1,6 +1,6 @@
 package com.qpf.website.commons.utils;
 
-import com.qpf.website.commons.persistence.BaseEntity;
+import com.qpf.website.commons.persistence.BaseTreeEntity;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -10,7 +10,7 @@ public class BeanUtils {
         List<String> fields = new ArrayList<>();
         while (clazz != null) {
             Arrays.asList(clazz.getDeclaredFields()).forEach((el)->{
-                boolean isSup = el.getType().getSuperclass().equals(BaseEntity.class);
+                boolean isSup = getAllSupperClass(el.getType()).contains(BaseTreeEntity.class.getName());
                 if (!el.getName().equals("serialVersionUID") && !el.getName().equals("id") && !isSup) {
                     fields.add(el.getName());
                 }
@@ -65,6 +65,17 @@ public class BeanUtils {
             }
         }
         return sb.toString();
+    }
+
+    public static List<String> getAllSupperClass(Class clazz) {
+        List<String> list = new ArrayList<>();
+        do {
+            clazz = clazz.getSuperclass();
+            list.add(clazz.getName());
+        } while (!clazz.equals(Object.class));
+
+
+        return list;
     }
 
 }

@@ -1,6 +1,7 @@
 package com.qpf.website.web.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.qpf.website.web.config.properties.DataProperties;
 import org.apache.ibatis.session.AutoMappingBehavior;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.LocalCacheScope;
@@ -12,57 +13,44 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
 @MapperScan({"com.qpf.website.dao"})
 @PropertySource("classpath:application.properties")
+@EnableTransactionManagement
 public class DataConfig {
-
     @Autowired
-    private Environment env;
-
-    private String JDBC_DRIVER_CLASS = "org.sqlite.JDBC";
-//    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:/home/shadaileng/develop/Git/repository/spring-annotation/data/data.db";
-    private String JDBC_CONNECTION_URL = "jdbc:sqlite:file:F:/qipf/dev/ideaIU/git-respository/spring-annotation/data/data.db";
-//    private String JDBC_CONNECTION_URL = "jdbc:sqlite::resource:data/data.db";
-    private String JDBC_USERNAME = "";
-    private String JDBC_PASSWORD = "";
-
-    private int JDBC_POOL_INIT = 1;
-    private int JDBC_POOL_MIN_IDLE = 3;
-    private int JDBC_POOL_MAX_ACTIVE = 20;
-
-    private String JDBC_TEST_SQL = "SELECT 'x' FROM sqlite_master ";
-
-    private long JDBC_MAX_WAIT = 60000;
-    private long JDBC_TIME_CLOSE = 300000;
+    private DataProperties properties;
 
     // TODO 配置Druid数据源
     @Bean(destroyMethod = "close", initMethod = "init")
     public DataSource druidDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         // 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass
-        dataSource.setDriverClassName(JDBC_DRIVER_CLASS);
+        dataSource.setDriverClassName(properties.getJdbcClassDriver());
         // 基本属性 url、user、password
-        dataSource.setUrl(JDBC_CONNECTION_URL);
-        dataSource.setUsername(JDBC_USERNAME);
-        dataSource.setPassword(JDBC_PASSWORD);
+        dataSource.setUrl(properties.getJdbcConnectionUrlLinux());
+        dataSource.setUsername(properties.getJdbcUsername());
+        dataSource.setPassword(properties.getJdbcPassword());
 
         // 配置初始化大小、最小、最大
-        dataSource.setInitialSize(JDBC_POOL_INIT);
-        dataSource.setMinIdle(JDBC_POOL_INIT);
-        dataSource.setMaxActive(JDBC_POOL_MAX_ACTIVE);
+        dataSource.setInitialSize(properties.getJdbcPoolInit());
+        dataSource.setMinIdle(properties.getJdbcPoolMinIdle());
+        dataSource.setMaxActive(properties.getJdbcPoolMaxActive());
 
         // 配置获取连接等待超时的时间
-        dataSource.setMaxWait(JDBC_MAX_WAIT);
+        dataSource.setMaxWait(properties.getJdbcMaxWait());
 
         // 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-        dataSource.setTimeBetweenConnectErrorMillis(JDBC_TIME_CLOSE);
+        dataSource.setTimeBetweenConnectErrorMillis(properties.getJdbcTimeclose());
 
         // 测试
-        dataSource.setValidationQuery(JDBC_TEST_SQL);
+        dataSource.setValidationQuery(properties.getJdbcTestSql());
         dataSource.setTestWhileIdle(true);
         dataSource.setTestOnBorrow(false);
         dataSource.setTestOnReturn(false);
@@ -105,6 +93,11 @@ public class DataConfig {
         sqlSessionFactoryBean.setConfiguration(configuration);
 
         return sqlSessionFactoryBean;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        return new DataSourceTransactionManager(druidDataSource());
     }
 
 }

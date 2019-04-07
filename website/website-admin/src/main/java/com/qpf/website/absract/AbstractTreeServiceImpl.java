@@ -10,9 +10,10 @@ import com.qpf.website.entity.ContentCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-
+@Transactional
 public abstract class AbstractTreeServiceImpl<T extends BaseTreeEntity, D extends BaseTreeDao> extends AbstractServiceImpl<T, D> {
 
     private final static Logger logger = LoggerFactory.getLogger(AbstractTreeServiceImpl.class);

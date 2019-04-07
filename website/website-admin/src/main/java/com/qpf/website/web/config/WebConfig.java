@@ -1,6 +1,8 @@
 package com.qpf.website.web.config;
 
+import com.qpf.website.web.config.properties.ResourceProperties;
 import com.qpf.website.web.interceptor.LoginInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,8 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
         @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
 })
 public class WebConfig extends WebMvcConfigurerAdapter {
+    @Autowired
+    private ResourceProperties resourceProperties;
     private String VIEWS = "classpath:template/";
     private String CHARACTER_ENCODING = "UTF-8";
     private boolean THYMELEAF_CACHE = false;
@@ -42,6 +46,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(RESOURCES_LOCATION + "**").addResourceLocations("classpath:/public/");
 //        registry.addResourceHandler(RESOURCES_LOCATION + "**").addResourceLocations(RESOURCES_LOCATION);
+        registry.addResourceHandler("upload/**").addResourceLocations(String.format("file:%s", resourceProperties.getResourcePathUpload()));
     }
 
     /************************************THYMELEAF********************************************/

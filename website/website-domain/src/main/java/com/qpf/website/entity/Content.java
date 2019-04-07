@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @ToString
 public class Content extends BaseEntity {
-    @NotBlank(message = "父级类目id")
+    @NotNull(message = "父级类目id")
     private Integer categoryId;
     @Length(min = 1, max = 20, message = "标题长度介于 1 - 20 个字符之间")
     private String title;

@@ -31,7 +31,7 @@ import java.util.*;
 @WebAppConfiguration
 @ContextConfiguration(classes={RootConfig.class, DataConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
-@Ignore
+//@Ignore
 public class TestService {
     private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
@@ -76,8 +76,8 @@ public class TestService {
     }
     @Test
     public void testUpdate() {
-        User user = userService.getById(14);
-        user.setUsername("te");
+        User user = userService.getById(32);
+        user.setUsername("test10");
         BaseResult save = userService.save(user);
         logger.info(String.format("%s", save));
     }

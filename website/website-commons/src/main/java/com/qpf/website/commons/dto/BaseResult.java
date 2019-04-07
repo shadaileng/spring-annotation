@@ -53,8 +53,8 @@ public class BaseResult implements Serializable {
     public static BaseResult success() {
         return success("操作成功");
     }
-    public static BaseResult success(Object data) {
-        BaseResult success = success();
+    public static BaseResult success(String msg, Object data) {
+        BaseResult success = success(msg);
         success.setData(data);
         return success;
     }
