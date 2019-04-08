@@ -33,7 +33,7 @@ public class DataConfig {
         // 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass
         dataSource.setDriverClassName(properties.getJdbcClassDriver());
         // 基本属性 url、user、password
-        dataSource.setUrl(properties.getJdbcConnectionUrlLinux());
+        dataSource.setUrl(properties.getGetJdbcConnectionUrlWin());
         dataSource.setUsername(properties.getJdbcUsername());
         dataSource.setPassword(properties.getJdbcPassword());
 

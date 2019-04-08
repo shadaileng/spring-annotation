@@ -19,7 +19,6 @@ public class ContentController {
     @Autowired
     private ContentService service;
 
-
     @GetMapping("ppt")
     public BaseResult ppt() {
         BaseResult result;
