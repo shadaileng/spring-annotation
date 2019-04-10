@@ -13,8 +13,10 @@ public class ContentApi {
 
         try {
             String contentsStr = HttpClientUtils.doGet(API.API_CONTENTS_PPT);
-            System.out.println(contentsStr);
-            contents = JsonUtils.json2listByNode(contentsStr, "data", ContentDTO.class);
+            String code = JsonUtils.json2StringByNode(contentsStr, "code");
+            if ("200".equals(code)) {
+                contents = JsonUtils.json2listByNode(contentsStr, "data", ContentDTO.class);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

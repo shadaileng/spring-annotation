@@ -37,6 +37,7 @@
         <hibernate.validator.version>5.3.4.Final</hibernate.validator.version>
         <javax.el.version>2.2.4</javax.el.version>
         <httpclient.version>4.5.5</httpclient.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
     </properties>
 
     <dependencyManagement>
@@ -191,6 +192,13 @@
                 <version>${httpclient.version}</version>
             </dependency>
             <!-- Apache Http End -->
+            <!-- Kaptcha Begin-->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+            <!-- Kaptcha End -->
         </dependencies>
     </dependencyManagement>
     <build>

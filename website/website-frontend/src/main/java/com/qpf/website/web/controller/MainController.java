@@ -13,7 +13,6 @@ public class MainController {
     @GetMapping({"/index", ""})
     public String index(Map<String, Object> map) {
         List<ContentDTO> list = ContentApi.list();
-        System.out.println(list);
         map.put("list", list);
         return "index";
     }

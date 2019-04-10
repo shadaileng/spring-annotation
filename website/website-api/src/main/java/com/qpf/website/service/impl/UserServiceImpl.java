@@ -12,13 +12,11 @@ public class UserServiceImpl implements UserService {
     private UserDao dao;
     @Override
     public User login(String username, String password) {
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
         User user = dao.login(username);
 
-        if (user != null) {
-            password = DigestUtils.md5DigestAsHex(password.getBytes());
-            if (password.equals(user.getPassword())) {
-                return user;
-            }
+        if (user == null || !password.equals(user.getPassword())) {
+            return null;
         }
 
         return user;

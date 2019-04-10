@@ -55,6 +55,20 @@ public class JsonUtils {
         objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
         return objectMapper.readValue(jsonString, clazz);
     }
+    /**
+     * 指定节点 转换为 JavaBean
+     *
+     * @param jsonString
+     * @param clazz
+     * @return
+     * @throws Exception
+     */
+    public static <T> T json2pojoByNode(String jsonString, String node, Class<T> clazz) throws Exception {
+        JsonNode jsonNode = objectMapper.readTree(jsonString);
+        JsonNode path = jsonNode.findPath(node);
+        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        return objectMapper.readValue(path.toString(), clazz);
+    }
 
     /**
      * 字符串转换为 Map<String, Object>
@@ -179,6 +193,21 @@ public class JsonUtils {
         JsonNode jsonNode = objectMapper.readTree(jsonArrayStr);
         JsonNode path = jsonNode.findPath(node);
         return json2list(path.toString(), clazz);
+    }
+
+
+    /**
+     * 指定节点JSON 获取键值
+     *
+     * @param jsonArrayStr
+     * @param node
+     * @return
+     * @throws Exception
+     */
+    public static String json2StringByNode(String jsonStr, String node) throws Exception {
+        JsonNode jsonNode = objectMapper.readTree(jsonStr);
+        JsonNode path = jsonNode.findPath(node);
+        return path.toString();
     }
 
 
