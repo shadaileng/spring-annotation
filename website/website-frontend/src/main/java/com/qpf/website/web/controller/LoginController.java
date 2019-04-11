@@ -1,9 +1,11 @@
 package com.qpf.website.web.controller;
 
+import com.google.code.kaptcha.Constants;
 import com.qpf.website.commons.dto.BaseResult;
 import com.qpf.website.web.api.API;
 import com.qpf.website.web.api.UserApi;
 import com.qpf.website.web.dto.UserDTO;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +21,12 @@ public class LoginController {
     }
     @ResponseBody
     @PostMapping("login")
-    public BaseResult doLogin(String username, String password, HttpServletRequest request){
+    public BaseResult doLogin(String username, String password, String validate, HttpServletRequest request){
         BaseResult result = BaseResult.failed();
+
+        if (!checkValidate(validate, request)) {
+            return BaseResult.failed("验证码错误");
+        }
 
         UserDTO login = UserApi.login(username, password);
         if (login != null) {
@@ -38,5 +44,17 @@ public class LoginController {
     public String logout(HttpServletRequest request) {
         request.getSession().invalidate();
         return "redirect:login";
+    }
+
+    private boolean checkValidate(String validate, HttpServletRequest request) {
+        boolean result = false;
+
+        CharSequence code = (CharSequence) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+        System.out.println(code);
+        if (StringUtils.equals(validate, code)) {
+            result = true;
+        }
+
+        return result;
     }
 }

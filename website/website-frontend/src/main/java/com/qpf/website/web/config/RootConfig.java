@@ -29,7 +29,7 @@ public class RootConfig {
     public DefaultKaptcha captchaProducer() {
         DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
 
-        InputStream inputStream = ClassLoader.getSystemResourceAsStream("classpath:/application.properties");
+        InputStream inputStream = getClass().getResourceAsStream("/application.properties");
         Properties properties = new Properties();
         try {
             properties.load(inputStream);

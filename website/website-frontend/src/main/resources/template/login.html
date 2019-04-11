@@ -44,15 +44,24 @@
 				</div> 
 			</div>
 			<div class="kengl_kuang">
-				<div class="txt_kuang">
-					<input id="username" type="text" class="itxt"  placeholder="邮箱/用户名/已验证手机">
-					<input id="password" type="text" class="itxt"  placeholder="密码">
-					<img th:src="@{/validate}" alt="验证码">
+				<div class="">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" placeholder="邮箱/用户名/已验证手机">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="密码">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="validate" placeholder="验证码" style="width: 210px">
+                            <img id="validateCode" th:src="@{/validate}" alt="验证码"/>
+                        </div>
+                    </div>
 				</div>
 				<div class="remember">
 					<div class="fl">
 						<input type="checkbox" >
-						<label for="autoLoginFlag">自动登录</label>
+						<label>自动登录</label>
 					</div>
 					<div class="fr">
 						<a href="#" class="fl" target="_blank" title="忘记密码">忘记密码?</a> 
@@ -89,12 +98,14 @@
         $('#login').on('click', function () {
             let username = $('#username').val()
             let password = $('#password').val()
+            let validate = $('#validate').val()
             $.ajax({
                 url: 'login',
                 type: 'post',
                 data: {
                     username: username,
-                    password: password
+                    password: password,
+                    validate: validate,
                 },
                 beforeSend: function () {
                     layerIndex = layer.msg('处理中', {icon: 16})
@@ -105,8 +116,9 @@
                         window.location.assign("/index")
                     } else if (result.code == 500) {
                         layer.open({content: result.msg, icon: 5, shift: 6}, function () {
-
                         })
+                        $('#validate').val('')
+                        $('#validateCode').click()
                     }
                 },
                 error: function (data) {
@@ -116,6 +128,10 @@
                     })
                 }
             })
+        })
+
+		$('#validateCode').on('click', function () {
+            $(this).hide().attr('src', '/validate?' + Math.random()).fadeIn()
         })
     })
 </script>

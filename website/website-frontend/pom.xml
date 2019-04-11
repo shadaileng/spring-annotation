@@ -75,6 +75,13 @@
             <artifactId>kaptcha</artifactId>
         </dependency>
         <!-- Kaptcha End -->
+        <!-- Junit Begin -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Junit End -->
     </dependencies>
 
     <build>
