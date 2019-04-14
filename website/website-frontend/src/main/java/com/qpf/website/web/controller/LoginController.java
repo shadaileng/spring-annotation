@@ -6,6 +6,7 @@ import com.qpf.website.web.api.API;
 import com.qpf.website.web.api.UserApi;
 import com.qpf.website.web.dto.UserDTO;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LoginController {
+    @Autowired
+    private UserApi api;
     @GetMapping("login")
     public String login(){
         return "login";
@@ -28,7 +31,7 @@ public class LoginController {
             return BaseResult.failed("验证码错误");
         }
 
-        UserDTO login = UserApi.login(username, password);
+        UserDTO login = api.login(username, password);
         if (login != null) {
             result = BaseResult.success("登陆成功");
             result.setData(login);

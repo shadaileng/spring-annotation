@@ -113,7 +113,7 @@
                 success: function (result) {
                     layer.close(layerIndex);
                     if (result.code == 200) {
-                        window.location.assign("/index")
+                        window.location.assign("/frontend/index")
                     } else if (result.code == 500) {
                         layer.open({content: result.msg, icon: 5, shift: 6}, function () {
                         })
@@ -131,7 +131,7 @@
         })
 
 		$('#validateCode').on('click', function () {
-            $(this).hide().attr('src', '/validate?' + Math.random()).fadeIn()
+            $(this).hide().attr('src', '/frontend/validate?' + Math.random()).fadeIn()
         })
     })
 </script>
