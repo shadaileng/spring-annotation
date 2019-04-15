@@ -1,10 +1,7 @@
 package com.qpf.website.web.config;
 
 import com.qpf.website.commons.utils.BeanValidator;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -13,6 +10,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 @ComponentScan(value = {"com.qpf.website"}, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
 })
+@PropertySource({"classpath:/application.properties"})
 public class RootConfig {
     @Bean
     public BeanValidator beanValidator() {

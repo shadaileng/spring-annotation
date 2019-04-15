@@ -11,14 +11,12 @@ public class DataProperties {
 
     @Value("${jdbc.class.driver}")
     private String jdbcClassDriver = "org.sqlite.JDBC";
-    @Value("${jdbc.connection.url.linux}")
-    private String jdbcConnectionUrlLinux = "jdbc:sqlite:file:/home/shadaileng/develop/Git/repository/spring-annotation/data/data.db";
-    @Value("${jdbc.connection.url.win}")
-    private String jdbcConnectionUrlWin = "jdbc:sqlite:file:F:/qipf/dev/ideaIU/git-respository/spring-annotation/data/data.db";
+    @Value("${jdbc.connection.url}")
+    private String jdbcConnectionUrl = "jdbc:sqlite:file:/home/shadaileng/develop/Git/repository/spring-annotation/data/data.db";
     //    private String JDBC_CONNECTION_URL = "jdbc:sqlite::resource:data/data.db";
     @Value("${jdbc.username}")
     private String jdbcUsername = "";
-    @Value("${jdbc.password.linux}")
+    @Value("${jdbc.password}")
     private String jdbcPassword = "";
 
     @Value("${jdbc.pool.init}")

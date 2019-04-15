@@ -338,7 +338,7 @@ var DropzoneUtil = function() {
 
 var EditorUtil = function() {
    let defaultOptions = {
-       editor: editor,
+       editor: null,
        target: '#editor',
        url: '',
        uploadImgShowBase64: false,
