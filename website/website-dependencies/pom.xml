@@ -36,7 +36,7 @@
         <lombok.version>1.18.6</lombok.version>
         <hibernate.validator.version>5.3.4.Final</hibernate.validator.version>
         <javax.el.version>2.2.4</javax.el.version>
-        <httpclient.version>4.5.5</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <kaptcha.version>2.3.2</kaptcha.version>
     </properties>
 
